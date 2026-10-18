@@ -34,6 +34,31 @@ const greetings = Lesson(
   ],
 );
 
+
+const hiraganaVowels = Lesson(
+  'hiragana-vowels-v1',
+  'Hiragana: the five vowels',
+  'Hiragana is a Japanese writing system. Start with these five characters:\n\n'
+  'あ → a\nい → i\nう → u\nえ → e\nお → o\n\n'
+  'The Latin letters are romaji: a way to represent Japanese sounds. '
+  'These characters represent sounds, not English words. '
+  'Learn each shape, then practise matching hiragana and romaji in both directions.',
+  [
+    Exercise('Which romaji matches あ?', ['i', 'a', 'o'], 1, 'あ represents a.'),
+    Exercise('Which romaji matches い?', ['i', 'e', 'u'], 0, 'い represents i.'),
+    Exercise('Which romaji matches う?', ['o', 'a', 'u'], 2, 'う represents u.'),
+    Exercise('Which romaji matches え?', ['a', 'e', 'i'], 1, 'え represents e.'),
+    Exercise('Which romaji matches お?', ['o', 'u', 'e'], 0, 'お represents o.'),
+    Exercise('Choose the hiragana for a.', ['お', 'う', 'あ'], 2, 'a is written あ.'),
+    Exercise('Choose the hiragana for i.', ['え', 'い', 'あ'], 1, 'i is written い.'),
+    Exercise('Choose the hiragana for u.', ['う', 'お', 'い'], 0, 'u is written う.'),
+    Exercise('Choose the hiragana for e.', ['い', 'あ', 'え'], 2, 'e is written え.'),
+    Exercise('Choose the hiragana for o.', ['う', 'お', 'え'], 1, 'o is written お.'),
+  ],
+);
+
+const lessons = [greetings, hiraganaVowels];
+
 class LessonSession {
   final Lesson lesson;
   int index = 0;

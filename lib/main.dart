@@ -47,7 +47,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final done = widget.store.completed(greetings.id);
     return Scaffold(
       appBar: AppBar(title: const Text('NihoPop')),
       body: SafeArea(child: ListView(
@@ -58,25 +57,26 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 12),
           const Text('Learn through English • Practice offline'),
           const SizedBox(height: 32),
-          Card(child: Padding(
+          for (final lesson in lessons)
+          Card(key: ValueKey('lesson-${lesson.id}'), child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text('LESSON 01'),
+              Text('LESSON ${lessons.indexOf(lesson) + 1}'),
               const SizedBox(height: 12),
-              Text(greetings.title, style: Theme.of(context).textTheme.headlineSmall),
+              Text(lesson.title, style: Theme.of(context).textTheme.headlineSmall),
               const SizedBox(height: 12),
-              Text(done
-                  ? 'Completed • Best: ${widget.store.best(greetings.id)}/${greetings.exercises.length}'
-                  : 'Four questions • Japanese ↔ English'),
+              Text(widget.store.completed(lesson.id)
+                  ? 'Completed • Best: ${widget.store.best(lesson.id)}/${lesson.exercises.length}'
+                  : '${lesson.exercises.length} questions • ${lesson == greetings ? "Japanese ↔ English" : "Hiragana ↔ Romaji"}'),
               const SizedBox(height: 20),
               FilledButton(
                 onPressed: () async {
                   await Navigator.of(context).push(MaterialPageRoute<void>(
-                    builder: (_) => LessonPage(store: widget.store),
+                    builder: (_) => LessonPage(store: widget.store, lesson: lesson),
                   ));
                   if (mounted) setState(() {});
                 },
-                child: Text(done ? 'Practice again' : 'Start lesson'),
+                child: Text(widget.store.completed(lesson.id) ? 'Practice again' : 'Start lesson'),
               ),
             ]),
           )),
@@ -90,13 +90,20 @@ class _HomePageState extends State<HomePage> {
 
 class LessonPage extends StatefulWidget {
   final ProgressStore store;
-  const LessonPage({super.key, required this.store});
+  final Lesson lesson;
+  const LessonPage({super.key, required this.store, required this.lesson});
   @override
   State<LessonPage> createState() => _LessonPageState();
 }
 
 class _LessonPageState extends State<LessonPage> {
-  final session = LessonSession(greetings);
+  late final LessonSession session;
+
+  @override
+  void initState() {
+    super.initState();
+    session = LessonSession(widget.lesson);
+  }
   bool started = false;
   int? selected;
   bool saving = false;
@@ -106,7 +113,7 @@ class _LessonPageState extends State<LessonPage> {
   Future<void> save() async {
     setState(() { saving = true; saveError = null; });
     try {
-      await widget.store.record(greetings.id, session.correct);
+      await widget.store.record(widget.lesson.id, session.correct);
       if (mounted) setState(() { saved = true; });
     } catch (_) {
       if (mounted) setState(() {
@@ -120,14 +127,14 @@ class _LessonPageState extends State<LessonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(greetings.title)),
+      appBar: AppBar(title: Text(widget.lesson.title)),
       body: SafeArea(child: ListView(
         padding: const EdgeInsets.all(24),
         children: [
           if (!started) ...[
             const Text('Before you begin', style: TextStyle(fontSize: 26)),
             const SizedBox(height: 20),
-            Text(greetings.introduction, style: const TextStyle(fontSize: 20, height: 1.6)),
+            Text(widget.lesson.introduction, style: const TextStyle(fontSize: 20, height: 1.6)),
             const SizedBox(height: 28),
             FilledButton(
               onPressed: () => setState(() { started = true; }),
@@ -137,7 +144,7 @@ class _LessonPageState extends State<LessonPage> {
             const Icon(Icons.celebration_outlined, size: 64),
             const SizedBox(height: 20),
             const Text('Lesson complete!', style: TextStyle(fontSize: 28)),
-            Text('${session.correct} of ${greetings.exercises.length} correct'),
+            Text('${session.correct} of ${widget.lesson.exercises.length} correct'),
             const SizedBox(height: 20),
             Text(saved ? 'Progress saved on this device.' : saving ? 'Saving progress…' : saveError ?? ''),
             if (saveError != null)
@@ -148,9 +155,9 @@ class _LessonPageState extends State<LessonPage> {
               child: const Text('Back to lessons'),
             ),
           ] else ...[
-            LinearProgressIndicator(value: session.index / greetings.exercises.length),
+            LinearProgressIndicator(value: session.index / widget.lesson.exercises.length),
             const SizedBox(height: 12),
-            Text('Question ${session.index + 1} of ${greetings.exercises.length}'),
+            Text('Question ${session.index + 1} of ${widget.lesson.exercises.length}'),
             const SizedBox(height: 28),
             Text(session.current.prompt, style: const TextStyle(fontSize: 28)),
             const SizedBox(height: 24),

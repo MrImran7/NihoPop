@@ -45,4 +45,27 @@ void main() {
     expect(store.completed(greetings.id), true);
     expect(store.best(greetings.id), 0);
   });
+
+  test('lesson progress is independent and lower scores keep each best', () async {
+    SharedPreferences.setMockInitialValues({'best.greetings-v1': 3, 'completed.greetings-v1': true});
+    final store = ProgressStore(await SharedPreferences.getInstance());
+    expect(store.completed(hiraganaVowels.id), false);
+    await store.record(hiraganaVowels.id, 8);
+    await store.record(hiraganaVowels.id, 2);
+    expect(store.best(hiraganaVowels.id), 8);
+    expect(store.best(greetings.id), 3);
+    expect(store.completed(greetings.id), true);
+    expect(store.completed(hiraganaVowels.id), true);
+  });
+
+  test('catalog has unique IDs and valid exercise choices', () {
+    expect(lessons.map((lesson) => lesson.id).toSet().length, lessons.length);
+    for (final lesson in lessons) {
+      expect(lesson.exercises, isNotEmpty);
+      for (final exercise in lesson.exercises) {
+        expect(exercise.answer, inInclusiveRange(0, exercise.choices.length - 1));
+        expect(exercise.choices.toSet().length, exercise.choices.length);
+      }
+    }
+  });
 }
