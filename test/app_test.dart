@@ -7,7 +7,11 @@ import 'package:nihopop/progress.dart';
 
 void main() {
   Future<void> tapVisible(WidgetTester tester, Finder button) async {
-    await tester.ensureVisible(button);
+    if (button.evaluate().isEmpty) {
+      await tester.scrollUntilVisible(button, 200);
+    } else {
+      await tester.ensureVisible(button);
+    }
     await tester.pumpAndSettle();
     await tester.tap(button);
     await tester.pumpAndSettle();
