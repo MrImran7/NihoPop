@@ -45,6 +45,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String section = 'All lessons';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +58,22 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 12),
           const Text('Learn through English • Practice offline'),
           const SizedBox(height: 32),
-          for (final lesson in lessons)
+          DropdownButtonFormField<String>(
+            key: const ValueKey('lesson-group'),
+            value: section,
+            isExpanded: true,
+            decoration: const InputDecoration(labelText: 'Lesson group', border: OutlineInputBorder()),
+            items: [
+              for (final group in lessonSections)
+                DropdownMenuItem(value: group, child: Text(group)),
+            ],
+            onChanged: (value) {
+              if (value != null) setState(() { section = value; });
+            },
+          ),
+          const SizedBox(height: 16),
+          for (final lesson in lessons.where((lesson) =>
+              section == 'All lessons' || lesson.section == section))
           Card(key: ValueKey('lesson-${lesson.id}'), child: Padding(
             padding: const EdgeInsets.all(20),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -67,7 +83,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 12),
               Text(widget.store.completed(lesson.id)
                   ? 'Completed • Best: ${widget.store.best(lesson.id)}/${lesson.exercises.length}'
-                  : '${lesson.exercises.length} questions • ${lesson == greetings ? "Japanese ↔ English" : "Hiragana ↔ Romaji"}'),
+                  : '${lesson.exercises.length} questions • ${lesson == greetings ? "Japanese ↔ English" : lesson.section == "Reading rules" ? "Reading practice" : "Hiragana ↔ Romaji"}'),
               const SizedBox(height: 20),
               FilledButton(
                 onPressed: () async {
@@ -98,6 +114,13 @@ class LessonPage extends StatefulWidget {
 
 class _LessonPageState extends State<LessonPage> {
   late final LessonSession session;
+  final scroll = ScrollController();
+
+  @override
+  void dispose() {
+    scroll.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -129,6 +152,7 @@ class _LessonPageState extends State<LessonPage> {
     return Scaffold(
       appBar: AppBar(title: Text(widget.lesson.title)),
       body: SafeArea(child: ListView(
+        controller: scroll,
         padding: const EdgeInsets.all(24),
         children: [
           if (!started) ...[
@@ -137,7 +161,10 @@ class _LessonPageState extends State<LessonPage> {
             Text(widget.lesson.introduction, style: const TextStyle(fontSize: 20, height: 1.6)),
             const SizedBox(height: 28),
             FilledButton(
-              onPressed: () => setState(() { started = true; }),
+              onPressed: () {
+                scroll.jumpTo(0);
+                setState(() { started = true; });
+              },
               child: const Text('Let’s practice'),
             ),
           ] else if (session.finished) ...[
@@ -187,6 +214,7 @@ class _LessonPageState extends State<LessonPage> {
                 if (!session.answered) {
                   setState(() { session.submit(selected!); });
                 } else {
+                  scroll.jumpTo(0);
                   setState(() { session.next(); selected = null; });
                   if (session.finished) save();
                 }

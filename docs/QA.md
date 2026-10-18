@@ -1,24 +1,30 @@
 # Android physical QA
-Use the APK from a successful Android Actions run. Record device, Android version,
-commit and result for each check.
-1. Launch in airplane mode. Home and lesson must work without network.
-2. Start lesson; read the introduction. Check cannot be pressed without a choice.
-3. Choose a wrong answer. Read the correct explanation; repeated taps must not
-   count extra answers. Finish greetings (four questions), then each hiragana lesson (ten questions each).
-4. Confirm the final score and saved status. Return home; completion is displayed.
-5. Confirm each lesson has its own score; all existing lesson scores must survive
-   an upgrade to this build. Complete the T, N and H rows without changing earlier progress.
-   Force-stop and reopen. Completion and best score must remain.
-6. Replay with a lower score. Best score must not decrease.
-7. Leave a partially completed replay with Android Back. Best score is unchanged.
-8. Increase system font size; test a small display and landscape. All options and
-   action buttons must be reachable by scrolling; Japanese glyphs must render.
-9. With TalkBack, navigate choices and buttons and check feedback announcements.
-10. Scroll to the T, N and H row cards. Read their teaching screens and check that
-    ち, つ and ふ are taught as chi, tsu and fu. The H row explains the particle
-    readings of は and へ separately from their basic readings. All ten questions in each lesson must be reachable.
-11. Clear app data: progress should reset. No account is needed.
 
-Automated coverage: duplicate submissions, unanswered progression, mixed scoring,
-zero-score completion, best-score preservation, lesson score isolation, catalog validity, and all seven complete lesson UI flows. K, S, T, N and H row tests use a phone-sized viewport.
-Audio, reminders and release signing are outside this milestone.
+Use the APK from a successful Actions run. Record device, Android version and commit.
+Install as an update over the existing app to check saved progress.
+
+## Focused checks for the full hiragana course
+1. Open offline. Check all previously saved greetings/vowel/row scores remain.
+2. Use Lesson group to select Basic hiragana, Voiced sounds, Combined sounds and
+   Reading rules. Each list must show the matching lessons; All lessons restores the catalog.
+3. Read the wa/wo/n and d-row teaching screens. Check kana and diacritics render.
+   Compare full-sized や/ゆ/よ/つ with small ゃ/ゅ/ょ/っ on the device.
+4. Complete one short lesson (ya/yu/yo), one combined-sound lesson and one reading-rule
+   lesson. Check their totals are 6, 12 and 6 respectively. Return and reopen.
+5. Increase system font size, use landscape, and scroll a long teaching screen.
+   Every control must remain reachable. Starting practice and advancing a question
+   should return to the top; the question must not be hidden by the previous scroll.
+6. Use Android Back during a replay. Saved best scores must stay unchanged.
+7. Use TalkBack to navigate the group selector, choices and feedback.
+
+## Regression checklist
+- Wrong answers show explanations; repeated taps do not increase scores.
+- Check answer stays disabled until a choice is made.
+- Lower replay scores do not reduce the best.
+- Force-stop/reopen preserves each lesson independently.
+- Clear app data only after upgrade testing: all progress resets.
+
+Automation covers every complete lesson flow, independent progress, reopening,
+catalog completeness, valid choices, scoring, group filtering and abandoned attempts.
+Most flows run at a phone-sized viewport. Physical checks focus on actual fonts,
+touch, accessibility and OS persistence; rerunning every question manually is unnecessary.
