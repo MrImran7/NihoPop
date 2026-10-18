@@ -75,4 +75,45 @@ void main() {
     expect(store.best(hiraganaVowels.id), 9);
     expect(store.best(greetings.id), 3);
   });
+
+  for (final entry in {
+    hiraganaK: ['ka', 'ki', 'ku', 'ke', 'ko', 'か', 'き', 'く', 'け', 'こ'],
+    hiraganaS: ['sa', 'shi', 'su', 'se', 'so', 'さ', 'し', 'す', 'せ', 'そ'],
+  }.entries) {
+    testWidgets('${entry.key.title} works on a phone-sized screen', (tester) async {
+      tester.view.physicalSize = const Size(390, 844);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      SharedPreferences.setMockInitialValues({
+        'best.greetings-v1': 3, 'completed.greetings-v1': true,
+        'best.hiragana-vowels-v1': 9, 'completed.hiragana-vowels-v1': true,
+      });
+      final store = ProgressStore(await SharedPreferences.getInstance());
+      await tester.pumpWidget(NihoPopApp(store: store));
+      final card = find.byKey(ValueKey('lesson-${entry.key.id}'));
+      await tapVisible(tester, find.descendant(of: card, matching: find.byType(FilledButton)));
+      expect(find.text(entry.key.introduction), findsOneWidget);
+      await tapVisible(tester, find.widgetWithText(FilledButton, 'Let’s practice'));
+      for (final answer in entry.value) {
+        await tapVisible(tester, find.widgetWithText(OutlinedButton, answer));
+        await tapVisible(tester, find.widgetWithText(FilledButton, 'Check answer'));
+        expect(find.text('Correct!'), findsOneWidget);
+        await tapVisible(tester, find.widgetWithText(FilledButton, 'Continue'));
+      }
+      expect(find.text('10 of 10 correct'), findsOneWidget);
+      await tapVisible(tester, find.widgetWithText(OutlinedButton, 'Back to lessons'));
+      await tester.pumpWidget(const SizedBox.shrink());
+      final reopened = ProgressStore(await SharedPreferences.getInstance());
+      await tester.pumpWidget(NihoPopApp(store: reopened));
+      await tester.pumpAndSettle();
+      await tester.scrollUntilVisible(card, 200);
+      await tester.pumpAndSettle();
+      expect(find.descendant(of: card, matching: find.text('Completed • Best: 10/10')), findsOneWidget);
+      expect(reopened.best(greetings.id), 3);
+      expect(reopened.best(hiraganaVowels.id), 9);
+      expect(reopened.completed(entry.key == hiraganaK ? hiraganaS.id : hiraganaK.id), false);
+      expect(tester.takeException(), isNull);
+    });
+  }
 }

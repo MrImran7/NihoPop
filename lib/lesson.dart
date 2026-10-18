@@ -57,7 +57,43 @@ const hiraganaVowels = Lesson(
   ],
 );
 
-const lessons = [greetings, hiraganaVowels];
+const hiraganaK = Lesson(
+  'hiragana-k-v1',
+  'Hiragana: ka to ko',
+  'か → ka\nき → ki\nく → ku\nけ → ke\nこ → ko\n\nAdd k before each vowel sound: ka, ki, ku, ke, ko. Learn these five shapes before practising.',
+  [
+    Exercise('Which romaji matches か?', ['ka', 'ki', 'ke'], 0, 'か represents ka.'),
+    Exercise('Which romaji matches き?', ['ku', 'ki', 'ko'], 1, 'き represents ki.'),
+    Exercise('Which romaji matches く?', ['ke', 'ka', 'ku'], 2, 'く represents ku.'),
+    Exercise('Which romaji matches け?', ['ke', 'ko', 'ki'], 0, 'け represents ke.'),
+    Exercise('Which romaji matches こ?', ['ka', 'ko', 'ku'], 1, 'こ represents ko.'),
+    Exercise('Choose the hiragana for ka.', ['か', 'き', 'け'], 0, 'か represents ka.'),
+    Exercise('Choose the hiragana for ki.', ['く', 'き', 'こ'], 1, 'き represents ki.'),
+    Exercise('Choose the hiragana for ku.', ['け', 'か', 'く'], 2, 'く represents ku.'),
+    Exercise('Choose the hiragana for ke.', ['け', 'こ', 'き'], 0, 'け represents ke.'),
+    Exercise('Choose the hiragana for ko.', ['か', 'こ', 'く'], 1, 'こ represents ko.'),
+  ],
+);
+
+const hiraganaS = Lesson(
+  'hiragana-s-v1',
+  'Hiragana: sa to so',
+  'さ → sa\nし → shi\nす → su\nせ → se\nそ → so\n\nNotice し: this lesson uses shi, not si, in romaji. The row is sa, shi, su, se, so.',
+  [
+    Exercise('Which romaji matches さ?', ['sa', 'shi', 'se'], 0, 'さ represents sa.'),
+    Exercise('Which romaji matches し?', ['su', 'shi', 'so'], 1, 'し represents shi.'),
+    Exercise('Which romaji matches す?', ['se', 'sa', 'su'], 2, 'す represents su.'),
+    Exercise('Which romaji matches せ?', ['se', 'so', 'shi'], 0, 'せ represents se.'),
+    Exercise('Which romaji matches そ?', ['sa', 'so', 'su'], 1, 'そ represents so.'),
+    Exercise('Choose the hiragana for sa.', ['さ', 'し', 'せ'], 0, 'さ represents sa.'),
+    Exercise('Choose the hiragana for shi.', ['す', 'し', 'そ'], 1, 'し represents shi.'),
+    Exercise('Choose the hiragana for su.', ['せ', 'さ', 'す'], 2, 'す represents su.'),
+    Exercise('Choose the hiragana for se.', ['せ', 'そ', 'し'], 0, 'せ represents se.'),
+    Exercise('Choose the hiragana for so.', ['さ', 'そ', 'す'], 1, 'そ represents so.'),
+  ],
+);
+
+const lessons = [greetings, hiraganaVowels, hiraganaK, hiraganaS];
 
 class LessonSession {
   final Lesson lesson;
