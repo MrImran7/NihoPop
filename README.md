@@ -2,8 +2,9 @@
 NihoPop — Learn Japanese. A little Japanese, every day.
 
 Android-only Flutter foundation for learning Japanese through English. Original
-greetings lesson (four questions) and three hiragana lessons: vowels あ・い・う・え・お,
-K row か・き・く・け・こ, and S row さ・し・す・せ・そ. Each hiragana lesson has
+greetings lesson (four questions) and six hiragana lessons: vowels あ・い・う・え・お,
+K row か・き・く・け・こ, S row さ・し・す・せ・そ, T row た・ち・つ・て・と,
+N row な・に・ぬ・ね・の, and H row は・ひ・ふ・へ・ほ. Each hiragana lesson has
 ten questions matching hiragana and romaji in both directions. A lesson picker,
 English feedback, replay and separately saved best scores/completion work offline. No account or server.
 

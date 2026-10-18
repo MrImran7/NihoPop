@@ -79,6 +79,9 @@ void main() {
   for (final entry in {
     hiraganaK: ['ka', 'ki', 'ku', 'ke', 'ko', 'か', 'き', 'く', 'け', 'こ'],
     hiraganaS: ['sa', 'shi', 'su', 'se', 'so', 'さ', 'し', 'す', 'せ', 'そ'],
+    hiraganaT: ['ta', 'chi', 'tsu', 'te', 'to', 'た', 'ち', 'つ', 'て', 'と'],
+    hiraganaN: ['na', 'ni', 'nu', 'ne', 'no', 'な', 'に', 'ぬ', 'ね', 'の'],
+    hiraganaH: ['ha', 'hi', 'fu', 'he', 'ho', 'は', 'ひ', 'ふ', 'へ', 'ほ'],
   }.entries) {
     testWidgets('${entry.key.title} works on a phone-sized screen', (tester) async {
       tester.view.physicalSize = const Size(390, 844);
@@ -88,6 +91,11 @@ void main() {
       SharedPreferences.setMockInitialValues({
         'best.greetings-v1': 3, 'completed.greetings-v1': true,
         'best.hiragana-vowels-v1': 9, 'completed.hiragana-vowels-v1': true,
+        for (final lesson in lessons.where((lesson) =>
+            lesson != greetings && lesson != hiraganaVowels && lesson != entry.key)) ...{
+          'best.${lesson.id}': 7,
+          'completed.${lesson.id}': true,
+        },
       });
       final store = ProgressStore(await SharedPreferences.getInstance());
       await tester.pumpWidget(NihoPopApp(store: store));
@@ -112,7 +120,11 @@ void main() {
       expect(find.descendant(of: card, matching: find.text('Completed • Best: 10/10')), findsOneWidget);
       expect(reopened.best(greetings.id), 3);
       expect(reopened.best(hiraganaVowels.id), 9);
-      expect(reopened.completed(entry.key == hiraganaK ? hiraganaS.id : hiraganaK.id), false);
+      for (final lesson in lessons.where((lesson) =>
+          lesson != greetings && lesson != hiraganaVowels && lesson != entry.key)) {
+        expect(reopened.best(lesson.id), 7);
+        expect(reopened.completed(lesson.id), true);
+      }
       expect(tester.takeException(), isNull);
     });
   }

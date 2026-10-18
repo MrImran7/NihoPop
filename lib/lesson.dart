@@ -93,7 +93,64 @@ const hiraganaS = Lesson(
   ],
 );
 
-const lessons = [greetings, hiraganaVowels, hiraganaK, hiraganaS];
+const hiraganaT = Lesson(
+  'hiragana-t-v1',
+  'Hiragana: ta to to',
+  'た → ta\nち → chi\nつ → tsu\nて → te\nと → to\n\nThis row is ta, chi, tsu, te, to. We use chi for ち and tsu for つ in this course. Learn these two spellings along with the shapes.',
+  [
+    Exercise('Which romaji matches た?', ['chi', 'ta', 'te'], 1, 'た represents ta in this exercise.'),
+    Exercise('Which romaji matches ち?', ['tsu', 'to', 'chi'], 2, 'ち represents chi in this exercise.'),
+    Exercise('Which romaji matches つ?', ['tsu', 'te', 'ta'], 0, 'つ represents tsu in this exercise.'),
+    Exercise('Which romaji matches て?', ['to', 'te', 'chi'], 1, 'て represents te in this exercise.'),
+    Exercise('Which romaji matches と?', ['ta', 'tsu', 'to'], 2, 'と represents to in this exercise.'),
+    Exercise('Choose the hiragana for ta.', ['ち', 'て', 'た'], 2, 'た represents ta in this exercise.'),
+    Exercise('Choose the hiragana for chi.', ['ち', 'つ', 'と'], 0, 'ち represents chi in this exercise.'),
+    Exercise('Choose the hiragana for tsu.', ['て', 'つ', 'た'], 1, 'つ represents tsu in this exercise.'),
+    Exercise('Choose the hiragana for te.', ['と', 'ち', 'て'], 2, 'て represents te in this exercise.'),
+    Exercise('Choose the hiragana for to.', ['と', 'た', 'つ'], 0, 'と represents to in this exercise.'),
+  ],
+);
+
+const hiraganaN = Lesson(
+  'hiragana-n-v1',
+  'Hiragana: na to no',
+  'な → na\nに → ni\nぬ → nu\nね → ne\nの → no\n\nAdd n before each vowel sound: na, ni, nu, ne, no. Compare ぬ and ね carefully: they are different characters.',
+  [
+    Exercise('Which romaji matches な?', ['ni', 'na', 'ne'], 1, 'な represents na in this exercise.'),
+    Exercise('Which romaji matches に?', ['nu', 'no', 'ni'], 2, 'に represents ni in this exercise.'),
+    Exercise('Which romaji matches ぬ?', ['nu', 'ne', 'na'], 0, 'ぬ represents nu in this exercise.'),
+    Exercise('Which romaji matches ね?', ['no', 'ne', 'ni'], 1, 'ね represents ne in this exercise.'),
+    Exercise('Which romaji matches の?', ['na', 'nu', 'no'], 2, 'の represents no in this exercise.'),
+    Exercise('Choose the hiragana for na.', ['に', 'ね', 'な'], 2, 'な represents na in this exercise.'),
+    Exercise('Choose the hiragana for ni.', ['に', 'ぬ', 'の'], 0, 'に represents ni in this exercise.'),
+    Exercise('Choose the hiragana for nu.', ['ね', 'ぬ', 'な'], 1, 'ぬ represents nu in this exercise.'),
+    Exercise('Choose the hiragana for ne.', ['の', 'に', 'ね'], 2, 'ね represents ne in this exercise.'),
+    Exercise('Choose the hiragana for no.', ['の', 'な', 'ぬ'], 0, 'の represents no in this exercise.'),
+  ],
+);
+
+const hiraganaH = Lesson(
+  'hiragana-h-v1',
+  'Hiragana: ha to ho',
+  'は → ha\nひ → hi\nふ → fu\nへ → he\nほ → ho\n\nThis row is ha, hi, fu, he, ho. We use fu for ふ. Here we practise the basic readings ha and he. When は and へ are used as grammatical particles, they are pronounced wa and e.',
+  [
+    Exercise('Which romaji matches は?', ['hi', 'ha', 'he'], 1, 'は represents ha in this exercise.'),
+    Exercise('Which romaji matches ひ?', ['fu', 'ho', 'hi'], 2, 'ひ represents hi in this exercise.'),
+    Exercise('Which romaji matches ふ?', ['fu', 'he', 'ha'], 0, 'ふ represents fu in this exercise.'),
+    Exercise('Which romaji matches へ?', ['ho', 'he', 'hi'], 1, 'へ represents he in this exercise.'),
+    Exercise('Which romaji matches ほ?', ['ha', 'fu', 'ho'], 2, 'ほ represents ho in this exercise.'),
+    Exercise('Choose the hiragana for ha.', ['ひ', 'へ', 'は'], 2, 'は represents ha in this exercise.'),
+    Exercise('Choose the hiragana for hi.', ['ひ', 'ふ', 'ほ'], 0, 'ひ represents hi in this exercise.'),
+    Exercise('Choose the hiragana for fu.', ['へ', 'ふ', 'は'], 1, 'ふ represents fu in this exercise.'),
+    Exercise('Choose the hiragana for he.', ['ほ', 'ひ', 'へ'], 2, 'へ represents he in this exercise.'),
+    Exercise('Choose the hiragana for ho.', ['ほ', 'は', 'ふ'], 0, 'ほ represents ho in this exercise.'),
+  ],
+);
+
+const lessons = [
+  greetings, hiraganaVowels, hiraganaK, hiraganaS,
+  hiraganaT, hiraganaN, hiraganaH,
+];
 
 class LessonSession {
   final Lesson lesson;
