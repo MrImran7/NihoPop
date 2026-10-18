@@ -46,23 +46,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String section = 'All lessons';
+
   @override
   Widget build(BuildContext context) {
+    final visible = lessons.where((lesson) =>
+        section == 'All lessons' || lesson.section == section).toList();
     return Scaffold(
       appBar: AppBar(title: const Text('NihoPop')),
-      body: SafeArea(child: ListView(
-        padding: const EdgeInsets.all(24),
-        children: [
-          const Text('A little Japanese, every day.',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 12),
-          const Text('Learn through English • Practice offline'),
-          const SizedBox(height: 32),
-          DropdownButtonFormField<String>(
+      body: SafeArea(child: Column(children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(24, 12, 24, 8),
+          child: DropdownButtonFormField<String>(
             key: const ValueKey('lesson-group'),
             value: section,
             isExpanded: true,
-            decoration: const InputDecoration(labelText: 'Lesson group', border: OutlineInputBorder()),
+            decoration: const InputDecoration(
+              labelText: 'Lesson group', border: OutlineInputBorder()),
             items: [
               for (final group in lessonSections)
                 DropdownMenuItem(value: group, child: Text(group)),
@@ -71,35 +70,44 @@ class _HomePageState extends State<HomePage> {
               if (value != null) setState(() { section = value; });
             },
           ),
-          const SizedBox(height: 16),
-          for (final lesson in lessons.where((lesson) =>
-              section == 'All lessons' || lesson.section == section))
-          Card(key: ValueKey('lesson-${lesson.id}'), child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('LESSON ${lessons.indexOf(lesson) + 1}'),
-              const SizedBox(height: 12),
-              Text(lesson.title, style: Theme.of(context).textTheme.headlineSmall),
-              const SizedBox(height: 12),
-              Text(widget.store.completed(lesson.id)
-                  ? 'Completed • Best: ${widget.store.best(lesson.id)}/${lesson.exercises.length}'
-                  : '${lesson.exercises.length} questions • ${lesson == greetings ? "Japanese ↔ English" : lesson.section == "Reading rules" ? "Reading practice" : "Hiragana ↔ Romaji"}'),
-              const SizedBox(height: 20),
-              FilledButton(
-                onPressed: () async {
-                  await Navigator.of(context).push(MaterialPageRoute<void>(
-                    builder: (_) => LessonPage(store: widget.store, lesson: lesson),
-                  ));
-                  if (mounted) setState(() {});
-                },
-                child: Text(widget.store.completed(lesson.id) ? 'Practice again' : 'Start lesson'),
-              ),
-            ]),
-          )),
-          const SizedBox(height: 24),
-          const Text('Your progress stays on this device. Uninstalling or clearing app data removes it.'),
-        ],
-      )),
+        ),
+        Expanded(child: ListView(
+          key: ValueKey(section),
+          padding: const EdgeInsets.all(24),
+          children: [
+            const Text('A little Japanese, every day.',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            const Text('Learn through English • Practice offline'),
+            const SizedBox(height: 24),
+            for (final lesson in visible)
+              Card(key: ValueKey('lesson-${lesson.id}'), child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('LESSON ${lessons.indexOf(lesson) + 1}'),
+                  const SizedBox(height: 12),
+                  Text(lesson.title, style: Theme.of(context).textTheme.headlineSmall),
+                  const SizedBox(height: 12),
+                  Text(widget.store.completed(lesson.id)
+                      ? 'Completed • Best: ${widget.store.best(lesson.id)}/${lesson.exercises.length}'
+                      : '${lesson.exercises.length} questions • ${lesson == greetings ? "Japanese ↔ English" : lesson.section == "Reading rules" ? "Reading practice" : "Hiragana ↔ Romaji"}'),
+                  const SizedBox(height: 20),
+                  FilledButton(
+                    onPressed: () async {
+                      await Navigator.of(context).push(MaterialPageRoute<void>(
+                        builder: (_) => LessonPage(store: widget.store, lesson: lesson),
+                      ));
+                      if (mounted) setState(() {});
+                    },
+                    child: Text(widget.store.completed(lesson.id) ? 'Practice again' : 'Start lesson'),
+                  ),
+                ]),
+              )),
+            const SizedBox(height: 24),
+            const Text('Your progress stays on this device. Uninstalling or clearing app data removes it.'),
+          ],
+        )),
+      ])),
     );
   }
 }
