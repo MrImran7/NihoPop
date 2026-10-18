@@ -15,8 +15,10 @@ void main() {
     await tester.pumpAndSettle();
     expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, 'Check answer')).onPressed, isNull);
     for (final answer in ['Hello', 'ありがとうございます', 'Good morning', 'ありがとう']) {
+      await tester.ensureVisible(find.widgetWithText(OutlinedButton, answer));
       await tester.tap(find.widgetWithText(OutlinedButton, answer));
       await tester.pump();
+      await tester.ensureVisible(find.text('Check answer'));
       await tester.tap(find.text('Check answer'));
       await tester.pump();
       expect(find.text('Correct!'), findsOneWidget);
