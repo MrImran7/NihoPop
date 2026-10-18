@@ -10,8 +10,9 @@ if (root / "android").exists():
 else:
     with tempfile.TemporaryDirectory() as temporary:
         target = pathlib.Path(temporary) / "nihopop"
+        flutter_cmd = shutil.which("flutter") or "flutter"
         subprocess.run([
-            "flutter", "create", "--platforms=android", "--org=io.github.mrimran7",
+            flutter_cmd, "create", "--platforms=android", "--org=io.github.mrimran7",
             "--project-name=nihopop", "--no-pub", str(target)
         ], check=True)
         shutil.copytree(target / "android", root / "android")
