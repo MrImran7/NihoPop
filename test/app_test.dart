@@ -31,6 +31,7 @@ void main() {
       await tapVisible(tester, find.widgetWithText(FilledButton, 'Continue'));
     }
     expect(find.text('4 of 4 correct'), findsOneWidget);
+    expect(find.text('Review mistakes'), findsNothing);
     await tapVisible(tester, find.widgetWithText(OutlinedButton, 'Back to lessons'));
     expect(find.text('Completed • Best: 4/4'), findsOneWidget);
   });
@@ -167,5 +168,49 @@ void main() {
     await tester.tap(find.text('All lessons').last);
     await tester.pumpAndSettle();
     expect(find.text(greetings.title), findsOneWidget);
+  });
+
+  testWidgets('review only missed answers without changing the saved lesson score', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final store = ProgressStore(await SharedPreferences.getInstance());
+    await tester.pumpWidget(NihoPopApp(store: store));
+    await tapVisible(tester, find.descendant(
+      of: find.byKey(ValueKey('lesson-${greetings.id}')),
+      matching: find.byType(FilledButton)));
+    await tapVisible(tester, find.widgetWithText(FilledButton, 'Let’s practice'));
+    for (final answer in ['Thank you', 'ありがとうございます', 'Thank you', 'ありがとう']) {
+      await tapVisible(tester, find.widgetWithText(OutlinedButton, answer));
+      await tapVisible(tester, find.widgetWithText(FilledButton, 'Check answer'));
+      await tapVisible(tester, find.widgetWithText(FilledButton, 'Continue'));
+    }
+    expect(find.text('2 of 4 correct'), findsOneWidget);
+    expect(store.best(greetings.id), 2);
+    await tapVisible(tester, find.widgetWithText(FilledButton, 'Review mistakes'));
+    expect(find.text('Mistake review'), findsOneWidget);
+    expect(find.text('Question 1 of 2'), findsOneWidget);
+    expect(find.text('こんにちは'), findsOneWidget);
+    expect(tester.widget<FilledButton>(find.widgetWithText(FilledButton, 'Check answer')).onPressed, isNull);
+    // Correct the first mistake; miss the second once more.
+    for (final answer in ['Hello', 'Thank you']) {
+      await tapVisible(tester, find.widgetWithText(OutlinedButton, answer));
+      await tapVisible(tester, find.widgetWithText(FilledButton, 'Check answer'));
+      await tapVisible(tester, find.widgetWithText(FilledButton, 'Continue'));
+    }
+    expect(find.text('Review complete!'), findsOneWidget);
+    expect(find.text('1 of 2 correct'), findsOneWidget);
+    expect(store.best(greetings.id), 2);
+    await tapVisible(tester, find.widgetWithText(FilledButton, 'Review remaining mistakes'));
+    expect(find.text('Question 1 of 1'), findsOneWidget);
+    expect(find.text('おはようございます'), findsOneWidget);
+    await tapVisible(tester, find.widgetWithText(OutlinedButton, 'Good morning'));
+    await tapVisible(tester, find.widgetWithText(FilledButton, 'Check answer'));
+    await tapVisible(tester, find.widgetWithText(FilledButton, 'Continue'));
+    expect(find.text('You corrected every question in this review.'), findsOneWidget);
+    expect(find.text('Review remaining mistakes'), findsNothing);
+    expect(store.best(greetings.id), 2);
+    await tapVisible(tester, find.widgetWithText(OutlinedButton, 'Back to lessons'));
+    expect(find.text('Completed • Best: 2/4'), findsOneWidget);
+    final reopened = ProgressStore(await SharedPreferences.getInstance());
+    expect(reopened.best(greetings.id), 2);
   });
 }

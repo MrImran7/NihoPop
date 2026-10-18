@@ -28,3 +28,11 @@ Automation covers every complete lesson flow, independent progress, reopening,
 catalog completeness, valid choices, scoring, group filtering and abandoned attempts.
 Most flows run at a phone-sized viewport. Physical checks focus on actual fonts,
 touch, accessibility and OS persistence; rerunning every question manually is unnecessary.
+
+## Mistake review
+Finish a lesson with at least two mistakes. Tap Review mistakes and check only
+missed questions appear. Correct one and miss the other, then use Review remaining
+mistakes: only that question should remain. Finish it and return home; the original
+lesson best must be unchanged. A perfect lesson should not offer mistake review.
+Leaving review with Android Back preserves the saved lesson score; the review queue
+is intentionally not restored after closing the lesson or app.

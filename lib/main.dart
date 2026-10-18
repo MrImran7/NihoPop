@@ -121,7 +121,9 @@ class LessonPage extends StatefulWidget {
 }
 
 class _LessonPageState extends State<LessonPage> {
-  late final LessonSession session;
+  late LessonSession session;
+  bool reviewing = false;
+  int? lessonScore;
   final scroll = ScrollController();
 
   @override
@@ -140,6 +142,21 @@ class _LessonPageState extends State<LessonPage> {
   bool saving = false;
   bool saved = false;
   String? saveError;
+
+  void reviewMistakes() {
+    if (!saved || session.mistakes.isEmpty) return;
+    final missed = session.mistakes;
+    scroll.jumpTo(0);
+    setState(() {
+      lessonScore ??= session.correct;
+      reviewing = true;
+      selected = null;
+      session = LessonSession(Lesson(
+        widget.lesson.id, widget.lesson.title, '', missed,
+        section: widget.lesson.section,
+      ));
+    });
+  }
 
   Future<void> save() async {
     setState(() { saving = true; saveError = null; });
@@ -178,10 +195,22 @@ class _LessonPageState extends State<LessonPage> {
           ] else if (session.finished) ...[
             const Icon(Icons.celebration_outlined, size: 64),
             const SizedBox(height: 20),
-            const Text('Lesson complete!', style: TextStyle(fontSize: 28)),
-            Text('${session.correct} of ${widget.lesson.exercises.length} correct'),
+            Text(reviewing ? 'Review complete!' : 'Lesson complete!', style: const TextStyle(fontSize: 28)),
+            Text('${session.correct} of ${session.lesson.exercises.length} correct'),
             const SizedBox(height: 20),
-            Text(saved ? 'Progress saved on this device.' : saving ? 'Saving progress…' : saveError ?? ''),
+            if (reviewing)
+              Text('Lesson score: $lessonScore/${widget.lesson.exercises.length}. Review does not change your saved best.')
+            else
+              Text(saved ? 'Progress saved on this device.' : saving ? 'Saving progress…' : saveError ?? ''),
+            if (saved && session.mistakes.isNotEmpty) ...[
+              const SizedBox(height: 16),
+              FilledButton(
+                onPressed: reviewMistakes,
+                child: Text(reviewing ? 'Review remaining mistakes' : 'Review mistakes'),
+              ),
+            ],
+            if (reviewing && session.mistakes.isEmpty)
+              const Text('You corrected every question in this review.'),
             if (saveError != null)
               FilledButton(onPressed: saving ? null : save, child: const Text('Retry saving')),
             const SizedBox(height: 20),
@@ -190,9 +219,10 @@ class _LessonPageState extends State<LessonPage> {
               child: const Text('Back to lessons'),
             ),
           ] else ...[
-            LinearProgressIndicator(value: session.index / widget.lesson.exercises.length),
+            LinearProgressIndicator(value: session.index / session.lesson.exercises.length),
             const SizedBox(height: 12),
-            Text('Question ${session.index + 1} of ${widget.lesson.exercises.length}'),
+            if (reviewing) const Text('Mistake review'),
+            Text('Question ${session.index + 1} of ${session.lesson.exercises.length}'),
             const SizedBox(height: 28),
             Text(session.current.prompt, style: const TextStyle(fontSize: 28)),
             const SizedBox(height: 24),
@@ -224,7 +254,7 @@ class _LessonPageState extends State<LessonPage> {
                 } else {
                   scroll.jumpTo(0);
                   setState(() { session.next(); selected = null; });
-                  if (session.finished) save();
+                  if (session.finished && !reviewing) save();
                 }
               },
               child: Text(session.answered ? 'Continue' : 'Check answer'),

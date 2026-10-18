@@ -7,6 +7,9 @@ It covers all 46 basic kana, 25 voiced/semi-voiced kana, 33 common contracted
 combinations plus three rare d-row forms, small っ, long vowels, particles and a
 reading checkpoint. Every lesson has independent saved progress and replay.
 Filter the lesson list by group to navigate the course.
+After a saved lesson attempt, Review mistakes retries only missed questions.
+Further reviews contain only the remaining mistakes. Review results never replace
+lesson best scores. Review queues last only for the current session.
 
 This milestone teaches recognition and reading through multiple-choice exercises.
 Audio, handwriting/stroke-order assessment and spaced review are not implemented.

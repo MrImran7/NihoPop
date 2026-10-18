@@ -531,6 +531,8 @@ class LessonSession {
   final Lesson lesson;
   int index = 0;
   int correct = 0;
+  final List<Exercise> _mistakes = [];
+  List<Exercise> get mistakes => List.unmodifiable(_mistakes);
   bool answered = false;
   bool? lastCorrect;
   LessonSession(this.lesson);
@@ -543,7 +545,11 @@ class LessonSession {
       throw RangeError.index(choice, current.choices);
     }
     lastCorrect = choice == current.answer;
-    if (lastCorrect!) correct++;
+    if (lastCorrect!) {
+      correct++;
+    } else {
+      _mistakes.add(current);
+    }
     answered = true;
   }
 

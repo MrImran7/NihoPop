@@ -87,4 +87,29 @@ void main() {
     }
     expect(lessons.where((lesson) => lesson.section == 'Reading rules').length, 4);
   });
+
+  test('mistakes contain only missed questions once and in lesson order', () {
+    final session = LessonSession(greetings);
+    session.submit(1);
+    session.submit(2);
+    session.next();
+    session.submit(1);
+    session.next();
+    session.submit(0);
+    session.next();
+    session.submit(0);
+    session.next();
+    expect(session.correct, 2);
+    expect(session.mistakes, [greetings.exercises[0], greetings.exercises[2]]);
+    expect(() => session.mistakes.clear(), throwsUnsupportedError);
+    final review = LessonSession(Lesson('review', 'Review', '', session.mistakes));
+    review.submit(0);
+    review.next();
+    review.submit(2);
+    review.next();
+    expect(review.correct, 2);
+    expect(review.mistakes, isEmpty);
+    expect(session.correct, 2);
+    expect(session.mistakes.length, 2);
+  });
 }
