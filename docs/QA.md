@@ -36,3 +36,18 @@ mistakes: only that question should remain. Finish it and return home; the origi
 lesson best must be unchanged. A perfect lesson should not offer mistake review.
 Leaving review with Android Back preserves the saved lesson score; the review queue
 is intentionally not restored after closing the lesson or app.
+
+## Katakana update
+1. Install over the current app. Verify previous hiragana best scores remain.
+2. Select each Katakana group. Open a lesson and return: the selected group remains.
+   All lessons must still include greetings and hiragana.
+3. Inspect シ/ツ, ソ/ン, small ャ/ュ/ョ/ッ, dakuten/circles and ー with normal
+   and enlarged text. Check every control remains reachable in landscape.
+4. Complete one katakana lesson with a mistake. Review it; the original katakana
+   best stays unchanged and no hiragana score changes.
+5. Force-stop and reopen. Katakana completion and best score persist separately.
+6. Try a loanword or reading-rule lesson and verify the correct label and explanation.
+
+Automated tests cover all 27 katakana lesson flows at a phone-sized viewport,
+separate scores, mistake review, catalog coverage and picker navigation. A full
+manual replay of all exercises is unnecessary.

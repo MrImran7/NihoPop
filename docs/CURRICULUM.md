@@ -1,7 +1,8 @@
 # Hiragana reading course
 
 ## Coverage
-The catalog has 26 lessons including greetings. The hiragana sequence covers:
+The hiragana/greetings portion has 26 lessons. The katakana course is documented
+separately in [KATAKANA.md](KATAKANA.md). The hiragana sequence covers:
 - 46 basic characters, including を and ん.
 - 25 dakuten/handakuten forms, including ぢ and づ.
 - 33 common yoon combinations and the rare ぢゃ/ぢゅ/ぢょ forms.
