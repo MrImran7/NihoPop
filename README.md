@@ -2,11 +2,14 @@
 NihoPop — Learn Japanese. A little Japanese, every day.
 
 Android-only Flutter app for learning Japanese through English. The offline course
-has 26 lessons: greetings plus a complete modern hiragana reading sequence.
+has 53 lessons: greetings, a modern hiragana reading sequence, and a katakana
+reading course. The 27 katakana lessons add 260 exercises, bringing the total to 502.
 It covers all 46 basic kana, 25 voiced/semi-voiced kana, 33 common contracted
 combinations plus three rare d-row forms, small っ, long vowels, particles and a
 reading checkpoint. Every lesson has independent saved progress and replay.
-Filter the lesson list by group to navigate the course.
+Katakana covers all 46 basics, voiced forms, combinations, selected loanword sounds,
+long-vowel mark ー, small ッ and similar-shape practice.
+Filter the lesson list by group to navigate either script.
 After a saved lesson attempt, Review mistakes retries only missed questions.
 Further reviews contain only the remaining mistakes. Review results never replace
 lesson best scores. Review queues last only for the current session.
@@ -14,7 +17,8 @@ lesson best scores. Review queues last only for the current session.
 This milestone teaches recognition and reading through multiple-choice exercises.
 Audio, handwriting/stroke-order assessment and spaced review are not implemented.
 Historical ゐ/ゑ and specialist loanword extensions are outside the modern core.
-See [curriculum and references](docs/CURRICULUM.md) for scope and conventions.
+See [hiragana curriculum](docs/CURRICULUM.md) and
+[katakana curriculum](docs/KATAKANA.md) for scope, conventions and references.
 
 ## Run
 Install Flutter **3.24.5**, JDK 17, Python 3 and the Android SDK.
