@@ -1,9 +1,20 @@
 # NihoPop
 NihoPop — Learn Japanese. A little Japanese, every day.
 
-Android-only Flutter foundation for learning Japanese through English. Original
-greetings lesson, four multiple-choice exercises in both directions, English
-feedback, replay and locally saved best score/completion. No account or server.
+Android-only Flutter app for learning Japanese through English. The offline course
+has 26 lessons: greetings plus a complete modern hiragana reading sequence.
+It covers all 46 basic kana, 25 voiced/semi-voiced kana, 33 common contracted
+combinations plus three rare d-row forms, small っ, long vowels, particles and a
+reading checkpoint. Every lesson has independent saved progress and replay.
+Filter the lesson list by group to navigate the course.
+After a saved lesson attempt, Review mistakes retries only missed questions.
+Further reviews contain only the remaining mistakes. Review results never replace
+lesson best scores. Review queues last only for the current session.
+
+This milestone teaches recognition and reading through multiple-choice exercises.
+Audio, handwriting/stroke-order assessment and spaced review are not implemented.
+Historical ゐ/ゑ and specialist loanword extensions are outside the modern core.
+See [curriculum and references](docs/CURRICULUM.md) for scope and conventions.
 
 ## Run
 Install Flutter **3.24.5**, JDK 17, Python 3 and the Android SDK.
@@ -50,5 +61,5 @@ Do not merge automatically. Keep Android as the only supported platform.
 Progress stays on the device. Uninstalling or clearing data deletes it.
 Leaving a lesson early discards that attempt. Completion records finishing all
 questions, not mastery; best score is reported separately. Mistakes are explained
-immediately. Listening, kana curriculum, typing, spaced review and cloud sync
+immediately. Listening, handwriting, typing, spaced review and cloud sync
 are not implemented yet. No Duolingo code, assets or curriculum are included.
