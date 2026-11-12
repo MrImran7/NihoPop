@@ -54,7 +54,7 @@ manual replay of all exercises is unnecessary.
 
 ## Vocabulary update
 1. Install over the current app and confirm earlier hiragana/katakana scores remain.
-2. Choose Vocabulary basics. The four topic cards must show Japanese ↔ English.
+2. Choose Vocabulary basics. The eight topic cards must show Japanese ↔ English.
 3. Open Places. Read the six words; confirm kanji have kana readings, including
    学校（がっこう）, 病院（びょういん） and 図書館（としょかん）.
 4. Complete any vocabulary lesson, deliberately missing one answer. Review mistakes:
@@ -63,5 +63,8 @@ manual replay of all exercises is unnecessary.
 6. With enlarged system text and TalkBack, check readings, long choices such as
    Cooked rice / meal, feedback and controls. Also try landscape.
 
-Automated tests cover all 48 new exercises, independent scores, review and picker
+7. Open Everyday actions and check the dictionary-form explanation. Compare
+   来る（くる） with 行く（いく）. Open Colours and check 黄色（きいろ）.
+
+Automated tests cover all 96 vocabulary exercises, independent scores, review and picker
 navigation. Physical testing need not repeat every word.

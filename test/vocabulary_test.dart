@@ -20,6 +20,10 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
 
 void main() {
   final expected = <Lesson, List<String>>{
+    vocabularyTime: ['Today', 'Tomorrow', 'Yesterday', 'Morning', 'Afternoon / p.m.', 'Night', '今日（きょう）', '明日（あした）', '昨日（きのう）', '朝（あさ）', '午後（ごご）', '夜（よる）'],
+    vocabularyTransport: ['Train', 'Bus', 'Taxi', 'Bicycle', 'Car', 'Airplane', '電車（でんしゃ）', 'バス', 'タクシー', '自転車（じてんしゃ）', '車（くるま）', '飛行機（ひこうき）'],
+    vocabularyColours: ['Red', 'Blue', 'White', 'Black', 'Yellow', 'Green', '赤（あか）', '青（あお）', '白（しろ）', '黒（くろ）', '黄色（きいろ）', '緑（みどり）'],
+    vocabularyActions: ['To eat', 'To drink', 'To go', 'To come', 'To see / watch', 'To read', '食べる（たべる）', '飲む（のむ）', '行く（いく）', '来る（くる）', '見る（みる）', '読む（よむ）'],
     vocabularyPeople: ['Person', 'Friend', 'Teacher', 'Student', 'Child', 'Family', '人（ひと）', '友達（ともだち）', '先生（せんせい）', '学生（がくせい）', '子供（こども）', '家族（かぞく）'],
     vocabularyFood: ['Water', 'Tea', 'Cooked rice / meal', 'Bread', 'Fish', 'Egg', '水（みず）', 'お茶（おちゃ）', 'ご飯（ごはん）', 'パン', '魚（さかな）', '卵（たまご）'],
     vocabularyPlaces: ['School', 'Station', 'Shop', 'Hospital', 'Library', 'Park', '学校（がっこう）', '駅（えき）', '店（みせ）', '病院（びょういん）', '図書館（としょかん）', '公園（こうえん）'],
@@ -119,7 +123,7 @@ void main() {
   });
 
   test('each topic teaches six words with readings in both directions', () {
-    expect(vocabularyLessons.length, 4);
+    expect(vocabularyLessons.length, 8);
     for (final entry in expected.entries) {
       expect(entry.key.exercises.length, 12);
       expect(entry.key.id.startsWith('vocabulary-'), true);
