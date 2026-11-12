@@ -51,3 +51,17 @@ is intentionally not restored after closing the lesson or app.
 Automated tests cover all 27 katakana lesson flows at a phone-sized viewport,
 separate scores, mistake review, catalog coverage and picker navigation. A full
 manual replay of all exercises is unnecessary.
+
+## Vocabulary update
+1. Install over the current app and confirm earlier hiragana/katakana scores remain.
+2. Choose Vocabulary basics. The four topic cards must show Japanese ↔ English.
+3. Open Places. Read the six words; confirm kanji have kana readings, including
+   学校（がっこう）, 病院（びょういん） and 図書館（としょかん）.
+4. Complete any vocabulary lesson, deliberately missing one answer. Review mistakes:
+   only missed questions return, readings remain visible, and the saved best is unchanged.
+5. Force-stop/reopen and verify the vocabulary score persists independently.
+6. With enlarged system text and TalkBack, check readings, long choices such as
+   Cooked rice / meal, feedback and controls. Also try landscape.
+
+Automated tests cover all 48 new exercises, independent scores, review and picker
+navigation. Physical testing need not repeat every word.

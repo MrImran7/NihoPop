@@ -2,8 +2,10 @@
 NihoPop — Learn Japanese. A little Japanese, every day.
 
 Android-only Flutter app for learning Japanese through English. The offline course
-has 53 lessons: greetings, a modern hiragana reading sequence, and a katakana
-reading course. The 27 katakana lessons add 260 exercises, bringing the total to 502.
+has 57 lessons: greetings, hiragana, katakana and everyday vocabulary.
+The four vocabulary lessons teach 24 words through 48 exercises, bringing the
+total to 550 exercises. Vocabulary covers people, food and drink, places, and
+everyday objects; kanji words display kana readings in both directions.
 It covers all 46 basic kana, 25 voiced/semi-voiced kana, 33 common contracted
 combinations plus three rare d-row forms, small っ, long vowels, particles and a
 reading checkpoint. Every lesson has independent saved progress and replay.
@@ -18,7 +20,8 @@ This milestone teaches recognition and reading through multiple-choice exercises
 Audio, handwriting/stroke-order assessment and spaced review are not implemented.
 Historical ゐ/ゑ and specialist loanword extensions are outside the modern core.
 See [hiragana curriculum](docs/CURRICULUM.md) and
-[katakana curriculum](docs/KATAKANA.md) for scope, conventions and references.
+[katakana curriculum](docs/KATAKANA.md), plus
+[vocabulary scope](docs/VOCABULARY.md), for conventions and references.
 
 ## Run
 Install Flutter **3.24.5**, JDK 17, Python 3 and the Android SDK.
@@ -52,6 +55,7 @@ Commit a generated pubspec.lock once the Flutter environment is available.
 
 ## Structure
 - lib/lesson.dart: original content and lesson state, independent of widgets.
+- lib/vocabulary.dart: four original vocabulary lessons with kana readings.
 - lib/progress.dart: device-local best score and completion.
 - lib/main.dart: lesson list, teaching card, exercises and results.
 - test/: scoring, persistence and full lesson widget regression tests.
