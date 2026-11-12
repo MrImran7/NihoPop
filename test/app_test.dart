@@ -154,6 +154,8 @@ void main() {
     final store = ProgressStore(await SharedPreferences.getInstance());
     await tester.pumpWidget(NihoPopApp(store: store));
     await tapVisible(tester, find.byKey(const ValueKey('lesson-group')));
+    await tester.ensureVisible(find.text('Reading rules').last);
+    await tester.pumpAndSettle();
     await tester.tap(find.text('Reading rules').last);
     await tester.pumpAndSettle();
     expect(find.text(greetings.title), findsNothing);
@@ -165,6 +167,8 @@ void main() {
     expect(find.text('Reading rules'), findsOneWidget);
     expect(store.completed(smallTsu.id), false);
     await tapVisible(tester, find.byKey(const ValueKey('lesson-group')));
+    await tester.ensureVisible(find.text('All lessons').last);
+    await tester.pumpAndSettle();
     await tester.tap(find.text('All lessons').last);
     await tester.pumpAndSettle();
     expect(find.text(greetings.title), findsOneWidget);
