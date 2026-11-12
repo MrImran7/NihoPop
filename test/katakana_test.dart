@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:nihopop/main.dart';
 import 'package:nihopop/lesson.dart';
 import 'package:nihopop/progress.dart';
+import 'support/lesson_actions.dart';
 
 Future<void> tapVisible(WidgetTester tester, Finder finder) async {
   if (finder.evaluate().isEmpty) {
@@ -16,15 +17,6 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
   await tester.pumpAndSettle();
 }
 
-Future<void> selectGroup(WidgetTester tester, String group) async {
-  await tapVisible(tester, find.byKey(const ValueKey('lesson-group')));
-  final item = find.text(group).last;
-  await tester.scrollUntilVisible(item, 150,
-      scrollable: find.byType(Scrollable).last);
-  await tester.pumpAndSettle();
-  await tester.tap(item);
-  await tester.pumpAndSettle();
-}
 
 void main() {
   final answers = <Lesson, List<String>>{
@@ -95,7 +87,7 @@ void main() {
     SharedPreferences.setMockInitialValues({'best.hiragana-vowels-v1': 8, 'completed.hiragana-vowels-v1': true});
     final store = ProgressStore(await SharedPreferences.getInstance());
     await tester.pumpWidget(NihoPopApp(store: store));
-    await selectGroup(tester, 'Katakana basics');
+    await selectLessonGroup(tester, 'Katakana basics');
     expect(find.text(greetings.title), findsNothing);
     final card = find.byKey(ValueKey('lesson-${katakanaVowels.id}'));
     await tapVisible(tester, find.descendant(of: card, matching: find.byType(FilledButton)));
@@ -103,9 +95,9 @@ void main() {
     await tester.pageBack();
     await tester.pumpAndSettle();
     expect(find.text('Katakana basics'), findsOneWidget);
-    await selectGroup(tester, 'Katakana reading rules');
+    await selectLessonGroup(tester, 'Katakana reading rules');
     expect(find.text(katakanaShapes.title), findsOneWidget);
-    await selectGroup(tester, 'All lessons');
+    await selectLessonGroup(tester, 'All lessons');
     expect(find.text(greetings.title), findsOneWidget);
     expect(store.best(hiraganaVowels.id), 8);
   });

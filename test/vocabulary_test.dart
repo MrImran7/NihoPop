@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:nihopop/main.dart';
 import 'package:nihopop/lesson.dart';
 import 'package:nihopop/progress.dart';
+import 'support/lesson_actions.dart';
 
 Future<void> tapVisible(WidgetTester tester, Finder finder) async {
   if (finder.evaluate().isEmpty) {
@@ -16,14 +17,6 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
   await tester.pumpAndSettle();
 }
 
-Future<void> openVocabulary(WidgetTester tester) async {
-  await tapVisible(tester, find.byKey(const ValueKey('lesson-group')));
-  final item = find.text('Vocabulary basics').last;
-  await tester.scrollUntilVisible(item, 150, scrollable: find.byType(Scrollable).last);
-  await tester.pumpAndSettle();
-  await tester.tap(item);
-  await tester.pumpAndSettle();
-}
 
 void main() {
   final expected = <Lesson, List<String>>{
@@ -79,7 +72,7 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     final store = ProgressStore(await SharedPreferences.getInstance());
     await tester.pumpWidget(NihoPopApp(store: store));
-    await openVocabulary(tester);
+    await selectLessonGroup(tester, 'Vocabulary basics');
     final card = find.byKey(ValueKey('lesson-${vocabularyPeople.id}'));
     expect(find.descendant(of: card, matching: find.text('12 questions • Japanese ↔ English')), findsOneWidget);
     expect(find.text(greetings.title), findsNothing);
@@ -98,7 +91,7 @@ void main() {
     });
     final store = ProgressStore(await SharedPreferences.getInstance());
     await tester.pumpWidget(NihoPopApp(store: store));
-    await openVocabulary(tester);
+    await selectLessonGroup(tester, 'Vocabulary basics');
     final card = find.byKey(ValueKey('lesson-${vocabularyPeople.id}'));
     await tapVisible(tester, find.descendant(of: card, matching: find.byType(FilledButton)));
     await tapVisible(tester, find.widgetWithText(FilledButton, 'Let’s practice'));
