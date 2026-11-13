@@ -9,7 +9,16 @@ import 'package:nihopop/word_bank.dart';
 import 'support/lesson_actions.dart';
 
 Future<void> tapVisible(WidgetTester tester, Finder finder) async {
-  await tester.ensureVisible(finder);
+  if (finder.evaluate().isEmpty) {
+    await tester.scrollUntilVisible(finder, 120,
+      scrollable: find.descendant(
+        of: find.byType(ListView), matching: find.byType(Scrollable),
+      ).first,
+      maxScrolls: 50,
+    );
+  } else {
+    await tester.ensureVisible(finder);
+  }
   await tester.pumpAndSettle();
   await tester.tap(finder);
   await tester.pumpAndSettle();
