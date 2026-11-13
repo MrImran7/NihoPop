@@ -22,6 +22,17 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
   await tester.pumpAndSettle();
 }
 
+Future<void> showSearch(WidgetTester tester) async {
+  await tester.scrollUntilVisible(
+    find.byKey(const ValueKey('word-search')), -120,
+    scrollable: find.descendant(
+      of: find.byType(ListView), matching: find.byType(Scrollable),
+    ).first,
+    maxScrolls: 50,
+  );
+  await tester.pumpAndSettle();
+}
+
 void main() {
   testWidgets('all 48 cards reveal, advance and finish without leaking the next answer',
       (tester) async {
@@ -90,6 +101,7 @@ void main() {
     await tester.scrollUntilVisible(food, 120, scrollable: menu);
     await tester.tap(food);
     await tester.pumpAndSettle();
+    await showSearch(tester);
     await tester.enterText(find.byKey(const ValueKey('word-search')), 'rice');
     await tester.pumpAndSettle();
     await tapVisible(tester, find.text('Practise flashcards'));
@@ -99,6 +111,7 @@ void main() {
     expect(find.text('Cooked rice / meal'), findsOneWidget);
     await tapVisible(tester, find.text('Finish practice'));
     await tapVisible(tester, find.text('Back to word bank'));
+    await showSearch(tester);
     expect(tester.widget<TextField>(
         find.byKey(const ValueKey('word-search'))).controller!.text, 'rice');
     expect(tester.widget<DropdownButtonFormField<String>>(
@@ -109,6 +122,7 @@ void main() {
     await tester.pumpAndSettle();
     expect({for (final key in preferences.getKeys()) key: preferences.get(key)}, before);
     // Empty results cannot start a deck.
+    await showSearch(tester);
     await tester.enterText(find.byKey(const ValueKey('word-search')), 'xyz');
     await tester.pumpAndSettle();
     expect(tester.widget<FilledButton>(find.widgetWithText(
