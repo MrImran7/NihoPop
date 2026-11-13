@@ -125,8 +125,13 @@ void main() {
     await showSearch(tester);
     await tester.enterText(find.byKey(const ValueKey('word-search')), 'xyz');
     await tester.pumpAndSettle();
-    expect(tester.widget<FilledButton>(find.widgetWithText(
-        FilledButton, 'Practise flashcards')).onPressed, isNull);
+    final start = find.byKey(const ValueKey('start-flashcards'));
+    await tester.scrollUntilVisible(start, 120,
+      scrollable: find.descendant(
+        of: find.byType(ListView), matching: find.byType(Scrollable),
+      ).first,
+    );
+    expect(tester.widget<FilledButton>(start).onPressed, isNull);
   });
 
   testWidgets('empty deck is safe and the deck snapshots its input', (tester) async {

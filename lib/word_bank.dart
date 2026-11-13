@@ -75,6 +75,7 @@ class _WordBankPageState extends State<WordBankPage> {
           )),
           const SizedBox(height: 12),
           FilledButton.icon(
+            key: const ValueKey('start-flashcards'),
             onPressed: words.isEmpty ? null : () {
               FocusManager.instance.primaryFocus?.unfocus();
               Navigator.of(context).push(MaterialPageRoute<void>(
