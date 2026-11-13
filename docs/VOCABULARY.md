@@ -66,3 +66,21 @@ lesson was opened.
 Tests verify every reference entry against both lesson directions and cover search,
 combined filters, clearing, empty results, navigation, saved scores, abandoned
 lessons, and landscape with enlarged text and a simulated keyboard.
+
+## Flashcards
+Choose Practise flashcards in the word bank to use exactly the current filtered
+results. With no filters this is all 48 words; with no matches the button is disabled.
+The deck is a snapshot in catalog order. Select Japanese → English or
+English → Japanese. Try recalling the meaning or word, then reveal the answer.
+Next card becomes available after reveal. Switching direction hides the answer
+again, keeping the current card. Kanji words always include their kana readings.
+
+Finish practice shows the number of cards reviewed, not a correctness score.
+Practise again restarts the deck with the current direction and hidden answers.
+Back returns to the same word-bank filters. Leaving or closing the app discards
+the flashcard session; it never writes scores or lesson completion. This is
+self-study, not spaced repetition or assessed recall.
+
+Automation checks all 48 card transitions, reverse direction, hidden answers,
+single/empty decks, filtered navigation, unchanged progress, and enlarged text
+in landscape.

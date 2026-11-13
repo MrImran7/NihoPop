@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'lesson.dart';
+import 'flashcards.dart';
 import 'vocabulary_words.dart';
 
 class WordBankPage extends StatefulWidget {
@@ -72,6 +73,17 @@ class _WordBankPageState extends State<WordBankPage> {
             '${words.length} ${words.length == 1 ? 'word' : 'words'}',
             key: const ValueKey('word-count'),
           )),
+          const SizedBox(height: 12),
+          FilledButton.icon(
+            onPressed: words.isEmpty ? null : () {
+              FocusManager.instance.primaryFocus?.unfocus();
+              Navigator.of(context).push(MaterialPageRoute<void>(
+                builder: (_) => FlashcardsPage(words: words),
+              ));
+            },
+            icon: const Icon(Icons.style_outlined),
+            label: const Text('Practise flashcards'),
+          ),
           if (filtered)
             Align(
               alignment: Alignment.centerLeft,

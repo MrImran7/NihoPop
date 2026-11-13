@@ -80,3 +80,15 @@ navigation. Physical testing need not repeat every word.
    to a result and open its lesson. Check Japanese readings and controls with TalkBack.
 5. Finish a linked lesson, return to the word bank, then return home and force-stop.
    On reopening, its score remains saved independently from existing scores.
+
+## Flashcards
+1. In Word bank, filter to Food and drink and search rice. Practise flashcards
+   must open one card for ご飯（ごはん）. The keyboard should close.
+2. Use TalkBack: the answer should be absent until Reveal answer is activated.
+   The revealed answer should be announced; Next card/Finish practice then enables.
+3. Switch to English → Japanese. Check the answer is hidden again, then reveal
+   the Japanese spelling with its kana reading.
+4. Use enlarged system text in portrait and landscape. Scroll to reach reveal,
+   next/finish and restart controls.
+5. Finish and return to Word bank: the search and topic remain. Leave another
+   deck midway with Android Back. Existing lesson scores must remain unchanged.
