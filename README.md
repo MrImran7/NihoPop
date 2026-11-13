@@ -12,6 +12,9 @@ reading checkpoint. Every lesson has independent saved progress and replay.
 Katakana covers all 46 basics, voiced forms, combinations, selected loanword sounds,
 long-vowel mark ー, small ッ and similar-shape practice.
 Filter the lesson list by group to navigate either script.
+Open Word bank from the home toolbar to search all 48 vocabulary words offline
+by kanji, kana or English. Filter by topic and open the matching lesson; returning
+keeps your search. Browsing does not mark a lesson complete.
 After a saved lesson attempt, Review mistakes retries only missed questions.
 Further reviews contain only the remaining mistakes. Review results never replace
 lesson best scores. Review queues last only for the current session.
@@ -56,6 +59,8 @@ Commit a generated pubspec.lock once the Flutter environment is available.
 ## Structure
 - lib/lesson.dart: original content and lesson state, independent of widgets.
 - lib/vocabulary.dart: eight original vocabulary lessons with kana readings.
+- lib/vocabulary_words.dart: searchable reference, checked against lesson content.
+- lib/word_bank.dart: offline word lookup and links to lessons.
 - lib/progress.dart: device-local best score and completion.
 - lib/main.dart: lesson list, teaching card, exercises and results.
 - test/: scoring, persistence and full lesson widget regression tests.

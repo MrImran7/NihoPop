@@ -68,3 +68,15 @@ manual replay of all exercises is unnecessary.
 
 Automated tests cover all 96 vocabulary exercises, independent scores, review and picker
 navigation. Physical testing need not repeat every word.
+
+## Word bank
+1. Open Word bank using the book icon in the home toolbar. In airplane mode,
+   search for 図書館, としょかん and LIBRARY; each should find the library entry.
+2. Select a topic, enter a word from another topic, and check the no-matches
+   message. Clear search keeps the topic; Reset filters restores all 48 words.
+3. Open a result's lesson, then press Android Back. The search and topic remain.
+   Browsing alone must not mark any lesson completed.
+4. With the keyboard open, enlarged system text and landscape orientation, scroll
+   to a result and open its lesson. Check Japanese readings and controls with TalkBack.
+5. Finish a linked lesson, return to the word bank, then return home and force-stop.
+   On reopening, its score remains saved independently from existing scores.

@@ -47,3 +47,22 @@ All eight lessons run in both directions, with independent old/new scores. Objec
 also runs with enlarged text. Tests cover picker labels, review with kana readings,
 reopening the progress store, and all 48 word/reading/meaning mappings.
 Actual device persistence, fonts and TalkBack remain physical checks.
+
+## Word bank
+Use the book icon labelled Word bank in the home toolbar. All 48 taught words
+show their spelling, kana reading, English meaning and topic. Search by kanji,
+kana or English; search ignores English case and surrounding whitespace and
+accepts either full-width kana script. Multiple search terms must all match.
+Romaji and half-width katakana conversion are not supported.
+Topic and text filters combine. Clear search keeps the topic; Reset filters
+restores all words. No matches displays a recovery message.
+
+Open lesson takes you to that word's teaching screen. Back returns to the same
+search and topic. Completing a linked lesson saves progress normally; browsing
+alone never changes scores or completion. Filters last while this screen is open,
+not across app restarts. The lesson results button reads Back to word bank when that is where the
+lesson was opened.
+
+Tests verify every reference entry against both lesson directions and cover search,
+combined filters, clearing, empty results, navigation, saved scores, abandoned
+lessons, and landscape with enlarged text and a simulated keyboard.
