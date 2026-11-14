@@ -2,9 +2,9 @@
 NihoPop — Learn Japanese. A little Japanese, every day.
 
 Android-only Flutter app for learning Japanese through English. The offline course
-has 77 lessons: greetings, hiragana, katakana, everyday vocabulary and basic grammar.
-The eight vocabulary lessons teach 48 words through 96 exercises. Sixteen grammar
-lessons add 128 questions, for 726 exercises across the complete app. Vocabulary covers people, food and drink, places, and
+has 79 lessons: greetings, hiragana, katakana, everyday vocabulary and basic grammar.
+The eight vocabulary lessons teach 48 words through 96 exercises. Eighteen grammar
+lessons add 144 questions, for 742 exercises across the complete app. Vocabulary covers people, food and drink, places, and
 everyday objects, time, transport, colours and everyday actions; kanji words display kana readings in both directions.
 It covers all 46 basic kana, 25 voiced/semi-voiced kana, 33 common contracted
 combinations plus three rare d-row forms, small っ, long vowels, particles and a
@@ -31,7 +31,7 @@ Historical ゐ/ゑ and specialist loanword extensions are outside the modern cor
 Grammar basics introduces は／です statements, じゃないです negatives, possession
 with の, これ／それ／あれ and polite questions with か, then introduces six polite verb pairs,
 ます／ません, direct objects with を, and action locations with で. Further lessons add destinations with に／へ,
-clock times with に, and polite past actions with ました／ませんでした. Noun-past sentences and い／な-adjective descriptions follow. Existence and location lessons add あります／います and のうえ／のした／のなか. Teaching notes precede
+clock times with に, and polite past actions with ました／ませんでした. Noun-past sentences and い／な-adjective descriptions follow. Existence and location lessons add あります／います and のうえ／のした／のなか. Past adjective descriptions and a mixed review follow. Teaching notes precede
 sentence selection, meaning checks and particle practice using familiar vocabulary.
 See [grammar scope](docs/GRAMMAR.md).
 
@@ -95,7 +95,7 @@ Commit a generated pubspec.lock once the Flutter environment is available.
 
 ## Structure
 - lib/lesson.dart: original content and lesson state, independent of widgets.
-- lib/grammar.dart: sixteen original beginner grammar lessons.
+- lib/grammar.dart: eighteen original beginner grammar lessons.
 - lib/vocabulary.dart: eight original vocabulary lessons with kana readings.
 - lib/vocabulary_words.dart: searchable reference, checked against lesson content.
 - lib/word_bank.dart: offline word lookup and links to lessons.

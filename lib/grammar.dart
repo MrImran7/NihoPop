@@ -274,6 +274,40 @@ const grammarLocations = Lesson(
   section: 'Grammar basics',
 );
 
+const grammarAdjectivePast = Lesson(
+  'grammar-adjective-past-v1',
+  'Grammar: past descriptions',
+  'Describe how something was using past adjective forms.\n\nFor the regular い-adjectives practised earlier, replace the final い with かったです:\nおおきい → おおきかったです (was big)\nちいさい → ちいさかったです (was small)\nあたらしい → あたらしかったです (was new)\nふるい → ふるかったです (was old)\nFor a past negative, replace the final い with くなかったです:\nおおきくなかったです = was not big.\nDo not add でした directly to an い-adjective.\n\nFor な-adjectives, use でした or じゃなかったです:\nしずかでした = was quiet\nにぎやかじゃなかったです = was not lively\nきれいでした = was clean (きれい is a な-adjective)\nべんりじゃなかったです = was not convenient.\n\nきのう = yesterday; そのとき = at that time; こうえん = park; ほん = book; かばん = bag.\nきのうこうえんはしずかでした。 = The park was quiet yesterday.\nそのときほんはあたらしかったです。 = The book was new at that time.\nAdd か to ask a polite past question.\nThis lesson uses regular い-adjectives; the irregular adjective いい is outside this practice.',
+  [
+    Exercise('Make おおきいです affirmative past.', ['おおきいでした', 'おおきかったです', 'おおきくないです'], 1, 'Replace the final い with かったです.'),
+    Exercise('Make ちいさいです past negative.', ['ちいさかったです', 'ちいさいじゃなかったです', 'ちいさくなかったです'], 2, 'Replace the final い with くなかったです for was not small.'),
+    Exercise('Choose “The book was new at that time.”', ['そのときほんはあたらしかったです。', 'そのときほんはふるかったです。', 'そのときほんはあたらしくなかったです。'], 0, 'あたらしい becomes あたらしかったです; そのとき supplies the past context.'),
+    Exercise('What does そのときかばんはふるくなかったです。 mean?', ['The bag was old at that time.', 'The bag was not old at that time.', 'The book was not old at that time.'], 1, 'かばん is bag; ふるくなかったです means was not old.'),
+    Exercise('Choose “The park was quiet yesterday.”', ['きのうこうえんはしずかかったです。', 'きのうこうえんはしずかじゃなかったです。', 'きのうこうえんはしずかでした。'], 2, 'しずか is a な-adjective and uses でした for the affirmative past.'),
+    Exercise('Make べんりです past negative using じゃなかったです.', ['べんりじゃなかったです', 'べんりくなかったです', 'べんりでした'], 0, 'A な-adjective uses じゃなかったです for this conversational polite past negative.'),
+    Exercise('Ask “Was the park clean yesterday?”, using きれい for clean.', ['きのうこうえんはきれかったですか。', 'きのうこうえんはきれいでしたか。', 'きのうこうえんはきれいでした。'], 1, 'きれい is a な-adjective: use でした, then か for a question.'),
+    Exercise('You are asked きのうこうえんはにぎやかでしたか。 It was not lively. Choose the reply.', ['はい、にぎやかでした。', 'いいえ、にぎやかでした。', 'いいえ、にぎやかじゃなかったです。'], 2, 'いいえ answers no; にぎやかじゃなかったです means was not lively.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarCheckpoint = Lesson(
+  'grammar-checkpoint-v1',
+  'Grammar: mixed review',
+  'Bring together patterns from the grammar lessons. This is a short practice checkpoint, not a complete proficiency test. Replay earlier teaching notes whenever you need them.\n\nUse の for ownership. Use に for a destination or an existence location, で for an action location, and を for a direct object.\nUse ました / ませんでした for polite past actions, and でした for past noun statements.\nUse かったです for regular い-adjective past descriptions, and でした for な-adjectives.\nUse あります for things and います for people and animals in these examples.\n\nWords in this review:\nわたし = I/my; ともだち = friend (my friend here); がくせい = student; せんせい = teacher; ほん = book; みず = water; ねこ = cat; つくえ = desk; した = under; がっこう = school; としょかん = library; こうえん = park; くじ = nine o’clock; きのう = yesterday; そのとき = at that time; しずか = quiet; あたらしい = new.\nいきます = go; よみます = read; のみます = drink.\n\nEach question gives a specific meaning or situation. Choose the answer matching that context.',
+  [
+    Exercise('Choose “my friend’s book”.', ['ほんのともだち', 'ともだちのほん', 'わたしのせんせい'], 1, 'Owner + の + thing gives ともだちのほん.'),
+    Exercise('You are going to school at nine. Choose the matching sentence.', ['くじにがっこうでいきます。', 'くじにとしょかんにいきます。', 'くじにがっこうにいきます。'], 2, 'The first に marks the clock time and the second に marks the destination.'),
+    Exercise('Choose “I read a book at the library.”', ['としょかんでほんをよみます。', 'としょかんをほんでよみます。', 'がっこうでほんをよみます。'], 0, 'Use で for the action location and を for the book being read.'),
+    Exercise('You are asked きのうみずをのみましたか。 You did not. Choose the reply.', ['はい、のみました。', 'いいえ、のみませんでした。', 'いいえ、のみました。'], 1, 'のみませんでした is the polite past negative of のみます.'),
+    Exercise('Choose “At that time, I was a student.”', ['そのときわたしはがくせいました。', 'そのときわたしはせんせいでした。', 'そのときわたしはがくせいでした。'], 2, 'A past noun statement uses でした, not the verb ending ました.'),
+    Exercise('The park was quiet yesterday. Which sentence matches?', ['きのうこうえんはしずかでした。', 'きのうこうえんはしずかかったです。', 'きのうこうえんはしずかじゃなかったです。'], 0, 'しずか is a な-adjective and takes でした in the affirmative past.'),
+    Exercise('The book was new at that time. Which sentence matches?', ['そのときほんはあたらしいでした。', 'そのときほんはあたらしかったです。', 'そのときほんはあたらしくなかったです。'], 1, 'あたらしい is a regular い-adjective: replace final い with かったです.'),
+    Exercise('Choose “The cat is under the desk.”', ['ねこはつくえのしたにあります。', 'ねこはつくえのしたでいます。', 'ねこはつくえのしたにいます。'], 2, 'Use のした for under, に for the existence location, and います for the cat.'),
+  ],
+  section: 'Grammar basics',
+);
+
 const grammarLessons = [
   grammarStatements,
   grammarNegatives,
@@ -291,4 +325,6 @@ const grammarLessons = [
   grammarNaAdjectives,
   grammarExistence,
   grammarLocations,
+  grammarAdjectivePast,
+  grammarCheckpoint,
 ];

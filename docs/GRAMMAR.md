@@ -1,6 +1,6 @@
 # Grammar basics
 
-Sixteen original lessons, eight exercises each. Choose Grammar basics in Lesson group.
+Eighteen original lessons, eight exercises each. Choose Grammar basics in Lesson group.
 Suggested order:
 
 | Lesson | Pattern |
@@ -21,6 +21,8 @@ Suggested order:
 | な-adjectives | な before nouns; です / じゃないです; きれい exception |
 | Existence | Place + に + noun + が + あります / います; negatives |
 | Locations | Topic + は + location + に + あります / います; どこ questions |
+| Past descriptions | Regular い-adjective かったです / くなかったです; な-adjective でした / じゃなかったです |
+| Mixed review | Eight contextual questions combining earlier patterns |
 
 Introductions explain patterns and gloss the words used. Practice includes choosing
 whole sentences, interpreting meaning, filling a particle/ending and identifying
@@ -54,9 +56,9 @@ Explanations, lesson arrangement and exercises are original. No source curriculu
 pages, audio or illustrations are bundled.
 
 ## Verification
-Automated tests complete all 128 questions, preserve other scores/bookmarks, exercise
+Automated tests complete all 144 questions, preserve other scores/bookmarks, exercise
 group navigation and abandoned attempts, and review a wrong answer without changing
-the saved best. The question, action-location, past-action, な-adjective and location lessons also run with enlarged text on a phone viewport.
+the saved best. The question, action-location, past-action, な-adjective, location and mixed-review lessons also run with enlarged text on a phone viewport.
 Physical font, TalkBack and OS persistence checks are in docs/QA.md.
 
 ## Action-sentence extension
@@ -94,7 +96,7 @@ a competing wrong answer to an unrestricted negative question.
 Four regular い-adjectives introduce direct noun modification and くないです.
 な-adjectives introduce な before nouns, without な before です. きれい is explicitly
 identified as a な-adjective despite its final い sound. The irregular negative of
-いい, adjective past forms and adjective linking are deferred.
+いい and adjective linking are deferred.
 Introductions gloss new words; these grammar-only glosses do not expand the 48-word
 vocabulary bank. All questions have one intended answer in the stated context.
 
@@ -109,3 +111,13 @@ rather than labelling the other grammatical sentence incorrect.
 desk examples explicitly use on. Location に is distinguished from action-location
 で. Japanese nouns do not necessarily specify number; singular English examples
 are contextual translations. Counters and comprehensive は/が rules are deferred.
+
+## Past descriptions and mixed review
+Regular い-adjectives replace final い with かったです or くなかったです.
+な-adjectives use でした or じゃなかったです, including きれい. Past examples
+supply yesterday or at-that-time context. Other valid polite negatives are not
+used as competing incorrect answers.
+
+The eight-question mixed review reuses taught vocabulary and patterns. It is a
+normal replayable lesson with its own saved score, not a mastery certification,
+placement test or prerequisite gate. It does not change earlier lesson scores.

@@ -20,6 +20,8 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
 
 void main() {
   final answers = <Lesson, List<String>>{
+    grammarAdjectivePast: ['おおきかったです', 'ちいさくなかったです', 'そのときほんはあたらしかったです。', 'The bag was not old at that time.', 'きのうこうえんはしずかでした。', 'べんりじゃなかったです', 'きのうこうえんはきれいでしたか。', 'いいえ、にぎやかじゃなかったです。'],
+    grammarCheckpoint: ['ともだちのほん', 'くじにがっこうにいきます。', 'としょかんでほんをよみます。', 'いいえ、のみませんでした。', 'そのときわたしはがくせいでした。', 'きのうこうえんはしずかでした。', 'そのときほんはあたらしかったです。', 'ねこはつくえのしたにいます。'],
     grammarExistence: ['あります', 'います', 'がっこうにせんせいがいます。', 'に', 'が', 'へやにほんがありません。', 'へやにねこがいません。', 'いいえ、ありません。'],
     grammarLocations: ['ほんはつくえのうえにあります。', 'ねこはつくえのしたにいます。', 'Inside the box', 'の', 'ほんはどこにありますか。', 'せんせいはどこにいますか。', 'せんせいはへやにいます。', 'ほんはへやにあります。'],
     grammarNounPast: ['がくせいでした', 'そのときわたしはせんせいでした。', 'がくせいじゃなかったです', 'At that time, I was not a student.', 'そのときせんせいでしたか。', 'はい、がくせいでした。', 'いいえ、せんせいじゃなかったです。', 'がくせいではありませんでした'],
@@ -54,7 +56,7 @@ void main() {
       await tester.pumpWidget(MaterialApp(
         builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaler:
-              TextScaler.linear((entry.key == grammarQuestions || entry.key == grammarActionPlaces || entry.key == grammarPastActions || entry.key == grammarNaAdjectives || entry.key == grammarLocations) ? 1.6 : 1)),
+              TextScaler.linear((entry.key == grammarQuestions || entry.key == grammarActionPlaces || entry.key == grammarPastActions || entry.key == grammarNaAdjectives || entry.key == grammarLocations || entry.key == grammarCheckpoint) ? 1.6 : 1)),
           child: child!,
         ),
         home: LessonPage(store: store, lesson: entry.key),
@@ -125,9 +127,9 @@ void main() {
     expect(find.text(greetings.title), findsOneWidget);
   });
 
-  test('grammar catalog has sixteen independent lessons and explained answers', () {
-    expect(grammarLessons.length, 16);
-    expect(grammarLessons.expand((l) => l.exercises).length, 128);
+  test('grammar catalog has eighteen independent lessons and explained answers', () {
+    expect(grammarLessons.length, 18);
+    expect(grammarLessons.expand((l) => l.exercises).length, 144);
     for (final entry in answers.entries) {
       expect(entry.key.id.startsWith('grammar-'), true);
       expect(entry.key.section, 'Grammar basics');
