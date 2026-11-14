@@ -166,3 +166,17 @@ navigation. Physical testing need not repeat every word.
 - Verify the final action-wish question accepts the statement that both を and が can be used in the water example.
 - Enlarge text and scroll the action-wish introduction and long comparison choices without clipping.
 - Reopen the app: confirm new scores, earlier lesson scores and saved words remain.
+
+## Mixed grammar practice (feature/grammar-practice)
+1. Install the new APK as an update. Check earlier scores and saved words remain.
+2. Open Grammar practice using the shuffle toolbar icon. Without completed grammar lessons, both start buttons must be disabled with guidance.
+3. Complete two or more grammar lessons; return to practice. Start mixed practice and finish, deliberately missing two questions.
+4. Check the result and saved mistake count. Force-stop and reopen offline; Review saved mistakes must contain only unresolved practice mistakes.
+5. Correct one mistake and miss the other. Finish and reopen: only the remaining mistake should stay. Complete it correctly and confirm the empty state.
+6. Start another practice session, answer a question and leave before completing. Saved mistakes and lesson scores must stay unchanged.
+7. Check Japanese text and long answers at large system font sizes and in landscape. With TalkBack, identify the shuffle button, both practice actions, feedback and return button.
+8. Confirm regular lesson review, word bank, bookmarks and flashcards still work. Practice should never mark a lesson complete or replace its best score.
+
+Automated coverage: topic-balanced sampling, duplicate prevention, completed-only pool,
+persistent mistakes, partial review, stale IDs, empty state, phone/enlarged-text session,
+abandonment, save retry and immediate review. Hardware/OS checks above remain manual.
