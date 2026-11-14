@@ -78,7 +78,6 @@ void main() {
     expect(find.text('48 words'), findsOneWidget);
     await tester.enterText(find.byKey(const ValueKey('word-search')), '  TEA ');
     await tester.pumpAndSettle();
-    expect(find.text('お茶（おちゃ）'), findsOneWidget);
     // "tea" also matches "Teacher".
     expect(find.text('2 words'), findsOneWidget);
     await tapVisible(tester, find.byKey(const ValueKey('word-topic')));
@@ -88,6 +87,18 @@ void main() {
     await tester.tap(food);
     await tester.pumpAndSettle();
     expect(find.text('1 word'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('お茶（おちゃ）'), 120,
+      scrollable: find.descendant(
+        of: find.byType(ListView), matching: find.byType(Scrollable),
+      ).first,
+    );
+    expect(find.text('お茶（おちゃ）'), findsOneWidget);
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('word-search')), -120,
+      scrollable: find.descendant(
+        of: find.byType(ListView), matching: find.byType(Scrollable),
+      ).first,
+    );
+    await tester.pumpAndSettle();
     await tapVisible(tester, find.byTooltip('Clear search'));
     expect(find.text('6 words'), findsOneWidget);
     await tester.enterText(find.byKey(const ValueKey('word-search')), 'train');
