@@ -27,12 +27,18 @@ class GrammarPracticeStore {
     return available.where((q) => ids.contains(q.id)).toList();
   }
 
+  List<GrammarQuestion> questionsFor(Set<String>? lessonIds) =>
+      available.where((q) => lessonIds == null || lessonIds.contains(q.lesson.id)).toList();
+
+  List<GrammarQuestion> mistakesFor(Set<String>? lessonIds) =>
+      mistakes.where((q) => lessonIds == null || lessonIds.contains(q.lesson.id)).toList();
+
   // Round-robin across shuffled topics, then shuffle the session order.
-  List<GrammarQuestion> mixed({Random? random, int limit = 10}) {
+  List<GrammarQuestion> mixed({Random? random, int limit = 10, Set<String>? lessonIds}) {
     if (limit <= 0) return [];
     final rng = random ?? Random();
     final groups = <String, List<GrammarQuestion>>{};
-    for (final q in available) {
+    for (final q in questionsFor(lessonIds)) {
       groups.putIfAbsent(q.lesson.id, () => []).add(q);
     }
     final rows = groups.values.toList()..shuffle(rng);
@@ -53,9 +59,9 @@ class GrammarPracticeStore {
     return result..shuffle(rng);
   }
 
-  List<GrammarQuestion> review({Random? random, int limit = 10}) {
+  List<GrammarQuestion> review({Random? random, int limit = 10, Set<String>? lessonIds}) {
     if (limit <= 0) return [];
-    return (mistakes..shuffle(random ?? Random())).take(limit).toList();
+    return (mistakesFor(lessonIds)..shuffle(random ?? Random())).take(limit).toList();
   }
 
   Future<void> record(List<Exercise> attempted, List<Exercise> missed) async {

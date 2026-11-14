@@ -26,7 +26,10 @@ Further reviews contain only the remaining mistakes. Review results never replac
 lesson best scores. Regular lesson review queues last only for the current session.
 
 Open Grammar practice from the shuffle icon in the home toolbar. Mixed sessions
-sample up to 10 questions across completed grammar lessons. Saved mistakes from
+sample up to 10 questions across completed grammar lessons. Choose topics to focus
+both mixed sessions and saved-mistake review on selected completed lessons. Selection
+stays while the practice page is open; reopening defaults to all completed topics.
+Unselected topics keep their saved mistakes. Saved mistakes from
 completed practice sessions persist offline and can be reviewed later; correcting
 a question in a completed practice session removes it from this list. Practice
 does not change lesson completion, best scores or vocabulary bookmarks. Leaving

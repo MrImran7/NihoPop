@@ -6,6 +6,7 @@ import 'package:nihopop/lesson.dart';
 import 'package:nihopop/main.dart';
 import 'package:nihopop/progress.dart';
 import 'package:nihopop/grammar_practice.dart';
+import 'package:nihopop/grammar_practice_page.dart';
 
 Future<void> tapVisible(WidgetTester tester, Finder finder) async {
   if (finder.evaluate().isEmpty) {
@@ -33,6 +34,112 @@ Future<ProgressStore> seeded({bool completed = true}) async {
 }
 
 void main() {
+  test('topic filter excludes unselected, unknown and incomplete lessons', () async {
+    final progress = await seeded(completed: false);
+    await progress.record(grammarStatements.id, 3);
+    final store = GrammarPracticeStore(progress);
+    final questions = store.mixed(lessonIds: {grammarStatements.id, grammarLikes.id, 'missing'}, random: Random(1));
+    expect(questions.length, 8);
+    expect(questions.every((q) => q.lesson == grammarStatements), true);
+    expect(store.mixed(lessonIds: {}), isEmpty);
+    expect(store.mixed(lessonIds: {grammarLikes.id}), isEmpty);
+    expect(store.questionsFor(null).length, 8);
+  });
+
+  test('filtered review keeps mistakes outside selected topics', () async {
+    final progress = await seeded();
+    final store = GrammarPracticeStore(progress);
+    final a = grammarStatements.exercises[0];
+    final b = grammarLikes.exercises[0];
+    await store.record([a, b], [a, b]);
+    final review = store.review(lessonIds: {grammarStatements.id});
+    expect(review.single.exercise, a);
+    expect(store.review(lessonIds: {}), isEmpty);
+    await store.record(review.map((q) => q.exercise).toList(), []);
+    expect(GrammarPracticeStore(progress).mistakes.single.exercise, b);
+    expect(store.mistakesFor({grammarStatements.id}), isEmpty);
+    expect(progress.best(grammarLikes.id), 3);
+  });
+
+  testWidgets('topic selection filters both modes and back cancels edits', (tester) async {
+    final progress = await seeded(completed: false);
+    await progress.record(grammarStatements.id, 3);
+    await progress.record(grammarNegatives.id, 3);
+    final store = GrammarPracticeStore(progress);
+    final a = grammarStatements.exercises[0];
+    final b = grammarNegatives.exercises[0];
+    await store.record([a, b], [a, b]);
+    List<GrammarQuestion>? started;
+    bool? reviewing;
+    await tester.pumpWidget(MaterialApp(home: GrammarPracticePage(
+      store: store,
+      onStart: (questions, review) async { started = questions; reviewing = review; },
+    )));
+    await tapVisible(tester, find.byKey(const ValueKey('choose-grammar-topics')));
+    expect(find.byKey(ValueKey('practice-topic-${grammarLikes.id}')), findsNothing);
+    await tapVisible(tester, find.byKey(const ValueKey('clear-topics')));
+    await tapVisible(tester, find.byKey(ValueKey('practice-topic-${grammarStatements.id}')));
+    await tapVisible(tester, find.byKey(const ValueKey('apply-grammar-topics')));
+    expect(find.text('1 of 2 topics selected'), findsOneWidget);
+    await tapVisible(tester, find.byKey(const ValueKey('start-grammar-mix')));
+    expect(started!.length, 8);
+    expect(started!.every((q) => q.lesson == grammarStatements), true);
+    expect(reviewing, false);
+    await tapVisible(tester, find.byKey(const ValueKey('review-grammar-mistakes')));
+    expect(started!.single.exercise, a);
+    expect(reviewing, true);
+    expect(store.mistakes.length, 2);
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('choose-grammar-topics')), -180,
+        scrollable: find.byType(Scrollable).first, maxScrolls: 80);
+    await tapVisible(tester, find.byKey(const ValueKey('choose-grammar-topics')));
+    await tapVisible(tester, find.byKey(const ValueKey('select-all-topics')));
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+    expect(find.text('1 of 2 topics selected'), findsOneWidget);
+    await tapVisible(tester, find.byKey(const ValueKey('start-grammar-mix')));
+    expect(started!.every((q) => q.lesson == grammarStatements), true);
+  });
+
+  testWidgets('large text picker handles empty selection and reopening resets topics', (tester) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final progress = await seeded();
+    final store = GrammarPracticeStore(progress);
+    List<GrammarQuestion>? started;
+    Widget app() => MaterialApp(
+      builder: (context, child) => MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.6)),
+        child: child!,
+      ),
+      home: GrammarPracticePage(store: store, onStart: (questions, _) async { started = questions; }),
+    );
+    await tester.pumpWidget(app());
+    await tapVisible(tester, find.byKey(const ValueKey('choose-grammar-topics')));
+    await tapVisible(tester, find.byKey(const ValueKey('clear-topics')));
+    await tapVisible(tester, find.byKey(const ValueKey('apply-grammar-topics')));
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('start-grammar-mix')), 180,
+        scrollable: find.byType(Scrollable).first, maxScrolls: 80);
+    expect(tester.widget<FilledButton>(find.byKey(const ValueKey('start-grammar-mix'))).onPressed, isNull);
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('choose-grammar-topics')), -180,
+        scrollable: find.byType(Scrollable).first, maxScrolls: 80);
+    await tapVisible(tester, find.byKey(const ValueKey('choose-grammar-topics')));
+    final last = grammarLessons.last;
+    await tapVisible(tester, find.byKey(ValueKey('practice-topic-${last.id}')));
+    await tapVisible(tester, find.byKey(const ValueKey('apply-grammar-topics')));
+    await tapVisible(tester, find.byKey(const ValueKey('start-grammar-mix')));
+    expect(started!.length, 8);
+    expect(started!.every((q) => q.lesson == last), true);
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pumpWidget(app());
+    expect(find.text('All completed topics'), findsOneWidget);
+    await tapVisible(tester, find.byKey(const ValueKey('start-grammar-mix')));
+    expect(started!.length, 10);
+    expect(started!.map((q) => q.lesson.id).toSet().length, 10);
+    expect(tester.takeException(), isNull);
+  });
+
   test('mix includes only completed grammar and never duplicates questions', () async {
     final progress = await seeded(completed: false);
     final store = GrammarPracticeStore(progress);
@@ -95,6 +202,8 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Complete a grammar lesson first, then return here to practise.'), findsOneWidget);
     expect(tester.widget<FilledButton>(find.byKey(const ValueKey('start-grammar-mix'))).onPressed, isNull);
+    await tester.scrollUntilVisible(find.byKey(const ValueKey('review-grammar-mistakes')), 180,
+        scrollable: find.byType(Scrollable).first, maxScrolls: 80);
     expect(tester.widget<OutlinedButton>(find.byKey(const ValueKey('review-grammar-mistakes'))).onPressed, isNull);
     await tester.pageBack();
     await tester.pumpAndSettle();

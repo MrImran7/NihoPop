@@ -23,3 +23,14 @@ cloud sync or score-based unlocking are introduced. Save failures show a retry b
 Validation runs automatically in the existing Android workflow. Physical acceptance
 steps are in docs/QA.md. Keep subsequent practice improvements on this feature branch
 until its agreed milestone is verified on device.
+
+## Topic selection
+Choose topics opens a scrollable checklist of completed grammar lessons. Select all,
+clear, or pick a subset, then Apply topics. Back cancels pending changes. No selected
+topics disables both practice actions with guidance.
+
+Selection filters both mixed practice and saved-mistake review. The page shows total
+saved mistakes and the count in selected topics. Filtering does not delete mistakes,
+and completing a filtered session preserves untouched mistakes from other topics.
+Selections remain through sessions while this practice page is open; reopening it
+resets to all completed topics. These preferences are not stored as progress.
