@@ -103,3 +103,66 @@ navigation. Physical testing need not repeat every word.
 4. With an empty saved list, check the guidance and disabled flashcard button.
 5. Use TalkBack and enlarged text in landscape to find and activate Save word /
    Remove saved word. Previous kana/vocabulary scores must remain unchanged.
+
+## Grammar basics
+1. Install as an update. Existing kana/vocabulary scores and saved words should remain.
+2. Choose Grammar basics. Twenty-two lesson cards should show Sentence practice.
+3. Read Statements and Negatives: check は, じゃないです and ではありません render clearly.
+4. Complete one lesson with a mistake. Review mistakes, return, force-stop and reopen:
+   the original lesson score must persist and other scores must remain unchanged.
+5. Use Questions with enlarged system text and in landscape. Long sentence choices,
+   explanations and all controls must remain readable/reachable.
+6. With TalkBack, check Japanese sentences, choices and feedback. Browse the word bank
+   and start a saved-word flashcard deck as a regression check.
+
+## Action grammar extension
+1. Open Polite actions. Check the six verb pairs, particularly くる → きます,
+   and the distinction between ます and ません.
+2. Try Objects with を and Where actions happen with で. Check the longer choices
+   at enlarged text sizes and in landscape.
+3. Complete one new lesson with a mistake and review it. Reopen the app: the new
+   score should persist while the first five grammar scores and saved words remain.
+
+## Destinations, times and past actions
+1. Open the three new grammar lessons. Check に／へ, はちじ／くじ and the longer
+   ませんでした endings render clearly on your device.
+2. With large system text and landscape orientation, complete Past actions.
+   Check long answers and feedback remain reachable.
+3. Complete one new lesson with a mistake and review it. Force-stop/reopen:
+   its score and all previous grammar scores/bookmarks must remain unchanged.
+
+### Noun past and adjective extension
+- In Grammar basics, complete the past noun, い-adjective and な-adjective lessons (8 questions each).
+- Check でした versus verb ました, noun past negatives and polite replies.
+- Check くないです, direct い-adjective + noun, and な before nouns for な-adjectives including きれい.
+- At enlarged font size, scroll the な-adjective introduction and longest comparison choices; confirm no clipping.
+- Reopen the app: new scores remain; earlier kana, vocabulary and grammar scores and saved words remain intact.
+- Replay with a mistake and review it; confirm review does not overwrite the saved lesson best.
+
+### Existence and location extension
+- Complete “Grammar: what is there?” and “Grammar: where is it?” (8 questions each).
+- Check things use あります and people/cats use います; check both negative forms.
+- Check on/under the desk and inside the box, plus どこ questions and answers.
+- Enlarge system text and verify the long introduction and topic-comparison question can be scrolled without clipping.
+- Reopen after completion: both new scores and all previous progress/bookmarks remain.
+
+### Past descriptions and mixed review
+- Complete “Grammar: past descriptions” and “Grammar: mixed review” (8 questions each).
+- Check past affirmative/negative forms for both adjective types, including きれい.
+- With enlarged text, scroll the mixed-review introduction and long sentence choices.
+- Make a mistake in the mixed review and retry it through Review mistakes; verify the original best score remains.
+- Restart the app and verify both new scores and all earlier scores/bookmarks remain.
+
+### Preferences and invitations
+- Complete “Grammar: things you like” and “Grammar: invitations and suggestions” (8 questions each).
+- Check preference questions, negative preferences and あまり + negative meaning.
+- Check invitation versus suggestion, acceptance, and the contextual polite refusal.
+- Enlarge text: verify the long invitation introduction and reply choices scroll without clipping.
+- Reopen after completion and check both new scores, earlier scores and saved words.
+
+### Wants: things and actions
+- Complete “Grammar: things you want” and “Grammar: things you want to do” (8 questions each).
+- Check ほしい versus たい, their negatives, and the friend/gift/planning contexts.
+- Verify the final action-wish question accepts the statement that both を and が can be used in the water example.
+- Enlarge text and scroll the action-wish introduction and long comparison choices without clipping.
+- Reopen the app: confirm new scores, earlier lesson scores and saved words remain.

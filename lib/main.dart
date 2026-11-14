@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 12),
                   Text(widget.store.completed(lesson.id)
                       ? 'Completed • Best: ${widget.store.best(lesson.id)}/${lesson.exercises.length}'
-                      : '${lesson.exercises.length} questions • ${lesson == greetings || lesson.section == "Vocabulary basics" ? "Japanese ↔ English" : lesson.section.endsWith("rules") ? "Reading practice" : lesson.section.startsWith("Katakana") ? "Katakana ↔ Romaji" : "Hiragana ↔ Romaji"}'),
+                      : '${lesson.exercises.length} questions • ${lesson == greetings || lesson.section == "Vocabulary basics" ? "Japanese ↔ English" : lesson.section == "Grammar basics" ? "Sentence practice" : lesson.section.endsWith("rules") ? "Reading practice" : lesson.section.startsWith("Katakana") ? "Katakana ↔ Romaji" : "Hiragana ↔ Romaji"}'),
                   const SizedBox(height: 20),
                   FilledButton(
                     onPressed: () => openLesson(lesson),

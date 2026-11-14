@@ -1,5 +1,6 @@
 part 'katakana.dart';
 part 'vocabulary.dart';
+part 'grammar.dart';
 
 class Exercise {
   final String prompt;
@@ -525,6 +526,7 @@ const lessons = [
   readingReview,
   ...katakanaLessons,
   ...vocabularyLessons,
+  ...grammarLessons,
 ];
 
 const lessonSections = [
@@ -532,7 +534,7 @@ const lessonSections = [
   'Voiced sounds', 'Combined sounds', 'Reading rules',
   'Katakana basics', 'Katakana voiced', 'Katakana combinations',
   'Katakana loanwords', 'Katakana reading rules',
-  'Vocabulary basics',
+  'Vocabulary basics', 'Grammar basics',
 ];
 
 class LessonSession {
