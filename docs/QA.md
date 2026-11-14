@@ -103,3 +103,14 @@ navigation. Physical testing need not repeat every word.
 4. With an empty saved list, check the guidance and disabled flashcard button.
 5. Use TalkBack and enlarged text in landscape to find and activate Save word /
    Remove saved word. Previous kana/vocabulary scores must remain unchanged.
+
+## Grammar basics
+1. Install as an update. Existing kana/vocabulary scores and saved words should remain.
+2. Choose Grammar basics. Five lesson cards should show Sentence practice.
+3. Read Statements and Negatives: check は, じゃないです and ではありません render clearly.
+4. Complete one lesson with a mistake. Review mistakes, return, force-stop and reopen:
+   the original lesson score must persist and other scores must remain unchanged.
+5. Use Questions with enlarged system text and in landscape. Long sentence choices,
+   explanations and all controls must remain readable/reachable.
+6. With TalkBack, check Japanese sentences, choices and feedback. Browse the word bank
+   and start a saved-word flashcard deck as a regression check.
