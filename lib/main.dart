@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'lesson.dart';
 import 'progress.dart';
 import 'word_bank.dart';
+import 'saved_words.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,6 +48,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String section = 'All lessons';
+  late final savedWords = SavedWordsStore(widget.store.preferences);
 
   Future<void> openLesson(Lesson lesson, {bool fromWordBank = false}) async {
     await Navigator.of(context).push(MaterialPageRoute<void>(
@@ -72,6 +74,7 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.menu_book_outlined),
             onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(
               builder: (_) => WordBankPage(
+                savedWords: savedWords,
                 onOpenLesson: (lesson) => openLesson(lesson, fromWordBank: true),
               ),
             )),

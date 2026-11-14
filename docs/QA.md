@@ -92,3 +92,14 @@ navigation. Physical testing need not repeat every word.
    next/finish and restart controls.
 5. Finish and return to Word bank: the search and topic remain. Leave another
    deck midway with Android Back. Existing lesson scores must remain unchanged.
+
+## Saved words
+1. Save words from two topics. Force-stop and reopen the app, then open Word bank
+   and enable Saved words only: both should remain.
+2. Combine Saved words only with a topic/search. Practise flashcards should use
+   only those results; Back preserves the filters.
+3. Remove a saved word, reopen, and verify it stays removed. Reset filters must
+   restore the full list without deleting other saved words.
+4. With an empty saved list, check the guidance and disabled flashcard button.
+5. Use TalkBack and enlarged text in landscape to find and activate Save word /
+   Remove saved word. Previous kana/vocabulary scores must remain unchanged.

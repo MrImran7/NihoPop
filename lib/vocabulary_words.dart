@@ -8,6 +8,8 @@ class VocabularyWord {
 
   const VocabularyWord(this.japanese, this.reading, this.meaning, this.lesson);
 
+  // Stable bookmark identity; keep lesson IDs and Japanese spelling stable.
+  String get id => '${lesson.id}:$japanese';
   String get label => japanese == reading ? japanese : '$japanese（$reading）';
   String get topic => lesson.title.replaceFirst('Vocabulary: ', '');
 }

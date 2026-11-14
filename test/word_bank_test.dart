@@ -6,6 +6,7 @@ import 'package:nihopop/main.dart';
 import 'package:nihopop/progress.dart';
 import 'package:nihopop/vocabulary_words.dart';
 import 'package:nihopop/word_bank.dart';
+import 'package:nihopop/saved_words.dart';
 import 'support/lesson_actions.dart';
 
 Future<void> tapVisible(WidgetTester tester, Finder finder) async {
@@ -25,6 +26,11 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
 }
 
 void main() {
+  late SavedWordsStore savedWords;
+  setUp(() async {
+    SharedPreferences.setMockInitialValues({});
+    savedWords = SavedWordsStore(await SharedPreferences.getInstance());
+  });
   test('word bank covers exactly the taught vocabulary and links both directions', () {
     expect(vocabularyWords.length, 48);
     expect(vocabularyWords.map((w) => w.japanese).toSet().length, 48);
@@ -67,7 +73,7 @@ void main() {
 
   testWidgets('search and topic filter combine, clear and reset', (tester) async {
     await tester.pumpWidget(MaterialApp(
-      home: WordBankPage(onOpenLesson: (_) {}),
+      home: WordBankPage(savedWords: savedWords, onOpenLesson: (_) {}),
     ));
     expect(find.text('48 words'), findsOneWidget);
     await tester.enterText(find.byKey(const ValueKey('word-search')), '  TEA ');
@@ -170,7 +176,7 @@ void main() {
         ),
         child: child!,
       ),
-      home: WordBankPage(onOpenLesson: (lesson) => opened = lesson),
+      home: WordBankPage(savedWords: savedWords, onOpenLesson: (lesson) => opened = lesson),
     ));
     await tester.enterText(find.byKey(const ValueKey('word-search')), 'rice');
     await tester.pumpAndSettle();

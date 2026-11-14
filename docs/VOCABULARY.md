@@ -84,3 +84,20 @@ self-study, not spaced repetition or assessed recall.
 Automation checks all 48 card transitions, reverse direction, hidden answers,
 single/empty decks, filtered navigation, unchanged progress, and enlarged text
 in landscape.
+
+## Saved words
+Use Save word on a word-bank card; Remove saved word removes that bookmark.
+Saved words only combines with the topic and search filters. Practise flashcards
+uses exactly the visible results. Reset filters shows all words without deleting
+bookmarks. An empty saved list has guidance and disables starting flashcards.
+
+Bookmarks persist on this device; the Saved words only filter itself is not
+persisted. Clearing app data/uninstalling removes bookmarks along with progress.
+Bookmarks use versioned keys based on lesson ID and Japanese spelling, separate
+from lesson scores. Keep these identities stable or migrate them if renamed.
+A write must succeed before the saved state changes; pending writes disable
+bookmark controls and failures show a retry message.
+
+Tests cover independent save/remove persistence, combined filters, saved-only
+flashcards, unchanged lesson scores, pending/failed saves and retry, disposal
+during a save, and landscape with enlarged text.
