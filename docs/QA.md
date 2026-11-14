@@ -106,7 +106,7 @@ navigation. Physical testing need not repeat every word.
 
 ## Grammar basics
 1. Install as an update. Existing kana/vocabulary scores and saved words should remain.
-2. Choose Grammar basics. Twenty lesson cards should show Sentence practice.
+2. Choose Grammar basics. Twenty-two lesson cards should show Sentence practice.
 3. Read Statements and Negatives: check は, じゃないです and ではありません render clearly.
 4. Complete one lesson with a mistake. Review mistakes, return, force-stop and reopen:
    the original lesson score must persist and other scores must remain unchanged.
@@ -159,3 +159,10 @@ navigation. Physical testing need not repeat every word.
 - Check invitation versus suggestion, acceptance, and the contextual polite refusal.
 - Enlarge text: verify the long invitation introduction and reply choices scroll without clipping.
 - Reopen after completion and check both new scores, earlier scores and saved words.
+
+### Wants: things and actions
+- Complete “Grammar: things you want” and “Grammar: things you want to do” (8 questions each).
+- Check ほしい versus たい, their negatives, and the friend/gift/planning contexts.
+- Verify the final action-wish question accepts the statement that both を and が can be used in the water example.
+- Enlarge text and scroll the action-wish introduction and long comparison choices without clipping.
+- Reopen the app: confirm new scores, earlier lesson scores and saved words remain.

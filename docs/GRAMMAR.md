@@ -1,6 +1,6 @@
 # Grammar basics
 
-Twenty original lessons, eight exercises each. Choose Grammar basics in Lesson group.
+Twenty-two original lessons, eight exercises each. Choose Grammar basics in Lesson group.
 Suggested order:
 
 | Lesson | Pattern |
@@ -25,6 +25,8 @@ Suggested order:
 | Mixed review | Eight contextual questions combining earlier patterns |
 | Preferences | がすきです; すきじゃないです; あまり + negative |
 | Invitations | ませんか / ましょう; accepting and politely declining |
+| Wanting things | がほしいです / ほしくないです; questions in a gift discussion |
+| Wanting actions | ます stem + たいです / たくないです; questions when planning |
 
 Introductions explain patterns and gloss the words used. Practice includes choosing
 whole sentences, interpreting meaning, filling a particle/ending and identifying
@@ -49,6 +51,8 @@ Mistake review uses the shared lesson engine and does not replace the original s
 
 ## References
 Grammar rules checked against:
+- [Tokyo University of Foreign Studies: Vたいです](https://www.coelang.tufs.ac.jp/mt/ja/gmod/contents/explanation/067.html)
+- [Tokyo University of Foreign Studies: Nがほしいです examples](https://www.coelang.tufs.ac.jp/mt/ja/gmod/contents/instances/069.html)
 - [Tokyo University of Foreign Studies: relative locations](https://www.coelang.tufs.ac.jp/mt/ja/gmod/courses/c01/lesson02/step3/explanation/007.html)
 - [Japan Foundation Irodori syllabus: existence and locations](https://www.irodori.jpf.go.jp/assets/data/X_syllabus.pdf)
 - [Japan Foundation Irodori grammar notes](https://www.irodori.jpf.go.jp/assets/data/Grammar_all.pdf)
@@ -58,9 +62,9 @@ Explanations, lesson arrangement and exercises are original. No source curriculu
 pages, audio or illustrations are bundled.
 
 ## Verification
-Automated tests complete all 160 questions, preserve other scores/bookmarks, exercise
+Automated tests complete all 176 questions, preserve other scores/bookmarks, exercise
 group navigation and abandoned attempts, and review a wrong answer without changing
-the saved best. The question, action-location, past-action, な-adjective, location, mixed-review and invitation lessons also run with enlarged text on a phone viewport.
+the saved best. The question, action-location, past-action, な-adjective, location, mixed-review, invitation and action-wish lessons also run with enlarged text on a phone viewport.
 Physical font, TalkBack and OS persistence checks are in docs/QA.md.
 
 ## Action-sentence extension
@@ -135,3 +139,13 @@ Invitation questions explicitly establish the shared-action context for ませ�
 outside this lesson. The unfinished あしたはちょっと… is taught as a contextual
 polite refusal, not a universal translation of ちょっと. These lessons follow the
 existing mixed checkpoint, which continues to review only the earlier patterns.
+
+## Wants: things and actions
+ほしい expresses wanting a thing; たい follows a verb’s ます stem to express wanting
+to act. Their negatives follow the い-adjective pattern. The course recognises
+ほしくありません and たくありません without making valid alternatives compete.
+Both を and が can mark the object in the taught water/drinking example; the final
+question explicitly accepts both rather than overgeneralising one particle rule.
+Statements concern the speaker’s wishes; questions concern a friend’s wishes in
+gift/planning contexts. They are not taught as universal polite requests or
+invitations, or as a way to assert a third person’s private wishes.

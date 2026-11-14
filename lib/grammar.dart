@@ -342,6 +342,40 @@ const grammarInvitations = Lesson(
   section: 'Grammar basics',
 );
 
+const grammarWantThings = Lesson(
+  'grammar-want-things-v1',
+  'Grammar: things you want',
+  'Say that you want a thing with person + は + thing + が + ほしいです.\nほしい behaves like an い-adjective. Its polite negative is ほしくないです; ほしくありません is also valid.\n\nわたし = I; ほん = book; かばん = bag; かさ = umbrella; あたらしい = new; なに = what.\nわたしはほんがほしいです。 = I want a book.\nあたらしいかばんがほしいです。 = I want a new bag.\n\nIn a conversation about possible gifts, you can ask a friend:\nなにがほしいですか。 = What do you want?\nかさがほしいですか。 = Do you want an umbrella?\nはい、ほしいです。 = Yes, I do.\nいいえ、ほしくないです。 = No, I do not.\n\nThese are direct expressions of desire, not a general way to make polite requests to staff or ask a superior what they want. This lesson states your own wishes and asks a friend about theirs; reporting someone else’s wishes needs additional patterns.\nCompare ほんがすきです (I like books) with ほんがほしいです (I want a book). Liking a thing is not the same as wanting to have it.',
+  [
+    Exercise('Choose “I want a book.”', ['わたしはほんがすきです。', 'わたしはほんがほしいです。', 'わたしはかばんがほしいです。'], 1, 'ほんがほしいです expresses wanting a book, rather than liking books.'),
+    Exercise('In わたしはかさがほしいです。, which particle follows the desired thing?', ['を', 'で', 'が'], 2, 'が follows かさ in the taught pattern for wanting a thing.'),
+    Exercise('Choose “I want a new bag.”', ['あたらしいかばんがほしいです。', 'ふるいかばんがほしいです。', 'あたらしいほんがほしいです。'], 0, 'あたらしい modifies かばん directly: a new bag.'),
+    Exercise('Make ほしいです negative using くないです.', ['ほしいじゃないです', 'ほしくないです', 'ほしいません'], 1, 'ほしい behaves like an い-adjective: replace final い with くないです.'),
+    Exercise('You are discussing possible gifts with a friend. Ask “What do you want?”', ['なにがすきですか。', 'かさがほしいですか。', 'なにがほしいですか。'], 2, 'なに asks what; ほしいですか asks about wanting a thing.'),
+    Exercise('A friend asks かさがほしいですか。 You do not want an umbrella. Choose the reply.', ['いいえ、ほしくないです。', 'はい、ほしいです。', 'いいえ、ほしいです。'], 0, 'いいえ answers no; ほしくないです expresses not wanting it.'),
+    Exercise('What does ほんがほしいです。 mean when the speaker states a wish?', ['I like books.', 'I want a book.', 'I read a book.'], 1, 'ほしい expresses wanting a thing; it does not specify reading it.'),
+    Exercise('Which is another valid polite negative of ほしいです?', ['ほしいでした', 'ほしいじゃありません', 'ほしくありません'], 2, 'ほしくありません and ほしくないです are both valid polite negatives.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarWantActions = Lesson(
+  'grammar-want-actions-v1',
+  'Grammar: things you want to do',
+  'To express your wish to do something, remove ます from a familiar polite verb and add たいです:\nたべます → たべたいです (want to eat)\nのみます → のみたいです (want to drink)\nよみます → よみたいです (want to read)\nいきます → いきたいです (want to go)\n\nパン = bread; みず = water; ほん = book; こうえん = park; あした = tomorrow; どこ = where.\nパンをたべたいです。 = I want to eat bread.\nあしたこうえんにいきたいです。 = I want to go to the park tomorrow.\nThese examples keep を for an action’s object. が is also possible in examples such as みずがのみたいです; it is not always an error.\n\nFor the negative, change たいです to たくないです:\nいきたくないです = do not want to go.\nよみたくないです = do not want to read.\nたくありません is another valid polite negative ending.\n\nWhen planning with a friend, ask どこにいきたいですか。 (Where do you want to go?). These direct questions are for the friendly context here, not a default polite invitation to a superior. Use the invitation patterns from the previous lesson when inviting someone.\nThis lesson expresses your own wishes and asks a friend about theirs.\nほんがほしいです = I want a book.\nほんをよみたいです = I want to read a book.',
+  [
+    Exercise('Change たべます to “want to eat”.', ['たべるたいです', 'たべたいです', 'たべますたいです'], 1, 'Remove ます, then add たいです: たべたいです.'),
+    Exercise('Choose “I want to drink water.”', ['みずをのみました。', 'パンをたべたいです。', 'みずをのみたいです。'], 2, 'のみます becomes のみたいです; みず means water.'),
+    Exercise('Choose “I want to go to the park tomorrow.”', ['あしたこうえんにいきたいです。', 'あしたこうえんでいきたいです。', 'あしたこうえんにいきたくないです。'], 0, 'に marks the destination; いきたいです expresses wanting to go.'),
+    Exercise('Make よみたいです negative using たくないです.', ['よみたいじゃないです', 'よみたくないです', 'よみたいません'], 1, 'Change たいです to たくないです.'),
+    Exercise('You are planning a day out with a friend. Ask “Where do you want to go?”', ['どこにいきましたか。', 'どこにいきたいです。', 'どこにいきたいですか。'], 2, 'どこ asks where; いきたいですか asks about the friend’s wish.'),
+    Exercise('Your friend asks こうえんにいきたいですか。 You do want to go. Choose the reply.', ['はい、いきたいです。', 'いいえ、いきたくないです。', 'はい、いきたくないです。'], 0, 'はい and いきたいです confirm the wish to go.'),
+    Exercise('Choose “I want to read a book”, rather than simply wanting a book.', ['ほんがほしいです。', 'ほんをよみたいです。', 'ほんがすきです。'], 1, 'よみたいです expresses wanting to do the action of reading.'),
+    Exercise('Which statement about みずをのみたいです and みずがのみたいです is correct?', ['Only the sentence with を can be correct.', 'Only the sentence with が can be correct.', 'Both can express wanting to drink water.'], 2, 'Both を and が are possible with this たい expression; do not mark the alternative as universally wrong.'),
+  ],
+  section: 'Grammar basics',
+);
+
 const grammarLessons = [
   grammarStatements,
   grammarNegatives,
@@ -363,4 +397,6 @@ const grammarLessons = [
   grammarCheckpoint,
   grammarLikes,
   grammarInvitations,
+  grammarWantThings,
+  grammarWantActions,
 ];
