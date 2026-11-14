@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:nihopop/main.dart';
 import 'package:nihopop/lesson.dart';
 import 'package:nihopop/progress.dart';
+import 'support/lesson_actions.dart';
 
 void main() {
   Future<void> tapVisible(WidgetTester tester, Finder button) async {
@@ -153,11 +154,7 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     final store = ProgressStore(await SharedPreferences.getInstance());
     await tester.pumpWidget(NihoPopApp(store: store));
-    await tapVisible(tester, find.byKey(const ValueKey('lesson-group')));
-    await tester.ensureVisible(find.text('Reading rules').last);
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Reading rules').last);
-    await tester.pumpAndSettle();
+    await selectLessonGroup(tester, 'Reading rules');
     expect(find.text(greetings.title), findsNothing);
     final card = find.byKey(ValueKey('lesson-${smallTsu.id}'));
     await tapVisible(tester, find.descendant(of: card, matching: find.byType(FilledButton)));
@@ -166,11 +163,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Reading rules'), findsOneWidget);
     expect(store.completed(smallTsu.id), false);
-    await tapVisible(tester, find.byKey(const ValueKey('lesson-group')));
-    await tester.ensureVisible(find.text('All lessons').last);
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('All lessons').last);
-    await tester.pumpAndSettle();
+    await selectLessonGroup(tester, 'All lessons');
     expect(find.text(greetings.title), findsOneWidget);
   });
 

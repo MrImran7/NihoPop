@@ -51,3 +51,55 @@ is intentionally not restored after closing the lesson or app.
 Automated tests cover all 27 katakana lesson flows at a phone-sized viewport,
 separate scores, mistake review, catalog coverage and picker navigation. A full
 manual replay of all exercises is unnecessary.
+
+## Vocabulary update
+1. Install over the current app and confirm earlier hiragana/katakana scores remain.
+2. Choose Vocabulary basics. The eight topic cards must show Japanese ↔ English.
+3. Open Places. Read the six words; confirm kanji have kana readings, including
+   学校（がっこう）, 病院（びょういん） and 図書館（としょかん）.
+4. Complete any vocabulary lesson, deliberately missing one answer. Review mistakes:
+   only missed questions return, readings remain visible, and the saved best is unchanged.
+5. Force-stop/reopen and verify the vocabulary score persists independently.
+6. With enlarged system text and TalkBack, check readings, long choices such as
+   Cooked rice / meal, feedback and controls. Also try landscape.
+
+7. Open Everyday actions and check the dictionary-form explanation. Compare
+   来る（くる） with 行く（いく）. Open Colours and check 黄色（きいろ）.
+
+Automated tests cover all 96 vocabulary exercises, independent scores, review and picker
+navigation. Physical testing need not repeat every word.
+
+## Word bank
+1. Open Word bank using the book icon in the home toolbar. In airplane mode,
+   search for 図書館, としょかん and LIBRARY; each should find the library entry.
+2. Select a topic, enter a word from another topic, and check the no-matches
+   message. Clear search keeps the topic; Reset filters restores all 48 words.
+3. Open a result's lesson, then press Android Back. The search and topic remain.
+   Browsing alone must not mark any lesson completed.
+4. With the keyboard open, enlarged system text and landscape orientation, scroll
+   to a result and open its lesson. Check Japanese readings and controls with TalkBack.
+5. Finish a linked lesson, return to the word bank, then return home and force-stop.
+   On reopening, its score remains saved independently from existing scores.
+
+## Flashcards
+1. In Word bank, filter to Food and drink and search rice. Practise flashcards
+   must open one card for ご飯（ごはん）. The keyboard should close.
+2. Use TalkBack: the answer should be absent until Reveal answer is activated.
+   The revealed answer should be announced; Next card/Finish practice then enables.
+3. Switch to English → Japanese. Check the answer is hidden again, then reveal
+   the Japanese spelling with its kana reading.
+4. Use enlarged system text in portrait and landscape. Scroll to reach reveal,
+   next/finish and restart controls.
+5. Finish and return to Word bank: the search and topic remain. Leave another
+   deck midway with Android Back. Existing lesson scores must remain unchanged.
+
+## Saved words
+1. Save words from two topics. Force-stop and reopen the app, then open Word bank
+   and enable Saved words only: both should remain.
+2. Combine Saved words only with a topic/search. Practise flashcards should use
+   only those results; Back preserves the filters.
+3. Remove a saved word, reopen, and verify it stays removed. Reset filters must
+   restore the full list without deleting other saved words.
+4. With an empty saved list, check the guidance and disabled flashcard button.
+5. Use TalkBack and enlarged text in landscape to find and activate Save word /
+   Remove saved word. Previous kana/vocabulary scores must remain unchanged.

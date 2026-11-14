@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'lesson.dart';
 import 'progress.dart';
+import 'word_bank.dart';
+import 'saved_words.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,13 +48,39 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String section = 'All lessons';
+  late final savedWords = SavedWordsStore(widget.store.preferences);
+
+  Future<void> openLesson(Lesson lesson, {bool fromWordBank = false}) async {
+    await Navigator.of(context).push(MaterialPageRoute<void>(
+      builder: (_) => LessonPage(
+        store: widget.store, lesson: lesson,
+        returnLabel: fromWordBank ? 'Back to word bank' : 'Back to lessons',
+      ),
+    ));
+    if (mounted) setState(() {});
+  }
+
 
   @override
   Widget build(BuildContext context) {
     final visible = lessons.where((lesson) =>
         section == 'All lessons' || lesson.section == section).toList();
     return Scaffold(
-      appBar: AppBar(title: const Text('NihoPop')),
+      appBar: AppBar(
+        title: const Text('NihoPop'),
+        actions: [
+          IconButton(
+            tooltip: 'Word bank',
+            icon: const Icon(Icons.menu_book_outlined),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute<void>(
+              builder: (_) => WordBankPage(
+                savedWords: savedWords,
+                onOpenLesson: (lesson) => openLesson(lesson, fromWordBank: true),
+              ),
+            )),
+          ),
+        ],
+      ),
       body: SafeArea(child: Column(children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(24, 12, 24, 8),
@@ -90,15 +118,10 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 12),
                   Text(widget.store.completed(lesson.id)
                       ? 'Completed • Best: ${widget.store.best(lesson.id)}/${lesson.exercises.length}'
-                      : '${lesson.exercises.length} questions • ${lesson == greetings ? "Japanese ↔ English" : lesson.section.endsWith("rules") ? "Reading practice" : lesson.section.startsWith("Katakana") ? "Katakana ↔ Romaji" : "Hiragana ↔ Romaji"}'),
+                      : '${lesson.exercises.length} questions • ${lesson == greetings || lesson.section == "Vocabulary basics" ? "Japanese ↔ English" : lesson.section.endsWith("rules") ? "Reading practice" : lesson.section.startsWith("Katakana") ? "Katakana ↔ Romaji" : "Hiragana ↔ Romaji"}'),
                   const SizedBox(height: 20),
                   FilledButton(
-                    onPressed: () async {
-                      await Navigator.of(context).push(MaterialPageRoute<void>(
-                        builder: (_) => LessonPage(store: widget.store, lesson: lesson),
-                      ));
-                      if (mounted) setState(() {});
-                    },
+                    onPressed: () => openLesson(lesson),
                     child: Text(widget.store.completed(lesson.id) ? 'Practice again' : 'Start lesson'),
                   ),
                 ]),
@@ -115,7 +138,9 @@ class _HomePageState extends State<HomePage> {
 class LessonPage extends StatefulWidget {
   final ProgressStore store;
   final Lesson lesson;
-  const LessonPage({super.key, required this.store, required this.lesson});
+  final String returnLabel;
+  const LessonPage({super.key, required this.store, required this.lesson,
+    this.returnLabel = 'Back to lessons'});
   @override
   State<LessonPage> createState() => _LessonPageState();
 }
@@ -216,7 +241,7 @@ class _LessonPageState extends State<LessonPage> {
             const SizedBox(height: 20),
             OutlinedButton(
               onPressed: saving ? null : () => Navigator.of(context).pop(),
-              child: const Text('Back to lessons'),
+              child: Text(widget.returnLabel),
             ),
           ] else ...[
             LinearProgressIndicator(value: session.index / session.lesson.exercises.length),
