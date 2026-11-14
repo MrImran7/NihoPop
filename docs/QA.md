@@ -106,7 +106,7 @@ navigation. Physical testing need not repeat every word.
 
 ## Grammar basics
 1. Install as an update. Existing kana/vocabulary scores and saved words should remain.
-2. Choose Grammar basics. Eight lesson cards should show Sentence practice.
+2. Choose Grammar basics. Eleven lesson cards should show Sentence practice.
 3. Read Statements and Negatives: check は, じゃないです and ではありません render clearly.
 4. Complete one lesson with a mistake. Review mistakes, return, force-stop and reopen:
    the original lesson score must persist and other scores must remain unchanged.
@@ -122,3 +122,11 @@ navigation. Physical testing need not repeat every word.
    at enlarged text sizes and in landscape.
 3. Complete one new lesson with a mistake and review it. Reopen the app: the new
    score should persist while the first five grammar scores and saved words remain.
+
+## Destinations, times and past actions
+1. Open the three new grammar lessons. Check に／へ, はちじ／くじ and the longer
+   ませんでした endings render clearly on your device.
+2. With large system text and landscape orientation, complete Past actions.
+   Check long answers and feedback remain reachable.
+3. Complete one new lesson with a mistake and review it. Force-stop/reopen:
+   its score and all previous grammar scores/bookmarks must remain unchanged.

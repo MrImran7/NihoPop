@@ -1,6 +1,6 @@
 # Grammar basics
 
-Eight original lessons, eight exercises each. Choose Grammar basics in Lesson group.
+Eleven original lessons, eight exercises each. Choose Grammar basics in Lesson group.
 Suggested order:
 
 | Lesson | Pattern |
@@ -13,6 +13,9 @@ Suggested order:
 | Polite actions | Six dictionary/polite verb pairs; ます / ません |
 | Direct objects | Object + を + action; verb questions with か |
 | Action locations | Place + で + object + を + action |
+| Destinations | Place + に / へ + いきます |
+| Times | Clock time + に; relative-day words without に |
+| Past actions | ました / ませんでした; past questions and replies |
 
 Introductions explain patterns and gloss the words used. Practice includes choosing
 whole sentences, interpreting meaning, filling a particle/ending and identifying
@@ -44,9 +47,9 @@ Explanations, lesson arrangement and exercises are original. No source curriculu
 pages, audio or illustrations are bundled.
 
 ## Verification
-Automated tests complete all 64 questions, preserve other scores/bookmarks, exercise
+Automated tests complete all 88 questions, preserve other scores/bookmarks, exercise
 group navigation and abandoned attempts, and review a wrong answer without changing
-the saved best. The question and action-location lessons also run with enlarged text on a phone viewport.
+the saved best. The question, action-location and past-action lessons also run with enlarged text on a phone viewport.
 Physical font, TalkBack and OS persistence checks are in docs/QA.md.
 
 ## Action-sentence extension
@@ -62,3 +65,16 @@ contrastive は reading is not treated as an ungrammatical alternative.
 を is taught with its ordinary modern o pronunciation.
 で is limited to action locations here, not destinations or existence.
 Context identifies the subject where an English translation supplies I or you.
+
+## Destinations, times and past actions
+に and へ are both accepted for the taught movement examples; they are never
+competing answers to an unrestricted destination blank. Directional へ is pronounced
+e. Action-location で is contrasted with destination に.
+
+Time practice explicitly teaches さんじ, はちじ and くじ. に marks clock times in
+the selected pattern; あした and きのう normally appear without に in simple sentences.
+The course does not claim that every time expression requires に.
+
+Past practice changes the already-taught polite verb forms to ました and
+ませんでした. It includes questions, replies, and irregular きます → きました.
+Noun-past でした and full verb-group conjugation rules remain outside this update.

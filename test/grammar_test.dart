@@ -20,6 +20,9 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
 
 void main() {
   final answers = <Lesson, List<String>>{
+    grammarDestinations: ['えきにいきます。', 'に', 'e', 'I do not go to the park.', 'としょかんにいきますか。', 'へ', 'がっこうでほんをよみます。', 'こうえんにいきます。'],
+    grammarTimes: ['に', 'はちじにがっこうにいきます。', 'The time', 'The destination', 'At three o’clock', 'くじ', 'Without に after あした', 'くじにえきにいきます。'],
+    grammarPastActions: ['たべました', 'よみませんでした', 'きのうみずをのみました。', 'I did not eat bread yesterday.', 'きのうえきにいきましたか。', 'はい、いきました。', 'きました', 'いいえ、よみませんでした。'],
     grammarPoliteVerbs: ['たべます', 'のみます', 'よみます', 'みます', 'いきます', 'きます', 'よみません', 'I will go tomorrow.'],
     grammarObjects: ['パンをたべます。', 'を', 'o', 'みずをのみます。', 'パンをたべません。', 'ほんをよみますか。', 'Fish', 'I do not drink tea.'],
     grammarActionPlaces: ['で', 'こうえんでパンをたべます。', 'At the library', 'Water', 'としょかんでほんをよみません。', 'がっこうでみずをのみますか。', 'で, then を', 'がっこうでパンをたべます。'],
@@ -46,7 +49,7 @@ void main() {
       await tester.pumpWidget(MaterialApp(
         builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaler:
-              TextScaler.linear((entry.key == grammarQuestions || entry.key == grammarActionPlaces) ? 1.6 : 1)),
+              TextScaler.linear((entry.key == grammarQuestions || entry.key == grammarActionPlaces || entry.key == grammarPastActions) ? 1.6 : 1)),
           child: child!,
         ),
         home: LessonPage(store: store, lesson: entry.key),
@@ -117,9 +120,9 @@ void main() {
     expect(find.text(greetings.title), findsOneWidget);
   });
 
-  test('grammar catalog has eight independent lessons and explained answers', () {
-    expect(grammarLessons.length, 8);
-    expect(grammarLessons.expand((l) => l.exercises).length, 64);
+  test('grammar catalog has eleven independent lessons and explained answers', () {
+    expect(grammarLessons.length, 11);
+    expect(grammarLessons.expand((l) => l.exercises).length, 88);
     for (final entry in answers.entries) {
       expect(entry.key.id.startsWith('grammar-'), true);
       expect(entry.key.section, 'Grammar basics');

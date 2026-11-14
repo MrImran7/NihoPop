@@ -138,6 +138,57 @@ const grammarActionPlaces = Lesson(
   section: 'Grammar basics',
 );
 
+const grammarDestinations = Lesson(
+  'grammar-destinations-v1',
+  'Grammar: going somewhere with に and へ',
+  'With いきます (go), place + に gives the destination.\n\nがっこうにいきます。 = I go to school.\nえきにいきます。 = I go to the station.\nこうえんにいきません。 = I do not go to the park.\n\nがっこう = school; えき = station; こうえん = park; としょかん = library.\nTranslations assume the speaker is the subject unless the context says otherwise.\n\nへ can also mark the direction of movement: がっこうへいきます。 It is written へ but pronounced e as a particle. Both に and へ work in this example; they are not interchangeable in every use.\nCompare がっこうにいきます (go to school) with がっこうでほんをよみます (read a book at school). に gives the destination here; で gives the location of an action.',
+  [
+    Exercise('Choose “I go to the station.” using に.', ['がっこうにいきます。', 'えきにいきます。', 'えきにいきません。'], 1, 'えき is station and に marks the destination of いきます.'),
+    Exercise('Using the destination pattern taught here, fill the blank: がっこう ___ いきます。', ['を', 'で', 'に'], 2, 'Use に for the destination; で marks an action location in the earlier lesson.'),
+    Exercise('How is へ pronounced when it marks movement direction?', ['e', 'he', 'wa'], 0, 'The particle is written へ and pronounced e.'),
+    Exercise('What does こうえんにいきません。 mean when the speaker is the subject?', ['I go to the park.', 'I do not go to the park.', 'I do not go to school.'], 1, 'こうえん is park; いきません is the negative of go.'),
+    Exercise('Ask whether the listener goes to the library.', ['としょかんにいきます。', 'えきにいきますか。', 'としょかんにいきますか。'], 2, 'としょかん is the destination and final か makes the sentence a question.'),
+    Exercise('Which particle can replace に in がっこうにいきます。 to mark movement direction?', ['へ', 'で', 'の'], 0, 'がっこうへいきます is also valid; へ marks direction.'),
+    Exercise('Which sentence describes reading at school, rather than going there?', ['がっこうにいきます。', 'がっこうでほんをよみます。', 'がっこうへいきます。'], 1, 'で marks where reading happens. The other two sentences describe going to school.'),
+    Exercise('Change only the destination in えきにいきます。 to the park.', ['えきにいきません。', 'としょかんにいきます。', 'こうえんにいきます。'], 2, 'Replace えき with こうえん; keep the affirmative verb unchanged.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarTimes = Lesson(
+  'grammar-times-v1',
+  'Grammar: saying when with に',
+  'Put に after a clock time to mark when an action happens in the pattern taught here.\n\nさんじ = three o’clock\nはちじ = eight o’clock\nくじ = nine o’clock\n\nさんじにほんをよみます。 = I read a book at three.\nはちじにがっこうにいきます。 = I go to school at eight.\nThe two に particles mark different things: はちじに is a time, がっこうに is a destination.\n\nあした = tomorrow; きのう = yesterday. These relative-day words normally appear without に in simple sentences: あしたがっこうにいきます。 = I will go to school tomorrow.\nWe practise clock times, not every kind of time expression. Translations assume the speaker is the subject; the same forms can describe habits or plans according to context.',
+  [
+    Exercise('Use the time-marker pattern: さんじ ___ ほんをよみます。', ['を', 'に', 'で'], 1, 'に follows the clock time さんじ; を marks the book as the object.'),
+    Exercise('Choose “I go to school at eight.”', ['くじにがっこうにいきます。', 'はちじにえきにいきます。', 'はちじにがっこうにいきます。'], 2, 'はちじに supplies the time and がっこうに supplies the destination.'),
+    Exercise('In はちじにがっこうにいきます。, what does the first に mark?', ['The time', 'The destination', 'The direct object'], 0, 'The first に follows はちじ, eight o’clock.'),
+    Exercise('In はちじにがっこうにいきます。, what does the second に mark?', ['The time', 'The destination', 'The direct object'], 1, 'The second に follows がっこう, school.'),
+    Exercise('The speaker says さんじにほんをよみます。 When do they read?', ['At eight o’clock', 'At nine o’clock', 'At three o’clock'], 2, 'さんじ means three o’clock.'),
+    Exercise('Which reading means nine o’clock?', ['くじ', 'きゅうじ', 'さんじ'], 0, 'Nine o’clock is くじ, not きゅうじ.'),
+    Exercise('How is あした (tomorrow) normally used before がっこうにいきます in a simple sentence?', ['With を after あした', 'Without に after あした', 'With の after あした'], 1, 'Relative-day words like あした normally do not take に here.'),
+    Exercise('Change only the time in はちじにえきにいきます。 to nine.', ['はちじにがっこうにいきます。', 'くじにえきにいきません。', 'くじにえきにいきます。'], 2, 'Replace はちじ with くじ; keep the destination and affirmative meaning.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarPastActions = Lesson(
+  'grammar-past-actions-v1',
+  'Grammar: actions in the past',
+  'For these polite verbs, replace ます with ました for an affirmative past action. Replace ません with ませんでした for a negative past action.\n\nたべます → たべました (ate)\nのみます → のみました (drank)\nよみます → よみました (read, past)\nいきます → いきました (went)\nきます → きました (came)\nよみません → よみませんでした (did not read)\n\nきのう = yesterday.\nきのうパンをたべました。 = I ate bread yesterday.\nきのうほんをよみませんでした。 = I did not read a book yesterday.\nきのうえきにいきましたか。 = Did you go to the station yesterday?\nはい、いきました。 = Yes, I did.\nいいえ、いきませんでした。 = No, I did not.\n\nThe context supplies I or you in these translations. Add か to ask a polite past question. These are verb endings; past noun sentences with でした are a separate pattern.',
+  [
+    Exercise('Make たべます affirmative past.', ['たべません', 'たべました', 'たべるました'], 1, 'Replace ます with ました: たべました.'),
+    Exercise('Make よみません past negative.', ['よみました', 'よむませんでした', 'よみませんでした'], 2, 'The past negative of よみます is よみませんでした.'),
+    Exercise('Choose “I drank water yesterday.”', ['きのうみずをのみました。', 'きのうおちゃをのみました。', 'きのうみずをのみませんでした。'], 0, 'きのう means yesterday; みず is water; のみました is drank.'),
+    Exercise('What does きのうパンをたべませんでした。 mean when the speaker is the subject?', ['I ate bread yesterday.', 'I did not eat bread yesterday.', 'I will eat bread tomorrow.'], 1, 'ませんでした makes the verb past negative.'),
+    Exercise('Ask whether the listener went to the station yesterday.', ['きのうえきにいきました。', 'きのうこうえんにいきましたか。', 'きのうえきにいきましたか。'], 2, 'Use the past verb いきました followed by question particle か.'),
+    Exercise('You are asked きのうえきにいきましたか。 You did go. Choose the reply.', ['はい、いきました。', 'いいえ、いきませんでした。', 'はい、いきませんでした。'], 0, 'Confirm the affirmative past question with はい and いきました.'),
+    Exercise('Choose the polite past form of きます (come).', ['くるました', 'きました', 'いきました'], 1, 'きます becomes きました. いきました means went, not came.'),
+    Exercise('You are asked きのうほんをよみましたか。 You did not. Choose the reply.', ['はい、よみました。', 'いいえ、よみました。', 'いいえ、よみませんでした。'], 2, 'いいえ answers no; よみませんでした says did not read.'),
+  ],
+  section: 'Grammar basics',
+);
+
 const grammarLessons = [
   grammarStatements,
   grammarNegatives,
@@ -147,4 +198,7 @@ const grammarLessons = [
   grammarPoliteVerbs,
   grammarObjects,
   grammarActionPlaces,
+  grammarDestinations,
+  grammarTimes,
+  grammarPastActions,
 ];
