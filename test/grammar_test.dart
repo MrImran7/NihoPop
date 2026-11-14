@@ -20,6 +20,8 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
 
 void main() {
   final answers = <Lesson, List<String>>{
+    grammarExistence: ['あります', 'います', 'がっこうにせんせいがいます。', 'に', 'が', 'へやにほんがありません。', 'へやにねこがいません。', 'いいえ、ありません。'],
+    grammarLocations: ['ほんはつくえのうえにあります。', 'ねこはつくえのしたにいます。', 'Inside the box', 'の', 'ほんはどこにありますか。', 'せんせいはどこにいますか。', 'せんせいはへやにいます。', 'ほんはへやにあります。'],
     grammarNounPast: ['がくせいでした', 'そのときわたしはせんせいでした。', 'がくせいじゃなかったです', 'At that time, I was not a student.', 'そのときせんせいでしたか。', 'はい、がくせいでした。', 'いいえ、せんせいじゃなかったです。', 'がくせいではありませんでした'],
     grammarIAdjectives: ['かばんはおおきいです。', 'あたらしいほん', 'おおきくないです', 'The book is not old.', 'かばんはちいさいですか。', 'ほんはあたらしくないです。', 'ふるい', 'ちいさいかばん'],
     grammarNaAdjectives: ['こうえんはしずかです。', 'しずかなとしょかん', 'べんりじゃないです', 'The park is lively.', 'きれいながっこう', 'がっこうはきれいですか。', 'としょかんはしずかじゃないです。', 'あたらしいほん / しずかなこうえん'],
@@ -52,7 +54,7 @@ void main() {
       await tester.pumpWidget(MaterialApp(
         builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaler:
-              TextScaler.linear((entry.key == grammarQuestions || entry.key == grammarActionPlaces || entry.key == grammarPastActions || entry.key == grammarNaAdjectives) ? 1.6 : 1)),
+              TextScaler.linear((entry.key == grammarQuestions || entry.key == grammarActionPlaces || entry.key == grammarPastActions || entry.key == grammarNaAdjectives || entry.key == grammarLocations) ? 1.6 : 1)),
           child: child!,
         ),
         home: LessonPage(store: store, lesson: entry.key),
@@ -123,9 +125,9 @@ void main() {
     expect(find.text(greetings.title), findsOneWidget);
   });
 
-  test('grammar catalog has fourteen independent lessons and explained answers', () {
-    expect(grammarLessons.length, 14);
-    expect(grammarLessons.expand((l) => l.exercises).length, 112);
+  test('grammar catalog has sixteen independent lessons and explained answers', () {
+    expect(grammarLessons.length, 16);
+    expect(grammarLessons.expand((l) => l.exercises).length, 128);
     for (final entry in answers.entries) {
       expect(entry.key.id.startsWith('grammar-'), true);
       expect(entry.key.section, 'Grammar basics');

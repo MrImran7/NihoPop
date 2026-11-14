@@ -240,6 +240,40 @@ const grammarNaAdjectives = Lesson(
   section: 'Grammar basics',
 );
 
+const grammarExistence = Lesson(
+  'grammar-existence-v1',
+  'Grammar: what is there?',
+  'Use あります for the presence of things such as books and bags. Use います for people and animals such as teachers and cats. Plants normally use あります too: this is not simply a living/non-living distinction.\n\nPlace + に + thing/person + が + あります / います introduces what is there.\nへや = room; ほん = book; かばん = bag; ねこ = cat; せんせい = teacher; がっこう = school; こうえん = park.\nへやにほんがあります。 = There is a book in the room.\nこうえんにねこがいます。 = There is a cat in the park.\n\nに marks where something or someone exists. が marks the thing or person introduced. Use に here, compared with で for where an action happens.\n\nThe polite negatives are ありません and いません.\nへやにほんがありません。 = There is no book in the room.\nへやにねこがいません。 = There is no cat in the room.\nAdd か to ask: へやにほんがありますか。 = Is there a book in the room?\nはい、あります。 = Yes, there is.\nいいえ、ありません。 = No, there is not.\nThese English examples use singular nouns; Japanese nouns do not always specify number.',
+  [
+    Exercise('Complete へやにほんが____。 (There is a book in the room.)', ['います', 'あります', 'たべます'], 1, 'A book is a thing, so use あります.'),
+    Exercise('Complete こうえんにねこが____。 (There is a cat in the park.)', ['あります', 'よみます', 'います'], 2, 'Use います for an animal such as a cat.'),
+    Exercise('Choose “There is a teacher at the school.”', ['がっこうにせんせいがいます。', 'がっこうにせんせいがあります。', 'こうえんにせんせいがいます。'], 0, 'がっこう is school; use います for a teacher.'),
+    Exercise('Which particle marks the location in へや__ほんがあります。?', ['で', 'に', 'を'], 1, 'に marks the location of existence. で marks where the actions taught earlier happen.'),
+    Exercise('In へやにほんがあります。, which particle marks the thing being introduced?', ['に', 'の', 'が'], 2, 'が follows ほん, the thing whose presence is introduced.'),
+    Exercise('Choose “There is no book in the room.”', ['へやにほんがありません。', 'へやにほんがあります。', 'へやにねこがいません。'], 0, 'ありません is the polite negative of あります.'),
+    Exercise('Choose “There is no cat in the room.”', ['へやにねこがいます。', 'へやにねこがいません。', 'へやにほんがありません。'], 1, 'いません is the polite negative of います.'),
+    Exercise('You are asked へやにほんがありますか。 There is no book. Choose the reply.', ['はい、あります。', 'いいえ、いません。', 'いいえ、ありません。'], 2, 'Answer no with いいえ and the negative for a thing: ありません.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarLocations = Lesson(
+  'grammar-locations-v1',
+  'Grammar: where is it?',
+  'To say where a known thing or person is, use:\nThing/person + は + place + に + あります / います.\nThis makes the known item the topic. Compare へやにほんがあります (There is a book in the room) with ほんはへやにあります (The book is in the room).\n\nつくえ = desk; はこ = box; ほん = book; かぎ = key; ねこ = cat; せんせい = teacher; へや = room; こうえん = park.\nうえ = on/above; した = under/below; なか = inside; どこ = where.\nReference object + の + position makes a location:\nつくえのうえ = on the desk (in these examples)\nつくえのした = under the desk\nはこのなか = inside the box\n\nほんはつくえのうえにあります。 = The book is on the desk.\nねこはつくえのしたにいます。 = The cat is under the desk.\nかぎははこのなかにあります。 = The key is inside the box.\n\nAsk ほんはどこにありますか。 (Where is the book?) or せんせいはどこにいますか。 (Where is the teacher?). Keep あります for things and います for people/animals. Both these location patterns use に, not the action-location で.',
+  [
+    Exercise('Choose “The book is on the desk.”', ['ほんはつくえのしたにあります。', 'ほんはつくえのうえにあります。', 'ほんはつくえのうえにいます。'], 1, 'つくえのうえ means on the desk here; a book uses あります.'),
+    Exercise('Choose “The cat is under the desk.”', ['ねこはつくえのうえにいます。', 'ねこはつくえのしたにあります。', 'ねこはつくえのしたにいます。'], 2, 'した means under; a cat uses います.'),
+    Exercise('Where is the key in かぎははこのなかにあります。?', ['Inside the box', 'On the desk', 'Under the desk'], 0, 'はこ is box and なか means inside.'),
+    Exercise('Complete the location phrase つくえ__うえ (on the desk).', ['を', 'の', 'が'], 1, 'の connects the reference object with the position word.'),
+    Exercise('Ask “Where is the book?”', ['ほんはどこにいますか。', 'ねこはどこにいますか。', 'ほんはどこにありますか。'], 2, 'どこ asks where; a book uses あります.'),
+    Exercise('Ask “Where is the teacher?”', ['せんせいはどこにいますか。', 'せんせいはどこにありますか。', 'せんせいはへやにいます。'], 0, 'A teacher is a person, so use どこにいますか.'),
+    Exercise('The teacher is in the room. Answer せんせいはどこにいますか。', ['せんせいはこうえんにいます。', 'せんせいはへやにいます。', 'せんせいはへやにあります。'], 1, 'へやにいます gives the location of the teacher.'),
+    Exercise('Choose the sentence locating a known book, using the book as the topic.', ['へやにほんがあります。', 'ほんはへやにいます。', 'ほんはへやにあります。'], 2, 'ほんは makes the book the topic. へやにほんがあります is also grammatical, but introduces a book rather than using it as the topic.'),
+  ],
+  section: 'Grammar basics',
+);
+
 const grammarLessons = [
   grammarStatements,
   grammarNegatives,
@@ -255,4 +289,6 @@ const grammarLessons = [
   grammarNounPast,
   grammarIAdjectives,
   grammarNaAdjectives,
+  grammarExistence,
+  grammarLocations,
 ];

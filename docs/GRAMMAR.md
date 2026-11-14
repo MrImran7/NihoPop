@@ -1,6 +1,6 @@
 # Grammar basics
 
-Fourteen original lessons, eight exercises each. Choose Grammar basics in Lesson group.
+Sixteen original lessons, eight exercises each. Choose Grammar basics in Lesson group.
 Suggested order:
 
 | Lesson | Pattern |
@@ -19,6 +19,8 @@ Suggested order:
 | Past noun sentences | でした / じゃなかったです; recognition of ではありませんでした |
 | い-adjectives | Direct noun modification; い → くないです |
 | な-adjectives | な before nouns; です / じゃないです; きれい exception |
+| Existence | Place + に + noun + が + あります / います; negatives |
+| Locations | Topic + は + location + に + あります / います; どこ questions |
 
 Introductions explain patterns and gloss the words used. Practice includes choosing
 whole sentences, interpreting meaning, filling a particle/ending and identifying
@@ -43,6 +45,8 @@ Mistake review uses the shared lesson engine and does not replace the original s
 
 ## References
 Grammar rules checked against:
+- [Tokyo University of Foreign Studies: relative locations](https://www.coelang.tufs.ac.jp/mt/ja/gmod/courses/c01/lesson02/step3/explanation/007.html)
+- [Japan Foundation Irodori syllabus: existence and locations](https://www.irodori.jpf.go.jp/assets/data/X_syllabus.pdf)
 - [Japan Foundation Irodori grammar notes](https://www.irodori.jpf.go.jp/assets/data/Grammar_all.pdf)
 - [Tokyo University of Foreign Studies: NはNです](https://www.coelang.tufs.ac.jp/mt/ja/gmod/contents/explanation/002.html)
 
@@ -50,9 +54,9 @@ Explanations, lesson arrangement and exercises are original. No source curriculu
 pages, audio or illustrations are bundled.
 
 ## Verification
-Automated tests complete all 112 questions, preserve other scores/bookmarks, exercise
+Automated tests complete all 128 questions, preserve other scores/bookmarks, exercise
 group navigation and abandoned attempts, and review a wrong answer without changing
-the saved best. The question, action-location past-action and な-adjective lessons also run with enlarged text on a phone viewport.
+the saved best. The question, action-location, past-action, な-adjective and location lessons also run with enlarged text on a phone viewport.
 Physical font, TalkBack and OS persistence checks are in docs/QA.md.
 
 ## Action-sentence extension
@@ -93,3 +97,15 @@ identified as a な-adjective despite its final い sound. The irregular negativ
 いい, adjective past forms and adjective linking are deferred.
 Introductions gloss new words; these grammar-only glosses do not expand the 48-word
 vocabulary bank. All questions have one intended answer in the stated context.
+
+## Existence and locations
+あります is used for things and normally plants; います for people and animals in
+these examples. Avoid the misleading claim that all living things use います.
+Place + に + noun + が introduces what is present; noun + は + place + に locates
+a known topic. A question contrasting these patterns explicitly requests the topic,
+rather than labelling the other grammatical sentence incorrect.
+
+の links a reference object with うえ, した or なか. うえ can mean on or above;
+desk examples explicitly use on. Location に is distinguished from action-location
+で. Japanese nouns do not necessarily specify number; singular English examples
+are contextual translations. Counters and comprehensive は/が rules are deferred.
