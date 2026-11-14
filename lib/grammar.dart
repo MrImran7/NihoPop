@@ -308,6 +308,40 @@ const grammarCheckpoint = Lesson(
   section: 'Grammar basics',
 );
 
+const grammarLikes = Lesson(
+  'grammar-likes-v1',
+  'Grammar: things you like',
+  'Express a preference with person + は + thing + が + すきです.\nすき is a な-adjective, even though English uses the verb like. Do not add ます to すき.\n\nわたし = I; パン = bread; おちゃ = tea; さかな = fish; ねこ = cat; なに = what.\nわたしはおちゃがすきです。 = I like tea.\nおちゃがすきですか。 = Do you like tea?\nはい、すきです。 = Yes, I do.\n\nFor a conversational polite negative, use すきじゃないです:\nおちゃはすきじゃないです。 = I do not like tea.\nThe thing disliked often becomes the topic with は in a negative sentence. が is also possible in appropriate contexts; this lesson does not teach は as compulsory in every negative.\n\nあまり + negative softens the preference:\nさかなはあまりすきじゃないです。 = I do not like fish very much.\nなにがすきですか。 = What do you like?\nThe person can be omitted when clear from the conversation. In these examples the speaker states their own preference or asks the listener.',
+  [
+    Exercise('Choose “I like tea.”', ['わたしはパンがすきです。', 'わたしはおちゃがすきです。', 'わたしはおちゃがすきます。'], 1, 'Use thing + が + すきです. すき is not a ます verb.'),
+    Exercise('In わたしはパンがすきです。, which particle follows the thing liked?', ['を', 'の', 'が'], 2, 'が follows パン in the preference pattern taught here.'),
+    Exercise('Ask “Do you like cats?”', ['ねこがすきですか。', 'ねこがすきです。', 'さかながすきですか。'], 0, 'Use ねこ for cats and add か to ask the question.'),
+    Exercise('You are asked おちゃがすきですか。 You like tea. Choose the reply.', ['いいえ、すきじゃないです。', 'はい、すきです。', 'はい、すきじゃないです。'], 1, 'はい confirms the positive question; すきです expresses liking.'),
+    Exercise('Make すきです negative using じゃないです.', ['すきません', 'すきくないです', 'すきじゃないです'], 2, 'すき is a な-adjective and uses じゃないです for this negative.'),
+    Exercise('What does さかなはあまりすきじゃないです。 mean when the speaker states a preference?', ['I do not like fish very much.', 'I like fish very much.', 'I do not eat fish.'], 0, 'あまり with a negative means not very much here; it does not say whether the speaker eats fish.'),
+    Exercise('Ask “What do you like?”', ['ねこがすきですか。', 'なにがすきですか。', 'なにがすきです。'], 1, 'なに asks what; sentence-final か makes the polite question.'),
+    Exercise('You are asked なにがすきですか。 Say that you like bread.', ['おちゃがすきです。', 'パンはすきじゃないです。', 'パンがすきです。'], 2, 'パン means bread; がすきです states the preference.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarInvitations = Lesson(
+  'grammar-invitations-v1',
+  'Grammar: invitations and suggestions',
+  'Invite someone to do something together with a polite verb ending in ませんか. Replace ます in a familiar polite verb:\nたべます → たべませんか (Would you like to eat ...?)\nのみます → のみませんか (Would you like to drink ...?)\nいきます → いきませんか (Would you like to go ...?)\n\nいっしょに = together; あした = tomorrow; パン = bread; おちゃ = tea; こうえん = park.\nいっしょにこうえんにいきませんか。 = Would you like to go to the park together?\nHere ませんか is an invitation, not a statement that someone will not go. Context matters; not every negative question is an invitation.\n\nReplace ます with ましょう to suggest a shared action or agree to it:\nたべましょう = Let’s eat.\nのみましょう = Let’s drink.\nいきましょう = Let’s go.\nいっしょにおちゃをのみましょう。 = Let’s drink tea together.\nいいですね。いきましょう。 = That sounds good. Let’s go.\n\nTo politely decline when the suggested day does not work:\nすみません、あしたはちょっと…。 = Sorry, tomorrow is a little difficult…\nIn this invitation context, the unfinished ちょっと… softly implies that you cannot accept. It does not promise to join for a short time.',
+  [
+    Exercise('Invite a friend to drink tea together using ませんか.', ['いっしょにおちゃをのみました。', 'いっしょにおちゃをのみませんか。', 'いっしょにパンをたべませんか。'], 1, 'Replace のみます with のみませんか to make this invitation.'),
+    Exercise('Choose “Let’s go to the park together.”', ['いっしょにこうえんにいきました。', 'いっしょにこうえんにいきません。', 'いっしょにこうえんにいきましょう。'], 2, 'いきましょう suggests going together; に marks the destination.'),
+    Exercise('Change たべます to the taught “Let’s eat” form.', ['たべましょう', 'たべました', 'たべません'], 0, 'Replace ます with ましょう.'),
+    Exercise('A friend says いっしょにこうえんにいきませんか。 to invite you out. What do they mean?', ['I did not go to the park.', 'Would you like to go to the park together?', 'Let’s eat bread together.'], 1, 'In this stated context, ませんか invites a shared action.'),
+    Exercise('Accept an invitation to the park with “That sounds good. Let’s go.”', ['すみません、あしたはちょっと…。', 'いいですね。のみましょう。', 'いいですね。いきましょう。'], 2, 'いいですね accepts the idea; いきましょう agrees to go.'),
+    Exercise('You cannot join tomorrow. Which taught reply politely declines?', ['すみません、あしたはちょっと…。', 'いいですね。いきましょう。', 'はい、いきましょう。'], 0, 'In this context, あしたはちょっと… implies tomorrow does not work.'),
+    Exercise('Choose “Let’s eat bread together.”', ['いっしょにパンをたべました。', 'いっしょにパンをたべましょう。', 'いっしょにおちゃをのみましょう。'], 1, 'パンを is the object; たべましょう suggests eating.'),
+    Exercise('Which word means “together” in the invitations?', ['あした', 'こうえん', 'いっしょに'], 2, 'いっしょに means together; あした means tomorrow and こうえん means park.'),
+  ],
+  section: 'Grammar basics',
+);
+
 const grammarLessons = [
   grammarStatements,
   grammarNegatives,
@@ -327,4 +361,6 @@ const grammarLessons = [
   grammarLocations,
   grammarAdjectivePast,
   grammarCheckpoint,
+  grammarLikes,
+  grammarInvitations,
 ];

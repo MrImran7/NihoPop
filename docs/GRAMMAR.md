@@ -1,6 +1,6 @@
 # Grammar basics
 
-Eighteen original lessons, eight exercises each. Choose Grammar basics in Lesson group.
+Twenty original lessons, eight exercises each. Choose Grammar basics in Lesson group.
 Suggested order:
 
 | Lesson | Pattern |
@@ -23,6 +23,8 @@ Suggested order:
 | Locations | Topic + は + location + に + あります / います; どこ questions |
 | Past descriptions | Regular い-adjective かったです / くなかったです; な-adjective でした / じゃなかったです |
 | Mixed review | Eight contextual questions combining earlier patterns |
+| Preferences | がすきです; すきじゃないです; あまり + negative |
+| Invitations | ませんか / ましょう; accepting and politely declining |
 
 Introductions explain patterns and gloss the words used. Practice includes choosing
 whole sentences, interpreting meaning, filling a particle/ending and identifying
@@ -56,9 +58,9 @@ Explanations, lesson arrangement and exercises are original. No source curriculu
 pages, audio or illustrations are bundled.
 
 ## Verification
-Automated tests complete all 144 questions, preserve other scores/bookmarks, exercise
+Automated tests complete all 160 questions, preserve other scores/bookmarks, exercise
 group navigation and abandoned attempts, and review a wrong answer without changing
-the saved best. The question, action-location, past-action, な-adjective, location and mixed-review lessons also run with enlarged text on a phone viewport.
+the saved best. The question, action-location, past-action, な-adjective, location, mixed-review and invitation lessons also run with enlarged text on a phone viewport.
 Physical font, TalkBack and OS persistence checks are in docs/QA.md.
 
 ## Action-sentence extension
@@ -121,3 +123,15 @@ used as competing incorrect answers.
 The eight-question mixed review reuses taught vocabulary and patterns. It is a
 normal replayable lesson with its own saved score, not a mastery certification,
 placement test or prerequisite gate. It does not change earlier lesson scores.
+
+## Preferences and invitations
+すき is a な-adjective, not a ます verb. が introduces the thing liked in the taught
+pattern; は commonly marks it as a topic in negative examples, without claiming
+that が is always incorrect in negatives. あまり + negative means not very much
+for these preferences, and does not imply that the speaker never eats a food.
+
+Invitation questions explicitly establish the shared-action context for ませんか.
+ましょう suggests a shared action or accepts an invitation here; other uses are
+outside this lesson. The unfinished あしたはちょっと… is taught as a contextual
+polite refusal, not a universal translation of ちょっと. These lessons follow the
+existing mixed checkpoint, which continues to review only the earlier patterns.
