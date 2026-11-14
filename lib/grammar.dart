@@ -189,6 +189,57 @@ const grammarPastActions = Lesson(
   section: 'Grammar basics',
 );
 
+const grammarNounPast = Lesson(
+  'grammar-noun-past-v1',
+  'Grammar: noun sentences in the past',
+  'For noun sentences, change です to でした to describe the past. Change じゃないです to じゃなかったです for a polite conversational past negative. ではありませんでした is also a valid polite past negative.\n\nそのとき = at that time.\nわたし = I; がくせい = student; せんせい = teacher; ともだち = friend. Here ともだち means my friend.\nそのときわたしはがくせいでした。 = At that time, I was a student.\nそのときわたしはせんせいじゃなかったです。 = At that time, I was not a teacher.\n\nAdd か for a polite question: そのときがくせいでしたか。 = Were you a student at that time?\nはい、がくせいでした。 = Yes, I was a student.\nいいえ、がくせいじゃなかったです。 = No, I was not a student.\n\nNoun + でした differs from verb endings such as たべました (ate). Do not attach ました directly to a noun.',
+  [
+    Exercise('Change がくせいです to a past statement.', ['がくせいました', 'がくせいでした', 'がくせいじゃないです'], 1, 'A noun statement uses でした for the affirmative past.'),
+    Exercise('Choose “At that time, I was a teacher.”', ['そのときわたしはがくせいでした。', 'そのときわたしはせんせいじゃなかったです。', 'そのときわたしはせんせいでした。'], 2, 'そのとき means at that time; せんせいでした means was a teacher.'),
+    Exercise('Make がくせいじゃないです past negative.', ['がくせいじゃなかったです', 'がくせいでした', 'がくせいじゃないでした'], 0, 'Change じゃないです to じゃなかったです.'),
+    Exercise('What does そのときわたしはがくせいじゃなかったです。 mean?', ['At that time, I was a student.', 'At that time, I was not a student.', 'At that time, I was not a teacher.'], 1, 'じゃなかったです is past negative; がくせい means student.'),
+    Exercise('Ask “Were you a teacher at that time?” with the listener understood.', ['そのときせんせいでした。', 'そのときがくせいでしたか。', 'そのときせんせいでしたか。'], 2, 'Add か to the past noun statement to ask a polite question.'),
+    Exercise('You are asked そのときがくせいでしたか。 You were a student. Choose the reply.', ['はい、がくせいでした。', 'いいえ、がくせいじゃなかったです。', 'はい、がくせいじゃなかったです。'], 0, 'はい and がくせいでした confirm that you were a student.'),
+    Exercise('You are asked そのときせんせいでしたか。 You were not a teacher. Choose the reply.', ['はい、せんせいでした。', 'いいえ、せんせいじゃなかったです。', 'いいえ、せんせいでした。'], 1, 'いいえ answers no; じゃなかったです expresses was not.'),
+    Exercise('Which is another valid polite past negative for がくせいじゃなかったです?', ['がくせいではありません', 'がくせいでした', 'がくせいではありませんでした'], 2, 'ではありませんでした is also a polite past negative. ではありません is non-past.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarIAdjectives = Lesson(
+  'grammar-i-adjectives-v1',
+  'Grammar: い-adjectives',
+  'These い-adjectives describe things:\nおおきい = big; ちいさい = small; あたらしい = new; ふるい = old.\nほん = book; かばん = bag.\n\nUse adjective + です for a polite description:\nかばんはおおきいです。 = The bag is big.\nPut the adjective directly before a noun to describe it:\nあたらしいほん = a new book.\n\nFor these adjectives, replace the final い with くない, then add です for a polite negative:\nおおきい → おおきくないです (is not big)\nあたらしい → あたらしくないです (is not new)\nふるい → ふるくないです (is not old)\nちいさい → ちいさくないです (is not small)\n\nDo not use the noun negative じゃないです for these い-adjective descriptions. Add か to ask: かばんはおおきいですか。 = Is the bag big?\nThis lesson covers these four regular adjectives; いい (good) has an irregular negative and is not practised here.',
+  [
+    Exercise('Choose “The bag is big.”', ['かばんはちいさいです。', 'かばんはおおきいです。', 'ほんはおおきいです。'], 1, 'かばん is bag and おおきい means big.'),
+    Exercise('Choose “a new book”.', ['あたらしいなほん', 'ふるいほん', 'あたらしいほん'], 2, 'An い-adjective goes directly before the noun: あたらしいほん.'),
+    Exercise('Make おおきいです negative.', ['おおきくないです', 'おおきいじゃないです', 'おおきいでした'], 0, 'Replace the final い with くない and add です.'),
+    Exercise('What does ほんはふるくないです。 mean?', ['The book is old.', 'The book is not old.', 'The bag is not old.'], 1, 'ふるい means old; ふるくないです means is not old.'),
+    Exercise('Ask “Is the bag small?”', ['かばんはちいさいです。', 'かばんはおおきいですか。', 'かばんはちいさいですか。'], 2, 'ちいさい means small; sentence-final か asks the question.'),
+    Exercise('Choose “The book is not new.”', ['ほんはあたらしくないです。', 'ほんはあたらしいです。', 'ほんはふるくないです。'], 0, 'あたらしい becomes あたらしくないです for is not new.'),
+    Exercise('Choose the adjective meaning “old”.', ['あたらしい', 'ふるい', 'ちいさい'], 1, 'ふるい means old; あたらしい means new and ちいさい means small.'),
+    Exercise('Choose “a small bag”.', ['ちいさいなかばん', 'おおきいかばん', 'ちいさいかばん'], 2, 'Place ちいさい directly before かばん without な.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarNaAdjectives = Lesson(
+  'grammar-na-adjectives-v1',
+  'Grammar: な-adjectives',
+  'These な-adjectives describe places:\nしずか = quiet; にぎやか = lively; べんり = convenient; きれい = clean or beautiful (clean in this lesson).\nこうえん = park; としょかん = library; がっこう = school.\n\nFor a polite description, use adjective + です:\nこうえんはしずかです。 = The park is quiet.\nBefore a noun, add な:\nしずかなこうえん = a quiet park.\n\nUse じゃないです for a conversational polite negative:\nとしょかんはしずかじゃないです。 = The library is not quiet.\nではありません is another valid polite negative.\nAdd か for a question: がっこうはきれいですか。 = Is the school clean?\n\nAlthough きれい ends in the sound い, it is a な-adjective: きれいながっこう (a clean school), きれいじゃないです (is not clean). Do not classify every word ending in い as an い-adjective.\nUse な before a noun here, not before です.',
+  [
+    Exercise('Choose “The park is quiet.”', ['こうえんはしずかなです。', 'こうえんはしずかです。', 'こうえんはにぎやかです。'], 1, 'Use しずかです in a polite description; な is not added before です.'),
+    Exercise('Choose “a quiet library”.', ['しずかとしょかん', 'にぎやかなとしょかん', 'しずかなとしょかん'], 2, 'A な-adjective takes な before a noun.'),
+    Exercise('Make べんりです negative using the conversational polite form taught here.', ['べんりじゃないです', 'べんりくないです', 'べんりなです'], 0, 'な-adjectives use じゃないです for this negative pattern.'),
+    Exercise('What does こうえんはにぎやかです。 mean?', ['The park is quiet.', 'The park is lively.', 'The library is lively.'], 1, 'にぎやか means lively and こうえん means park.'),
+    Exercise('Choose “a clean school”, using きれい for clean.', ['きれいがっこう', 'しずかながっこう', 'きれいながっこう'], 2, 'きれい is a な-adjective despite its final い sound.'),
+    Exercise('Ask “Is the school clean?”', ['がっこうはきれいですか。', 'がっこうはきれいです。', 'がっこうはしずかですか。'], 0, 'Use きれいです and question particle か.'),
+    Exercise('Choose “The library is not quiet.”', ['としょかんはしずかです。', 'としょかんはしずかじゃないです。', 'こうえんはしずかじゃないです。'], 1, 'しずかじゃないです means is not quiet.'),
+    Exercise('Which pair correctly describes a new book and a quiet park?', ['あたらしいなほん / しずかなこうえん', 'あたらしいほん / しずかこうえん', 'あたらしいほん / しずかなこうえん'], 2, 'An い-adjective goes directly before a noun; a な-adjective uses な.'),
+  ],
+  section: 'Grammar basics',
+);
+
 const grammarLessons = [
   grammarStatements,
   grammarNegatives,
@@ -201,4 +252,7 @@ const grammarLessons = [
   grammarDestinations,
   grammarTimes,
   grammarPastActions,
+  grammarNounPast,
+  grammarIAdjectives,
+  grammarNaAdjectives,
 ];

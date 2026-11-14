@@ -1,6 +1,6 @@
 # Grammar basics
 
-Eleven original lessons, eight exercises each. Choose Grammar basics in Lesson group.
+Fourteen original lessons, eight exercises each. Choose Grammar basics in Lesson group.
 Suggested order:
 
 | Lesson | Pattern |
@@ -16,6 +16,9 @@ Suggested order:
 | Destinations | Place + に / へ + いきます |
 | Times | Clock time + に; relative-day words without に |
 | Past actions | ました / ませんでした; past questions and replies |
+| Past noun sentences | でした / じゃなかったです; recognition of ではありませんでした |
+| い-adjectives | Direct noun modification; い → くないです |
+| な-adjectives | な before nouns; です / じゃないです; きれい exception |
 
 Introductions explain patterns and gloss the words used. Practice includes choosing
 whole sentences, interpreting meaning, filling a particle/ending and identifying
@@ -47,9 +50,9 @@ Explanations, lesson arrangement and exercises are original. No source curriculu
 pages, audio or illustrations are bundled.
 
 ## Verification
-Automated tests complete all 88 questions, preserve other scores/bookmarks, exercise
+Automated tests complete all 112 questions, preserve other scores/bookmarks, exercise
 group navigation and abandoned attempts, and review a wrong answer without changing
-the saved best. The question, action-location and past-action lessons also run with enlarged text on a phone viewport.
+the saved best. The question, action-location past-action and な-adjective lessons also run with enlarged text on a phone viewport.
 Physical font, TalkBack and OS persistence checks are in docs/QA.md.
 
 ## Action-sentence extension
@@ -77,4 +80,16 @@ The course does not claim that every time expression requires に.
 
 Past practice changes the already-taught polite verb forms to ました and
 ませんでした. It includes questions, replies, and irregular きます → きました.
-Noun-past でした and full verb-group conjugation rules remain outside this update.
+Full verb-group conjugation rules remain outside this update.
+
+## Noun past and adjectives
+Past noun statements use でした and conversational polite じゃなかったです.
+ではありませんでした is recognised as another valid past negative, never used as
+a competing wrong answer to an unrestricted negative question.
+
+Four regular い-adjectives introduce direct noun modification and くないです.
+な-adjectives introduce な before nouns, without な before です. きれい is explicitly
+identified as a な-adjective despite its final い sound. The irregular negative of
+いい, adjective past forms and adjective linking are deferred.
+Introductions gloss new words; these grammar-only glosses do not expand the 48-word
+vocabulary bank. All questions have one intended answer in the stated context.

@@ -106,7 +106,7 @@ navigation. Physical testing need not repeat every word.
 
 ## Grammar basics
 1. Install as an update. Existing kana/vocabulary scores and saved words should remain.
-2. Choose Grammar basics. Eleven lesson cards should show Sentence practice.
+2. Choose Grammar basics. Fourteen lesson cards should show Sentence practice.
 3. Read Statements and Negatives: check は, じゃないです and ではありません render clearly.
 4. Complete one lesson with a mistake. Review mistakes, return, force-stop and reopen:
    the original lesson score must persist and other scores must remain unchanged.
@@ -130,3 +130,11 @@ navigation. Physical testing need not repeat every word.
    Check long answers and feedback remain reachable.
 3. Complete one new lesson with a mistake and review it. Force-stop/reopen:
    its score and all previous grammar scores/bookmarks must remain unchanged.
+
+### Noun past and adjective extension
+- In Grammar basics, complete the past noun, い-adjective and な-adjective lessons (8 questions each).
+- Check でした versus verb ました, noun past negatives and polite replies.
+- Check くないです, direct い-adjective + noun, and な before nouns for な-adjectives including きれい.
+- At enlarged font size, scroll the な-adjective introduction and longest comparison choices; confirm no clipping.
+- Reopen the app: new scores remain; earlier kana, vocabulary and grammar scores and saved words remain intact.
+- Replay with a mistake and review it; confirm review does not overwrite the saved lesson best.
