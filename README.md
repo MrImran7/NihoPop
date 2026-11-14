@@ -2,9 +2,9 @@
 NihoPop — Learn Japanese. A little Japanese, every day.
 
 Android-only Flutter app for learning Japanese through English. The offline course
-has 66 lessons: greetings, hiragana, katakana, everyday vocabulary and basic grammar.
-The eight vocabulary lessons teach 48 words through 96 exercises. Five grammar
-lessons add 40 questions, for 638 exercises across the complete app. Vocabulary covers people, food and drink, places, and
+has 69 lessons: greetings, hiragana, katakana, everyday vocabulary and basic grammar.
+The eight vocabulary lessons teach 48 words through 96 exercises. Eight grammar
+lessons add 64 questions, for 662 exercises across the complete app. Vocabulary covers people, food and drink, places, and
 everyday objects, time, transport, colours and everyday actions; kanji words display kana readings in both directions.
 It covers all 46 basic kana, 25 voiced/semi-voiced kana, 33 common contracted
 combinations plus three rare d-row forms, small っ, long vowels, particles and a
@@ -29,7 +29,8 @@ This milestone teaches recognition and reading through multiple-choice exercises
 Audio, handwriting/stroke-order assessment and spaced review are not implemented.
 Historical ゐ/ゑ and specialist loanword extensions are outside the modern core.
 Grammar basics introduces は／です statements, じゃないです negatives, possession
-with の, これ／それ／あれ and polite questions with か. Teaching notes precede
+with の, これ／それ／あれ and polite questions with か, then introduces six polite verb pairs,
+ます／ません, direct objects with を, and action locations with で. Teaching notes precede
 sentence selection, meaning checks and particle practice using familiar vocabulary.
 See [grammar scope](docs/GRAMMAR.md).
 
@@ -93,7 +94,7 @@ Commit a generated pubspec.lock once the Flutter environment is available.
 
 ## Structure
 - lib/lesson.dart: original content and lesson state, independent of widgets.
-- lib/grammar.dart: five original beginner grammar lessons.
+- lib/grammar.dart: eight original beginner grammar lessons.
 - lib/vocabulary.dart: eight original vocabulary lessons with kana readings.
 - lib/vocabulary_words.dart: searchable reference, checked against lesson content.
 - lib/word_bank.dart: offline word lookup and links to lessons.

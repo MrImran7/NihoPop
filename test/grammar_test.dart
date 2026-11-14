@@ -20,6 +20,9 @@ Future<void> tapVisible(WidgetTester tester, Finder finder) async {
 
 void main() {
   final answers = <Lesson, List<String>>{
+    grammarPoliteVerbs: ['たべます', 'のみます', 'よみます', 'みます', 'いきます', 'きます', 'よみません', 'I will go tomorrow.'],
+    grammarObjects: ['パンをたべます。', 'を', 'o', 'みずをのみます。', 'パンをたべません。', 'ほんをよみますか。', 'Fish', 'I do not drink tea.'],
+    grammarActionPlaces: ['で', 'こうえんでパンをたべます。', 'At the library', 'Water', 'としょかんでほんをよみません。', 'がっこうでみずをのみますか。', 'で, then を', 'がっこうでパンをたべます。'],
     grammarStatements: ['わたしはがくせいです。', 'I am a student.', 'は', 'です', 'wa', 'ともだちはせんせいです。', 'ともだち', 'Topic + は + noun + です'],
     grammarNegatives: ['わたしはがくせいじゃないです。', 'I am not a student.', 'じゃないです', 'ともだちはせんせいです。', 'わたしはがくせいじゃないです。', 'ともだちはがくせいじゃないです。', 'No; it only says they are not a student.', 'ではありません'],
     grammarPossession: ['わたしのほん', 'The teacher’s bag', 'の', 'ともだちのかさ', 'The teacher', 'わたしのかばん', 'My friend’s key', 'Owner + の + thing'],
@@ -43,7 +46,7 @@ void main() {
       await tester.pumpWidget(MaterialApp(
         builder: (context, child) => MediaQuery(
           data: MediaQuery.of(context).copyWith(textScaler:
-              TextScaler.linear(entry.key == grammarQuestions ? 1.6 : 1)),
+              TextScaler.linear((entry.key == grammarQuestions || entry.key == grammarActionPlaces) ? 1.6 : 1)),
           child: child!,
         ),
         home: LessonPage(store: store, lesson: entry.key),
@@ -114,9 +117,9 @@ void main() {
     expect(find.text(greetings.title), findsOneWidget);
   });
 
-  test('grammar catalog has five independent lessons and explained answers', () {
-    expect(grammarLessons.length, 5);
-    expect(grammarLessons.expand((l) => l.exercises).length, 40);
+  test('grammar catalog has eight independent lessons and explained answers', () {
+    expect(grammarLessons.length, 8);
+    expect(grammarLessons.expand((l) => l.exercises).length, 64);
     for (final entry in answers.entries) {
       expect(entry.key.id.startsWith('grammar-'), true);
       expect(entry.key.section, 'Grammar basics');

@@ -1,6 +1,6 @@
 # Grammar basics
 
-Five original lessons, eight exercises each. Choose Grammar basics in Lesson group.
+Eight original lessons, eight exercises each. Choose Grammar basics in Lesson group.
 Suggested order:
 
 | Lesson | Pattern |
@@ -10,6 +10,9 @@ Suggested order:
 | Possession | Owner + の + thing |
 | This and that | これ / それ / あれ + は + noun + です |
 | Questions | Sentence + か; affirmative and negative replies |
+| Polite actions | Six dictionary/polite verb pairs; ます / ません |
+| Direct objects | Object + を + action; verb questions with か |
+| Action locations | Place + で + object + を + action |
 
 Introductions explain patterns and gloss the words used. Practice includes choosing
 whole sentences, interpreting meaning, filling a particle/ending and identifying
@@ -41,7 +44,21 @@ Explanations, lesson arrangement and exercises are original. No source curriculu
 pages, audio or illustrations are bundled.
 
 ## Verification
-Automated tests complete all 40 questions, preserve other scores/bookmarks, exercise
+Automated tests complete all 64 questions, preserve other scores/bookmarks, exercise
 group navigation and abandoned attempts, and review a wrong answer without changing
-the saved best. The question lesson also runs with enlarged text on a phone viewport.
+the saved best. The question and action-location lessons also run with enlarged text on a phone viewport.
 Physical font, TalkBack and OS persistence checks are in docs/QA.md.
+
+## Action-sentence extension
+Six familiar verbs are introduced as explicit dictionary/polite pairs: たべる →
+たべます, のむ → のみます, よむ → よみます, みる → みます, いく →
+いきます, くる → きます. Full verb-group conjugation rules are deferred.
+Non-past meaning depends on context; one exercise explicitly supplies tomorrow.
+ません negates these polite verbs; noun negatives from earlier lessons are not
+presented as interchangeable verb endings.
+
+Object exercises explicitly ask for the direct-object marker, so a possible
+contrastive は reading is not treated as an ungrammatical alternative.
+を is taught with its ordinary modern o pronunciation.
+で is limited to action locations here, not destinations or existence.
+Context identifies the subject where an English translation supplies I or you.

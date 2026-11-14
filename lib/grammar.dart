@@ -87,10 +87,64 @@ const grammarQuestions = Lesson(
   section: 'Grammar basics',
 );
 
+const grammarPoliteVerbs = Lesson(
+  'grammar-polite-verbs-v1',
+  'Grammar: polite actions with ます',
+  'The word bank shows dictionary forms. Here are six polite non-past forms:\n\nたべる → たべます (eat)\nのむ → のみます (drink)\nよむ → よみます (read)\nみる → みます (see / watch)\nいく → いきます (go)\nくる → きます (come)\n\nLearn these pairs; simply adding ます to a dictionary form does not work. In particular, くる changes to きます. Full verb-group rules come later.\n\nTo make these polite forms negative, replace ます with ません: よみます → よみません.\nNon-past forms can describe habits or future actions, depending on context. あした means tomorrow: あしたいきます。 = I will go tomorrow (when the speaker is the understood subject).\nDo not add です after these ます forms. They already form a polite predicate.',
+  [
+    Exercise('Choose the polite non-past form of たべる (eat).', ['のみます', 'たべます', 'よみます'], 1, 'たべる becomes たべます; the other choices mean drink and read.'),
+    Exercise('Choose the polite non-past form of のむ (drink).', ['みます', 'たべます', 'のみます'], 2, 'のむ becomes のみます. It is not formed by adding ます after のむ.'),
+    Exercise('Choose the polite non-past form of よむ (read).', ['よみます', 'きます', 'のみます'], 0, 'よむ becomes よみます.'),
+    Exercise('Choose the polite non-past form of みる (see / watch).', ['よみます', 'みます', 'いきます'], 1, 'みる becomes みます.'),
+    Exercise('Choose the polite non-past form of いく (go).', ['きます', 'みます', 'いきます'], 2, 'いく becomes いきます; きます means come.'),
+    Exercise('Choose the polite non-past form of くる (come).', ['きます', 'いきます', 'くるます'], 0, 'くる has the irregular polite form きます.'),
+    Exercise('Make よみます negative using the form taught here.', ['よむません', 'よみません', 'よみますです'], 1, 'Replace the ending ます with ません: よみません.'),
+    Exercise('The speaker is describing their own plan. What does あしたいきます。 mean?', ['I will not go tomorrow.', 'I went yesterday.', 'I will go tomorrow.'], 2, 'あした sets a future context; いきます is affirmative non-past.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarObjects = Lesson(
+  'grammar-objects-v1',
+  'Grammar: objects with を',
+  'Use object + を + action to say what someone eats, drinks or reads. The particle を is pronounced o in ordinary modern speech, but write を, not お.\n\nパンをたべます。 = I eat bread.\nみずをのみます。 = I drink water.\nほんをよみます。 = I read a book.\n\nパン = bread; みず = water; ほん = book; さかな = fish; おちゃ = tea.\nThese translations assume the speaker is the understood subject. The Japanese sentences can refer to another person when context supplies that person.\n\nパンをたべません。 = I do not eat bread.\nほんをよみますか。 = Do you read books?\nAdd か after the polite verb to ask a question. The noun does not itself mark singular/plural. This lesson teaches direct objects; not every verb uses を.',
+  [
+    Exercise('The speaker means “I eat bread.” Choose the matching sentence.', ['みずをのみます。', 'パンをたべます。', 'ほんをよみます。'], 1, 'パン is bread and たべます is eat; を marks the object.'),
+    Exercise('Choose the direct-object particle: ほん ___ よみます。', ['で', 'に', 'を'], 2, 'を marks ほん as what is read.'),
+    Exercise('How is を normally pronounced as an object particle?', ['o', 'wo with a distinct w', 'wa'], 0, 'The object particle を is ordinarily pronounced o.'),
+    Exercise('The speaker means “I drink water.” Choose the matching sentence.', ['おちゃをのみます。', 'みずをのみます。', 'さかなをたべます。'], 1, 'みず is water; のみます is drink.'),
+    Exercise('Change パンをたべます。 to a polite negative.', ['パンをたべますか。', 'さかなをたべません。', 'パンをたべません。'], 2, 'Keep パンを and replace たべます with たべません.'),
+    Exercise('Ask “Do you read books?” with the listener understood as the subject.', ['ほんをよみますか。', 'ほんをよみます。', 'ほんをよみません。'], 0, 'Put か after よみます to ask the affirmative question.'),
+    Exercise('In さかなをたべます。, what is being eaten?', ['Bread', 'Fish', 'A book'], 1, 'さかな, immediately before を, is the object: fish.'),
+    Exercise('The speaker is talking about their habits. What does おちゃをのみません。 mean?', ['I drink tea.', 'I do not drink water.', 'I do not drink tea.'], 2, 'おちゃ is tea; のみません is the polite negative of drink.'),
+  ],
+  section: 'Grammar basics',
+);
+
+const grammarActionPlaces = Lesson(
+  'grammar-action-places-v1',
+  'Grammar: where actions happen with で',
+  'Place + で marks where an action happens in these examples. Then use object + を + verb.\n\nこうえんでパンをたべます。 = I eat bread in the park.\nとしょかんでほんをよみます。 = I read a book at the library.\nがっこうでみずをのみます。 = I drink water at school.\n\nこうえん = park; としょかん = library; がっこう = school.\nパン = bread; ほん = book; みず = water; おちゃ = tea.\nTranslations assume the speaker is the subject. で marks the action location; を marks the object. The verb comes at the end of this pattern.\n\nとしょかんでほんをよみません。 = I do not read books at the library.\nがっこうでみずをのみますか。 = Do you drink water at school?\nThis use of で is not a general translation of “at”: destinations and existence sentences use other patterns, and で has other uses too.',
+  [
+    Exercise('Choose the action-location particle: としょかん ___ ほんをよみます。', ['を', 'で', 'の'], 1, 'で marks the library as the place where reading happens.'),
+    Exercise('Choose “I eat bread in the park.”', ['がっこうでパンをたべます。', 'こうえんでおちゃをのみます。', 'こうえんでパンをたべます。'], 2, 'こうえんで locates the action in the park; パンをたべます means eat bread.'),
+    Exercise('In としょかんでほんをよみます。, where does reading happen?', ['At the library', 'At school', 'In the park'], 0, 'としょかん before で gives the action location.'),
+    Exercise('In がっこうでみずをのみます。, what is being drunk?', ['Tea', 'Water', 'Bread'], 1, 'みず before を is the object; がっこうで gives the location.'),
+    Exercise('Choose “I do not read books at the library.”', ['としょかんでほんをよみます。', 'こうえんでほんをよみません。', 'としょかんでほんをよみません。'], 2, 'Keep the library and book; use よみません for the negative.'),
+    Exercise('Ask whether the listener drinks water at school.', ['がっこうでみずをのみますか。', 'がっこうでみずをのみます。', 'こうえんでみずをのみますか。'], 0, 'がっこうで means at school; final か makes this a question.'),
+    Exercise('Which pair marks the action place, then the direct object?', ['を, then で', 'で, then を', 'の, then か'], 1, 'Use place + で and object + を in the pattern taught here.'),
+    Exercise('Change only the location in こうえんでパンをたべます。 to school.', ['こうえんでほんをよみます。', 'がっこうでみずをのみます。', 'がっこうでパンをたべます。'], 2, 'Replace こうえん with がっこう; keep eating bread unchanged.'),
+  ],
+  section: 'Grammar basics',
+);
+
 const grammarLessons = [
   grammarStatements,
   grammarNegatives,
   grammarPossession,
   grammarDemonstratives,
   grammarQuestions,
+  grammarPoliteVerbs,
+  grammarObjects,
+  grammarActionPlaces,
 ];

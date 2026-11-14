@@ -106,7 +106,7 @@ navigation. Physical testing need not repeat every word.
 
 ## Grammar basics
 1. Install as an update. Existing kana/vocabulary scores and saved words should remain.
-2. Choose Grammar basics. Five lesson cards should show Sentence practice.
+2. Choose Grammar basics. Eight lesson cards should show Sentence practice.
 3. Read Statements and Negatives: check は, じゃないです and ではありません render clearly.
 4. Complete one lesson with a mistake. Review mistakes, return, force-stop and reopen:
    the original lesson score must persist and other scores must remain unchanged.
@@ -114,3 +114,11 @@ navigation. Physical testing need not repeat every word.
    explanations and all controls must remain readable/reachable.
 6. With TalkBack, check Japanese sentences, choices and feedback. Browse the word bank
    and start a saved-word flashcard deck as a regression check.
+
+## Action grammar extension
+1. Open Polite actions. Check the six verb pairs, particularly くる → きます,
+   and the distinction between ます and ません.
+2. Try Objects with を and Where actions happen with で. Check the longer choices
+   at enlarged text sizes and in landscape.
+3. Complete one new lesson with a mistake and review it. Reopen the app: the new
+   score should persist while the first five grammar scores and saved words remain.
