@@ -146,7 +146,9 @@ void main() {
     await tapVisible(tester, find.text('Continue'));
     expect(GrammarPracticeStore(progress).mistakes, isEmpty);
     await tapVisible(tester, find.text('Back to grammar practice'));
-    await tapVisible(tester, find.text('Saved mistakes: 0'));
+    await tester.scrollUntilVisible(find.text('Saved mistakes: 0'), -180,
+        scrollable: find.byType(Scrollable).first, maxScrolls: 80);
+    expect(find.text('Saved mistakes: 0'), findsOneWidget);
     for (final lesson in grammarLessons) {
       expect(progress.best(lesson.id), 3);
       expect(progress.completed(lesson.id), true);
