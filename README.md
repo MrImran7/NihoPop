@@ -43,14 +43,38 @@ flutter pub get
 flutter run
 ```
 
-The bootstrap generates the standard Android host from the pinned Flutter SDK
-without replacing application source. Only Android is generated. Its launcher
+The bootstrap generates the standard Android host from your installed Flutter SDK
+(use the pinned version above to match CI) without replacing application source. Only Android is generated. Its launcher
 currently uses Flutter's default icon; branded artwork is a later milestone.
 Generated host files are ignored until we need native customisations. Commit
 those files and stop regenerating them when that milestone arrives.
 
+Bootstrap also sets `kotlin.incremental=false` in `android/gradle.properties` for
+both newly generated and existing hosts. This carries the local Kotlin build
+workaround into repeatable project setup. It disables Kotlin incremental compilation,
+which can make repeat Kotlin builds slower; it does not install dependencies or
+resolve every Gradle/SDK error. Running bootstrap again updates this setting without
+regenerating an existing host or duplicating the property. Other Gradle properties
+and native files are preserved.
+
+On Windows, run from the project root:
+```powershell
+python tool/bootstrap.py
+flutter pub get
+flutter build apk --debug
+```
+Then sync Gradle if Android Studio already has the project open.
+
+The generated `android/` directory is ignored by Git. Switching branches in the same
+checkout normally keeps it; a fresh clone/worktree needs bootstrap. Avoid deleting
+it or running `git clean -fdx` if it contains local native customisations. After this
+bootstrap change is merged into `develop`, create future feature branches from the
+updated `develop` to inherit the fix. Branches created before that merge do not
+contain it automatically. We continue using the current feature branch until then.
+
 ## Verify and build
 ```sh
+python3 -m unittest discover -s tool -p 'test_*.py'
 flutter analyze --fatal-infos
 flutter test
 flutter build apk --debug
