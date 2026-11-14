@@ -23,7 +23,18 @@ with search and topic filters, including for flashcards. Bookmarks stay on this
 device after reopening; removing a bookmark leaves lesson progress unchanged.
 After a saved lesson attempt, Review mistakes retries only missed questions.
 Further reviews contain only the remaining mistakes. Review results never replace
-lesson best scores. Review queues last only for the current session.
+lesson best scores. Regular lesson review queues last only for the current session.
+
+Open Grammar practice from the shuffle icon in the home toolbar. Mixed sessions
+sample up to 10 questions across completed grammar lessons. Choose topics to focus
+both mixed sessions and saved-mistake review on selected completed lessons. Selection
+stays while the practice page is open; reopening defaults to all completed topics.
+Unselected topics keep their saved mistakes. Saved mistakes from
+completed practice sessions persist offline and can be reviewed later; correcting
+a question in a completed practice session removes it from this list. Practice
+does not change lesson completion, best scores or vocabulary bookmarks. Leaving
+early leaves the previous practice history unchanged. Regular lesson mistakes
+are not automatically added to the practice list.
 
 This milestone teaches recognition and reading through multiple-choice exercises.
 Audio, handwriting/stroke-order assessment and spaced review are not implemented.
