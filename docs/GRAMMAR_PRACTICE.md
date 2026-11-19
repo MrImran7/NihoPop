@@ -34,3 +34,11 @@ saved mistakes and the count in selected topics. Filtering does not delete mista
 and completing a filtered session preserves untouched mistakes from other topics.
 Selections remain through sessions while this practice page is open; reopening it
 resets to all completed topics. These preferences are not stored as progress.
+
+## Grammar notes during practice
+While answering a mixed or saved-review question, use the Grammar notes book icon
+in the toolbar to read the originating lesson’s teaching notes. The read-only page
+names that lesson. Back to question or Android Back returns to the same question,
+retaining any selected answer or checked-answer feedback. Notes do not submit an
+answer, complete a lesson or modify saved mistakes. The same source is available
+during immediate mistake review. The icon is absent on introduction/result screens.

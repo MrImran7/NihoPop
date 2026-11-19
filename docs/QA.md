@@ -189,3 +189,11 @@ abandonment, save retry and immediate review. Hardware/OS checks above remain ma
 5. Apply an empty selection: practice actions are disabled with guidance. Select all to recover.
 6. With large system text, scroll to the final topic and apply it; verify readable labels and reachable controls. Check TalkBack announces checkbox labels and state.
 7. Returning from a practice session retains the selection; leaving and reopening Grammar practice resets to all completed topics.
+
+### Grammar notes within practice
+1. Start mixed practice. On a question, select an answer, then open the Grammar notes book icon in the toolbar.
+2. Check that the named topic and notes match the question. Scroll to the end at large text size and use Back to question.
+3. Confirm the selected answer remains. Check it, reopen notes, and return with Android Back: feedback and the question number must remain unchanged.
+4. Continue to a different topic and confirm its notes change. Finish with a mistake, choose Review mistakes, and verify notes still belong to that missed question.
+5. Repeat from Review saved mistakes. Merely opening notes must not clear a saved mistake or change a lesson score.
+6. Confirm TalkBack announces Grammar notes and Back to question. Check long Japanese notes in portrait and landscape.

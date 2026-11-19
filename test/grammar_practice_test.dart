@@ -34,6 +34,84 @@ Future<ProgressStore> seeded({bool completed = true}) async {
 }
 
 void main() {
+  testWidgets('grammar notes preserve selection, feedback and sources through mistake review', (tester) async {
+    tester.view.physicalSize = const Size(390, 844);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final progress = await seeded();
+    final practice = GrammarPracticeStore(progress);
+    final first = grammarStatements.exercises[0];
+    final second = grammarWantActions.exercises[0];
+    await practice.record([first], [first]);
+    await tester.pumpWidget(MaterialApp(
+      builder: (context, child) => MediaQuery(
+        data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.6)),
+        child: child!,
+      ),
+      home: LessonPage(
+        store: progress,
+        lesson: Lesson('practice', 'Practice', 'Notes', [first, second]),
+        onPracticeCompleted: practice.record,
+        practiceSources: {first: grammarStatements, second: grammarWantActions},
+      ),
+    ));
+    expect(find.byTooltip('Grammar notes'), findsNothing);
+    await tapVisible(tester, find.text('Let’s practice'));
+    await tapVisible(tester, find.widgetWithText(OutlinedButton,
+        first.choices[(first.answer + 1) % first.choices.length]));
+    await tester.tap(find.byTooltip('Grammar notes'));
+    await tester.pumpAndSettle();
+    expect(find.text(grammarStatements.title), findsOneWidget);
+    expect(find.text(grammarStatements.introduction), findsOneWidget);
+    expect(practice.mistakes.single.exercise, first);
+    expect(progress.best(grammarStatements.id), 3);
+    await tapVisible(tester, find.text('Back to question'));
+    await tapVisible(tester, find.text('Check answer'));
+    expect(find.text('Keep learning — here’s why:'), findsOneWidget);
+    await tester.tap(find.byTooltip('Grammar notes'));
+    await tester.pumpAndSettle();
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+    expect(find.text('Keep learning — here’s why:'), findsOneWidget);
+    await tapVisible(tester, find.text('Continue'));
+    expect(find.text('Question 2 of 2'), findsOneWidget);
+    await tester.tap(find.byTooltip('Grammar notes'));
+    await tester.pumpAndSettle();
+    expect(find.text(grammarWantActions.title), findsOneWidget);
+    expect(find.text(grammarWantActions.introduction), findsOneWidget);
+    await tapVisible(tester, find.text('Back to question'));
+    await tapVisible(tester, find.widgetWithText(OutlinedButton, second.choices[second.answer]));
+    await tapVisible(tester, find.text('Check answer'));
+    await tapVisible(tester, find.text('Continue'));
+    expect(find.text('1 of 2 correct'), findsOneWidget);
+    expect(find.byTooltip('Grammar notes'), findsNothing);
+    await tapVisible(tester, find.text('Review mistakes'));
+    await tester.tap(find.byTooltip('Grammar notes'));
+    await tester.pumpAndSettle();
+    expect(find.text(grammarStatements.title), findsOneWidget);
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+    await tapVisible(tester, find.widgetWithText(OutlinedButton, first.choices[first.answer]));
+    await tapVisible(tester, find.text('Check answer'));
+    await tapVisible(tester, find.text('Continue'));
+    expect(practice.mistakes, isEmpty);
+    expect(progress.best(grammarStatements.id), 3);
+    expect(progress.best(grammarWantActions.id), 3);
+    expect(progress.preferences.getBool('saved-word.v1.vocabulary-people-v1:人'), true);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('regular lessons do not expose practice notes', (tester) async {
+    final progress = await seeded();
+    await tester.pumpWidget(MaterialApp(home: LessonPage(
+      store: progress, lesson: grammarStatements,
+    )));
+    await tapVisible(tester, find.text('Let’s practice'));
+    expect(find.byTooltip('Grammar notes'), findsNothing);
+    expect(progress.best(grammarStatements.id), 3);
+  });
+
   test('topic filter excludes unselected, unknown and incomplete lessons', () async {
     final progress = await seeded(completed: false);
     await progress.record(grammarStatements.id, 3);
@@ -229,6 +307,7 @@ void main() {
     await tester.pumpAndSettle();
     await tapVisible(tester, find.byKey(const ValueKey('start-grammar-mix')));
     await tapVisible(tester, find.text('Let’s practice'));
+    expect(find.byTooltip('Grammar notes'), findsOneWidget);
     Exercise? missed;
     for (var i = 0; i < 10; i++) {
       final exercise = practice.available.map((q) => q.exercise).firstWhere(

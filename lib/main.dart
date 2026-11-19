@@ -72,6 +72,7 @@ class _HomePageState extends State<HomePage> {
               ),
               returnLabel: 'Back to grammar practice',
               onPracticeCompleted: practice.record,
+              practiceSources: {for (final q in questions) q.exercise: q.lesson},
             ),
           ));
         },
@@ -173,9 +174,11 @@ class LessonPage extends StatefulWidget {
   final ProgressStore store;
   final Lesson lesson;
   final String returnLabel;
+  final Map<Exercise, Lesson> practiceSources;
   final Future<void> Function(List<Exercise>, List<Exercise>)? onPracticeCompleted;
   const LessonPage({super.key, required this.store, required this.lesson,
-    this.returnLabel = 'Back to lessons', this.onPracticeCompleted});
+    this.returnLabel = 'Back to lessons', this.onPracticeCompleted,
+    this.practiceSources = const {}});
   @override
   State<LessonPage> createState() => _LessonPageState();
 }
@@ -243,7 +246,23 @@ class _LessonPageState extends State<LessonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.lesson.title)),
+      appBar: AppBar(
+        title: Text(widget.lesson.title),
+        actions: [
+          if (practicing && started && !session.finished &&
+              widget.practiceSources.containsKey(session.current))
+            IconButton(
+              tooltip: 'Grammar notes',
+              icon: const Icon(Icons.menu_book_outlined),
+              onPressed: () {
+                final source = widget.practiceSources[session.current]!;
+                Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (_) => GrammarNotesPage(lesson: source),
+                ));
+              },
+            ),
+        ],
+      ),
       body: SafeArea(child: ListView(
         controller: scroll,
         padding: const EdgeInsets.all(24),
@@ -328,6 +347,33 @@ class _LessonPageState extends State<LessonPage> {
               child: Text(session.answered ? 'Continue' : 'Check answer'),
             ),
           ],
+        ],
+      )),
+    );
+  }
+}
+
+class GrammarNotesPage extends StatelessWidget {
+  final Lesson lesson;
+  const GrammarNotesPage({super.key, required this.lesson});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Grammar notes')),
+      body: SafeArea(child: ListView(
+        padding: const EdgeInsets.all(24),
+        children: [
+          Text(lesson.title, style: Theme.of(context).textTheme.headlineSmall),
+          const SizedBox(height: 16),
+          const Text('Return to continue the same question. Reading notes does not change your score or saved mistakes.'),
+          const SizedBox(height: 20),
+          Text(lesson.introduction, style: const TextStyle(fontSize: 20, height: 1.6)),
+          const SizedBox(height: 24),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Back to question'),
+          ),
         ],
       )),
     );

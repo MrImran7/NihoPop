@@ -127,3 +127,6 @@ Leaving a lesson early discards that attempt. Completion records finishing all
 questions, not mastery; best score is reported separately. Mistakes are explained
 immediately. Listening, handwriting, typing, spaced review and cloud sync
 are not implemented yet. No Duolingo code, assets or curriculum are included.
+
+During grammar practice, the **Grammar notes** book icon opens the current question’s
+lesson notes. Return to the same question with your selection and feedback preserved.
