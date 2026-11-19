@@ -4,6 +4,8 @@ import 'lesson.dart';
 import 'progress.dart';
 import 'word_bank.dart';
 import 'saved_words.dart';
+import 'grammar_practice.dart';
+import 'grammar_practice_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,6 +52,34 @@ class _HomePageState extends State<HomePage> {
   String section = 'All lessons';
   late final savedWords = SavedWordsStore(widget.store.preferences);
 
+  Future<void> openGrammarPractice() async {
+    final practice = GrammarPracticeStore(widget.store);
+    await Navigator.of(context).push(MaterialPageRoute<void>(
+      builder: (_) => GrammarPracticePage(
+        store: practice,
+        onStart: (questions, review) async {
+          await Navigator.of(context).push(MaterialPageRoute<void>(
+            builder: (_) => LessonPage(
+              store: widget.store,
+              lesson: Lesson(
+                'grammar-practice-session',
+                review ? 'Review saved mistakes' : 'Mixed grammar practice',
+                'These questions come from completed grammar lessons. '
+                'Finish the session to update your saved practice mistakes. '
+                'Your lesson scores will not change.',
+                questions.map((q) => q.exercise).toList(),
+                section: 'Grammar basics',
+              ),
+              returnLabel: 'Back to grammar practice',
+              onPracticeCompleted: practice.record,
+              practiceSources: {for (final q in questions) q.exercise: q.lesson},
+            ),
+          ));
+        },
+      ),
+    ));
+  }
+
   Future<void> openLesson(Lesson lesson, {bool fromWordBank = false}) async {
     await Navigator.of(context).push(MaterialPageRoute<void>(
       builder: (_) => LessonPage(
@@ -69,6 +99,11 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('NihoPop'),
         actions: [
+          IconButton(
+            tooltip: 'Grammar practice',
+            icon: const Icon(Icons.shuffle),
+            onPressed: openGrammarPractice,
+          ),
           IconButton(
             tooltip: 'Word bank',
             icon: const Icon(Icons.menu_book_outlined),
@@ -139,8 +174,11 @@ class LessonPage extends StatefulWidget {
   final ProgressStore store;
   final Lesson lesson;
   final String returnLabel;
+  final Map<Exercise, Lesson> practiceSources;
+  final Future<void> Function(List<Exercise>, List<Exercise>)? onPracticeCompleted;
   const LessonPage({super.key, required this.store, required this.lesson,
-    this.returnLabel = 'Back to lessons'});
+    this.returnLabel = 'Back to lessons', this.onPracticeCompleted,
+    this.practiceSources = const {}});
   @override
   State<LessonPage> createState() => _LessonPageState();
 }
@@ -148,6 +186,7 @@ class LessonPage extends StatefulWidget {
 class _LessonPageState extends State<LessonPage> {
   late LessonSession session;
   bool reviewing = false;
+  bool get practicing => widget.onPracticeCompleted != null;
   int? lessonScore;
   final scroll = ScrollController();
 
@@ -175,6 +214,7 @@ class _LessonPageState extends State<LessonPage> {
     setState(() {
       lessonScore ??= session.correct;
       reviewing = true;
+      if (practicing) saved = false;
       selected = null;
       session = LessonSession(Lesson(
         widget.lesson.id, widget.lesson.title, '', missed,
@@ -186,11 +226,17 @@ class _LessonPageState extends State<LessonPage> {
   Future<void> save() async {
     setState(() { saving = true; saveError = null; });
     try {
-      await widget.store.record(widget.lesson.id, session.correct);
+      if (practicing) {
+        await widget.onPracticeCompleted!(session.lesson.exercises, session.mistakes);
+      } else {
+        await widget.store.record(widget.lesson.id, session.correct);
+      }
       if (mounted) setState(() { saved = true; });
     } catch (_) {
       if (mounted) setState(() {
-        saveError = 'Progress could not be saved. Please try again.';
+        saveError = practicing
+            ? 'Practice could not be saved. Please try again.'
+            : 'Progress could not be saved. Please try again.';
       });
     } finally {
       if (mounted) setState(() { saving = false; });
@@ -200,7 +246,23 @@ class _LessonPageState extends State<LessonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.lesson.title)),
+      appBar: AppBar(
+        title: Text(widget.lesson.title),
+        actions: [
+          if (practicing && started && !session.finished &&
+              widget.practiceSources.containsKey(session.current))
+            IconButton(
+              tooltip: 'Grammar notes',
+              icon: const Icon(Icons.menu_book_outlined),
+              onPressed: () {
+                final source = widget.practiceSources[session.current]!;
+                Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (_) => GrammarNotesPage(lesson: source),
+                ));
+              },
+            ),
+        ],
+      ),
       body: SafeArea(child: ListView(
         controller: scroll,
         padding: const EdgeInsets.all(24),
@@ -220,13 +282,13 @@ class _LessonPageState extends State<LessonPage> {
           ] else if (session.finished) ...[
             const Icon(Icons.celebration_outlined, size: 64),
             const SizedBox(height: 20),
-            Text(reviewing ? 'Review complete!' : 'Lesson complete!', style: const TextStyle(fontSize: 28)),
+            Text(reviewing ? 'Review complete!' : practicing ? 'Practice complete!' : 'Lesson complete!', style: const TextStyle(fontSize: 28)),
             Text('${session.correct} of ${session.lesson.exercises.length} correct'),
             const SizedBox(height: 20),
-            if (reviewing)
+            if (reviewing && !practicing)
               Text('Lesson score: $lessonScore/${widget.lesson.exercises.length}. Review does not change your saved best.')
             else
-              Text(saved ? 'Progress saved on this device.' : saving ? 'Saving progress…' : saveError ?? ''),
+              Text(saved ? practicing ? 'Practice mistakes saved. Lesson scores unchanged.' : 'Progress saved on this device.' : saving ? 'Saving progress…' : saveError ?? ''),
             if (saved && session.mistakes.isNotEmpty) ...[
               const SizedBox(height: 16),
               FilledButton(
@@ -279,12 +341,39 @@ class _LessonPageState extends State<LessonPage> {
                 } else {
                   scroll.jumpTo(0);
                   setState(() { session.next(); selected = null; });
-                  if (session.finished && !reviewing) save();
+                  if (session.finished && (!reviewing || practicing)) save();
                 }
               },
               child: Text(session.answered ? 'Continue' : 'Check answer'),
             ),
           ],
+        ],
+      )),
+    );
+  }
+}
+
+class GrammarNotesPage extends StatelessWidget {
+  final Lesson lesson;
+  const GrammarNotesPage({super.key, required this.lesson});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Grammar notes')),
+      body: SafeArea(child: ListView(
+        padding: const EdgeInsets.all(24),
+        children: [
+          Text(lesson.title, style: Theme.of(context).textTheme.headlineSmall),
+          const SizedBox(height: 16),
+          const Text('Return to continue the same question. Reading notes does not change your score or saved mistakes.'),
+          const SizedBox(height: 20),
+          Text(lesson.introduction, style: const TextStyle(fontSize: 20, height: 1.6)),
+          const SizedBox(height: 24),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Back to question'),
+          ),
         ],
       )),
     );
